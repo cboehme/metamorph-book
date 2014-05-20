@@ -1,10 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="generator" content="Osso Notes">
-    <title></title></head>
-<body>
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<title>Metamorph-Datenmodell</title>
+</head>
 
+<body>
 <h1>Das Metamorph-Datenmodell</h1>
 
 TODO: Record ID
@@ -28,19 +29,19 @@ Verlag, Ort<br>
 <p>Um diese Informationen in Metamorph verarbeiten zu können, müssen sie in eine strukturierte Form gebracht werden. Die Grundlage für die Datenverarbeitung in Metamorph sind Datensätze. Die Informationen über einen Buchtitel können als so ein Datensatz betrachtet werden. In diesem Datensatz müssen die Informationen so abgelegt werden, dass wir einzele Teile benennen und auf diese Weise adressieren können. Im Metamorph-Datenmodell werden dazu sogenannte<i>Literale</i> gebildet. Dies sind einfache Schlüssel-Wert-Paare. Der Schlüssel ist der Name der Information, die als Datenwert verwendet wird. Das Datenmodell macht dabei keine Vorgaben oder Einschränkungen für die Namen der Schlüssel. Die Namen können völlig frei gewählt werden.
 </p>
 
-<code>
+<pre>
 title:
 authors:
 editor:
 publicationYear:
 publisher:
 location:
-</code>
+</pre>
 
 <p>Dies ermöglicht es bereits viele Arten von Informationen zu erfassen. Das Beispiel zeigt aber auch, dass die Literale allein einige Informationen nur sehr grob strukturiert erfassen. So sind alle Autoren in einem Literal enthalten und die Adressierung eines einzelen Autors ist nicht möglich. Im Metamorph-Datenmodell wird dieses Problem gelöst, dadurch dass Literale beliebig oft in einem Datensatz wiederholt werden können:
 </p>
 
-<code>
+<pre>
 title:
 author:
 author:
@@ -48,7 +49,7 @@ editor:
 publicationYear:
 publisher:
 location:
-</code>
+</pre>
 
 <p>Die Literale eines Datensatzes werden im Datenmodell als geordnete Menge aufgefasst. Die Reihenfolge der beiden author-Literale ist also nicht zufällig, sondern wohldefiniert und kann daher bedeutungstragend verwendet werden. Dies erlaubt es bspw. Erst- und Zweitautor zu unterscheiden, obwohl beide in einem Literal gleichen Namens abgelegt sind.
 </p>
@@ -62,7 +63,7 @@ location:
 <p>Angenommen wir wollen die Namen unserer Autoren in ihre einzelnen Bestandteile zerlegt im Datensatz ablegen. Mit dem bisher Vorgestellten sieht dies so aus:
 </p>
 
-<code>
+<pre>
 title:
 authorSurname:
 authorForeName:
@@ -74,12 +75,12 @@ editorForename:
 publicationYear:
 publisher:
 location:
-</code>
+</pre>
 
 <p>Im Vergleich zu den vorangegangenen Beispielen ist unser Datensatz durch die Aufspaltung der Namen ziemlich unübersichtlich geworden. Es ist kaum noch ersichtlich, welcher Vor- und Nachname zusammen gehören. So können z. B. Autoren und Herausgeber nur noch auseinander gehalten werden, weil die Literale unterschiedliche Namen verwenden. Diese Lösung ist allerdings nicht besonders übersichtlich und auch nicht immer möglich. Wenn die Literalnamen bspw. vorgegeben sind (Gründe dafür werden wir in Abschnitt XX kennenlernen), dann kann es sein, dass vorgegebenen Literalnamen für die Namensteile nicht zwischen Autorennamen und Herausgebernamen unterscheiden, sondern nur allgemein Vor- und Nachnamen beschreiben. Dann ist keine Unterscheidung zwischen Autoren- und Herausgebernamen mehr möglich. Im Metamorph-Datenmodell können deshalb Literale innerhalb eines Datensatzes gruppiert werden. Diese Gruppen werden <i>Entitäten</i> genannt und habe ebenso wie Literale einen beliebigen Namen, um sie adressieren und die gruppierten Inhalte unterscheiden zu können.
 </p>
 
-<code>
+<pre>
 title:
 author:
 	surname:
@@ -94,7 +95,7 @@ editor:
 publicationYear:
 publisher:
 location:
-</code>
+</pre>
 
 <p>Die Entitäten sind hier in der Darstellung durch Einrückungen gekennzeichnet. Du kannst dir Entitäten als eine Art von Literal mit komplexem strukturierten Inhalt oder als eine Art Datensatz im Datensatz vorstellen.
 </p>
@@ -105,7 +106,7 @@ location:
 <p>Entitäten können nicht nur auf Datensatzebene zur Gruppierung von Entitäten verwendet werden, sondern auch innerhalb von Entitäten. Wenn wir bspw. für jedem Autor auch noch Informationen zu seiner Institution ablegen wollen, können wir die Informationen zur Institution in einer verschachtelten Entität ablegen, um sie zusammenzufassen:
 </p>
 
-<code>
+<pre>
 title:
 author:
 	surname:
@@ -129,7 +130,7 @@ editor:
 publicationYear:
 publisher:
 location:
-</code>
+</pre>
 
 <p>Auf diese Weise lassen sich mit Entitäten auch komplexe hierarchische Datensatzstrukturen abbilden.
 </p>
@@ -155,20 +156,20 @@ TODO: Allgemeines Modell für semistrukturierte Daten
 <p>Das folgende Beispiel zeigt einen Auschnitt aus einem Datensatz im PICA+ Format. Die ersten vier Zeichen in jeder Zeile bezeichnen den Feldnamen. Das $-Zeichen trennt die einzelnen Unterfelder in einem Datenfeld ab. Das erste Zeichen hinter dem $-Zeichen ist der Name des Unterfelds, die restlichen Zeichen der Feldinhalt:
 </p>
 
-<code>
+<pre>
 003@ $0123
 021A $0
-</code>
+</pre>
 
 <p>Um diesen Datensatz mit Metamorph verarbeiten zu können, müssen wir die Feld-Unterfeld-Struktur des PICA+ Formats mit den Strukturelementen des Metamorph-Datenmodells nachbilden. Das PICA+ Format besitzt drei Strukturelemente: Datensatz, Feld und Unterfeld. Der Datensatz findet eine direkte Entsprechung im Datensatz des Metamorph-Datenmodells. Die Felder haben einen Namen und gruppieren mehrere Unterfelder, dies können wir mit Entitäten nachbilden. Die Unterfelder sind dagegen einfache Pärchen von Namen und Datenwert, d.h. wir können sie mit Literalen darstellen. Im Metamorph-Datenmodell sieht der obige Datensatz dann so aus: 
 </p>
 
-<code>
+<pre>
 003@:
 	0: 123
 021A:
 	0: TItel
-</code>
+</pre>
 
 <p>Als Datensatz-ID eignet sich bei PICA+ Datensätzen der Inhalt des Unterfelds 003@$0.
 </p>
