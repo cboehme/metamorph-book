@@ -225,7 +225,10 @@ Datensatz mit ID 3:
 
 <p>Bei den Literalen mit den namen authorId und editorId handelt es sich um ganz normale Literale. Es liegt in den Händen des Anwenders, die Datenwerte dieser Literale als Verweise auf andere Datensätze zu interpretieren. Das Metamorph-Modell kennt kein besonderes Strukturelement für Verknüpfungen.</p>
 
-<p>TODO: Allgemeines Modell für semistrukturierte Daten beschreiben?
+<p>Das Metamorph-Datenmodell mag auf den ersten Blick einfach und eingeschränkt erscheinen, es zeigt sich aber, dass das Datenmodell alle Strukturen abdeckt, die im Allgemeinen bei semistrukturierten Daten auftreten. In der Forschung zu semistrukturierten Daten wird davon ausgegangen, dass semistrukturierte Daten sich im Allgemeinen als <i>Edge-labelled Graph</i> darstellen lassen.
+
+TODO: Etwas ausführlichere Beschreibung des Edge-labelled Graph.
+TODO: Nur Stringdaten
 </p>
 
 <h1>Literal- und Entitätsnamen</h1> 
@@ -239,7 +242,29 @@ Datensatz mit ID 3:
 <p>Je nach Anwendungsfall können Literal- und Entitätsnamen ganz unterschiedlich gewählt werden. In dem Beispiel im vorigen Abschnitt habe ich einfache sprechende Namen gewählt, damit die Beispiele leicht verständlich sind. Wenn allerdings Daten verarbeitet werden sollen, die bereits in einem bestimmten domänenspezifischen Format vorliegen ist es meist sinnvoll, die Benennung und Strukturvorgaben dieses Formats zu übernehmen. So bleibt die ursprüngliche Bedeutung der Daten erhalten, trotzdem können sie aber mit Metamorph verarbeitet werden.
 </p>
 
-<p>TODO: Datenformate vorziehen? Formatdarstellungen erst danach?
+<h1>Datenformate</h1> 
+
+<p>Neben der Trennung von Struktur und Semantik ist die zweite wichtige Eigenschaft des Metamorph-Datenmodells, dass es kein konkretes Format für die Darstellung und Ablage von Daten definiert. Der Grund dafür ist, dass sich die Datenformate in verschiedenen Anwendungsdomänen häufig stark unterscheiden. Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist aber in spezielle Dekodier- und Enkodiermodule ausgelagert, die unabhängig von Metamorph sind.
+</p>
+
+<p>Das Metamorph-Datenmodell geht also davon aus, dass für die Arbeit mit Daten drei Dinge notwendig sind:
+</p>
+
+<ol>
+    <li>Das Datenformat: in welcher Form werden die Daten abgespeichert, eingegeben oder angezeigt?</li>
+    <li>Die Datenstruktur: welche Möglichkeiten gibt es zur Strukturierung der Daten?</li>
+    <li>Das Vokabular: wie sind einzelne Datenelemente benannt und wie werden sie konkret strukturiert?</li>
+</ol>
+
+<p>Diese Trennung der verschiedenen Aspekte der Datenbeschreibung findet sich in RDF wieder. RDF kann in verschiedenen Formaten serialisiert werden (u.a. RDF-XML und Turtle), es definiert eine allgemeine Datenstruktur (das RDF-Graphmodell) und es gibt Vokabulare bzw. Ontologien, die konkrete Namen und Strukturen definieren, um Domänenwissen in RDF zu beschreiben.
+</p>
+
+<p>Im Gegensatz zu RDF verwendet Metamorph ein etwas einfacheres Datenmodell und behält das Konzept des Datensatzes bei, dass es in RDF so nicht mehr gibt. Der Grund dafür ist, das sich in der täglichen Arbeit mit Daten zeigt, dass diese häufig in einer wohldefinierten Zusammenstellung benötigt werden und nicht nur in einem weitläufigen Netz.
+</p>
+
+<h1>Beispiele für die Darstellung verschiedener Formate im Metamorph-Datenmodell</h1>
+
+<p>Im Folgenden zeige ich wie verschiedene bekannte Datenformate im Metamorph-Datenmodell abgebildet werden können. Wir beginnen mit einem einfachen Datenformat aus dem Bibliotheksbereich und beschäftigen und anschließend mit XML, JSON und RDF. Diese Formate sind besonders interessant, da sie ebenfalls zur Erfassung beliebiger semistrukturierter Daten entwickelt wurden. Ihre Datenmodelle sind allerdings alle leicht unterschiedlich und unterscheiden sich auch vom Metamorph-Datenmodell. Wir werden aber sehen, dass es dennoch möglich ist, beliebig strukturierte Daten aus diesen Formate im Metamorph-Datenmodell zu modellieren. Dies zeit, dass sich jegliche in JSON, XML und RDF vorliegenden Daten mit Metamorph verarbeiten lassen.
 </p>
 
 <h2>Darstellung von PICA+ im Metamorph-Datenmodell</h2>
@@ -255,6 +280,7 @@ Datensatz mit ID 3:
 021A $0
 028A/01
 028A/02
+TODO: Beispiel kompletieren
 </pre>
 
 <p>Um diesen Datensatz mit Metamorph verarbeiten zu können, müssen wir die Feld-Unterfeld-Struktur des PICA+ Formats mit den Strukturelementen des Metamorph-Datenmodells nachbilden. Das PICA+ Format besitzt drei Strukturelemente: Datensatz, Feld und Unterfeld. Diese Elemente können wie folgt auf das Metamorph-Datenmodell abgebildet werden:
@@ -279,37 +305,13 @@ Datensatz mit ID 123:
 		0: Titel
 </pre>
 
-<p>Das Beispiel zeigt, dass sich außer den Strukturelementen zur Gliederung des Datensatzes durch die Umwandlung ins Metamorph-Datenmodell nichts an dem Datensatz geändert hat, was seine Bedeutung verändert.</p>
+<p>Das Beispiel zeigt, dass sich außer den Strukturelementen zur Gliederung des Datensatzes durch die Umwandlung ins Metamorph-Datenmodell nichts an dem Datensatz geändert hat, was seine Bedeutung verändert. Auf die gleich Art und Weise können auch andere Datenformate aus dem bibliothekarischen Bereich wie etwa MARC21 ins Metamorph-Datenmodel übertragen werden.</p>
 
 <h2>Darstellung von JSON im Metamorph-Datenmodell</h2>
 
 <h2>Darstellung von XML im Metamorph-Datenmodell</h2>
 
-<h1>Datenformate</h1> 
-
-<p>Neben der Trennung von Struktur und Semantik ist die zweite wichtige Eigenschaft des Metamorph-Datenmodells, dass es kein konkretes Format für die Darstellung und Ablage von Daten definiert. Der Grund dafür ist, dass sich die Datenformate in verschiedenen Anwendungsdomänen häufig stark unterscheiden. Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist aber in spezielle Dekodier- und Enkodiermodule ausgelagert, die unabhängig von Metamorph sind.
-</p>
-
-<p>Das Metamorph-Datenmodell geht also davon aus, dass für die Arbeit mit Daten drei Dinge notwendig sind:
-</p>
-
-<ol>
-    <li>Das Datenformat: in welcher Form werden die Daten abgespeichert, eingegeben oder angezeigt?</li>
-    <li>Die Datenstruktur: welche Möglichkeiten gibt es zur Strukturierung der Daten?</li>
-    <li>Das Vokabular: wie sind einzelne Datenelemente benannt und wie werden sie konkret strukturiert?</li>
-</ol>
-
-<p>Diese Trennung der verschiedenen Aspekte der Datenbeschreibung findet sich in RDF wieder. RDF kann in verschiedenen Formaten serialisiert werden (u.a. RDF-XML und Turtle), es definiert eine allgemeine Datenstruktur (das RDF-Graphmodell) und es gibt Vokabulare bzw. Ontologien, die konkrete Namen und Strukturen definieren, um Domänenwissen in RDF zu beschreiben.
-</p>
-
-<p>Im Gegensatz zu RDF verwendet Metamorph ein etwas einfacheres Datenmodell und behält das Konzept des Datensatzes bei, dass es in RDF so nicht mehr gibt. Der Grund dafür ist, das sich in der täglichen Arbeit mit Daten zeigt, dass diese häufig in einer wohldefinierten Zusammenstellung benötigt werden und nicht nur in einem weitläufigen Netz.
-</p>
-
-<p>Es gibt ein Standardmodell für semistrukturierte Daten, den sogenannten Edge-labelled Graph. ... xml implementiert ihn so rdf so ... Im Metamorph-Datenmodell verwenden wir eine vereinfachte Version des Standardmodells.
-</p>
-
-- Fehlen von Verknüpfungen und Provenienzinformationen
-- Keine Typinformationen. Everything is a string
+<h2>Darstellung von RDF im Metamorph-Datenmodell</h2>
 
 <h1>Zusammenfassung</h1>
 
