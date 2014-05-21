@@ -8,8 +8,6 @@
 <body>
 <h1>Das Metamorph-Datenmodell</h1>
 
-TODO: Record ID
-
 <p>Bevor wir uns in die Programmierung mit Metamorph stürzen können, müssen wir uns zunächst mit dem Datenmodel befassen, das hinter Metamorph steckt.
 </p>
 
@@ -19,36 +17,42 @@ TODO: Record ID
 <p>Wie sieht dieses generische Datenmodell aus? Wir nehmen als Beispiel bibliografische Informationen. Nehmen wir also an, wir haben folgende Informationen zu einem Buchtitel:
 </p>
 
-<p>Titel<br>
-Autor 1, Autor 2<br>
-Herausgeber<br>
-Erscheinungsjahr<br>
-Verlag, Ort<br>
+<p>Kinder- und Hausmärchen<br>
+von Jacob Grimm, Wilhelm Carl Grimm<br>
+Heinz Rölleke (Hrsg.)<br>
+Vandenhoeck und Ruprecht, Göttingen 1986<br>
+978-3-525-20764-2
 </p>
 
 <p>Um diese Informationen in Metamorph verarbeiten zu können, müssen sie in eine strukturierte Form gebracht werden. Die Grundlage für die Datenverarbeitung in Metamorph sind Datensätze. Die Informationen über einen Buchtitel können als so ein Datensatz betrachtet werden. In diesem Datensatz müssen die Informationen so abgelegt werden, dass wir einzele Teile benennen und auf diese Weise adressieren können. Im Metamorph-Datenmodell werden dazu sogenannte<i>Literale</i> gebildet. Dies sind einfache Schlüssel-Wert-Paare. Der Schlüssel ist der Name der Information, die als Datenwert verwendet wird. Das Datenmodell macht dabei keine Vorgaben oder Einschränkungen für die Namen der Schlüssel. Die Namen können völlig frei gewählt werden.
 </p>
 
+<p>Das Metamorph-Datenmodell sieht außerdem vor, dass Datensätze einen Identifikator haben. Dieser wird in Metamorph meist als <i>Datensatz-ID</i> bezeichnet und ist ein beliebiger Datenwert, der geeignet ist, einen Datensatz möglichst eindeutig zu bezeichnen. Mögliche Identifikatoren wären etwa URLs, ID-Nummern oder die ISBN-Nummer aus dem obigen Beispiel. Auch wenn es meist sinnvoll ist, einen eindeutigen Identifikator für jeden Datensatz zu verwenden, erzwingt das Datenmodell dies nicht. Du kannst also auch einfach ein und denselben Wert oder sogar eine leere Zeichenfolge als Identifikator für alle Datensätze zu nutzen. Der verwendete Datenwert kann, muss aber nicht, zusätzlich auch als Literal im Datensatz enthalten sein, wie das Beispiel zeigt.</p>
+
 <pre>
-title:
-authors:
-editor:
-publicationYear:
-publisher:
-location:
+Datensatz mit ID 978-3-525-20764-2:
+	title: Kinder- und Hausmärchen
+	authors: Jacob Grimm, Wilhelm Carl Grimm
+	editor: Heinz Rölleke
+	publicationYear: 1986
+	publisher: Vandenhoeck und Ruprecht
+	location: Göttingen
+	isbn: 978-3-525-20764-2
 </pre>
 
 <p>Dies ermöglicht es bereits viele Arten von Informationen zu erfassen. Das Beispiel zeigt aber auch, dass die Literale allein einige Informationen nur sehr grob strukturiert erfassen. So sind alle Autoren in einem Literal enthalten und die Adressierung eines einzelen Autors ist nicht möglich. Im Metamorph-Datenmodell wird dieses Problem gelöst, dadurch dass Literale beliebig oft in einem Datensatz wiederholt werden können:
 </p>
 
 <pre>
-title:
-author:
-author:
-editor:
-publicationYear:
-publisher:
-location:
+Datensatz mit ID 978-3-525-20764-2:
+	title: Kinder- und Hausmärchen
+	author: Jacob Grimm
+	author: Wilhelm Carl Grimm
+	editor: Heinz Rölleke
+	publicationYear: 1986
+	publisher: Vandenhoeck und Ruprecht
+	location: Göttingen
+	isbn: 978-3-525-20764-2
 </pre>
 
 <p>Die Literale eines Datensatzes werden im Datenmodell als geordnete Menge aufgefasst. Die Reihenfolge der beiden author-Literale ist also nicht zufällig, sondern wohldefiniert und kann daher bedeutungstragend verwendet werden. Dies erlaubt es bspw. Erst- und Zweitautor zu unterscheiden, obwohl beide in einem Literal gleichen Namens abgelegt sind.
@@ -64,37 +68,41 @@ location:
 </p>
 
 <pre>
-title:
-authorSurname:
-authorForeName:
-authorSurname:
-authorForename:
-authorForename:
-editorSurname:
-editorForename:
-publicationYear:
-publisher:
-location:
+Datensatz mit ID 978-3-525-20764-2:
+	title: Kinder- und Hausmärchen
+	authorSurname: Grimm
+	authorForename: Jacob
+	authorSurname: Grimm
+	authorForename: Wilhelm
+	authorForename: Carl
+	editorSurname: Rölleke
+	editorForename: Heinz
+	publicationYear: 1986
+	publisher: Vandenhoeck und Ruprecht
+	location: Göttingen
+	isbn: 978-3-525-20764-2
 </pre>
 
 <p>Im Vergleich zu den vorangegangenen Beispielen ist unser Datensatz durch die Aufspaltung der Namen ziemlich unübersichtlich geworden. Es ist kaum noch ersichtlich, welcher Vor- und Nachname zusammen gehören. So können z. B. Autoren und Herausgeber nur noch auseinander gehalten werden, weil die Literale unterschiedliche Namen verwenden. Diese Lösung ist allerdings nicht besonders übersichtlich und auch nicht immer möglich. Wenn die Literalnamen bspw. vorgegeben sind (Gründe dafür werden wir in Abschnitt XX kennenlernen), dann kann es sein, dass vorgegebenen Literalnamen für die Namensteile nicht zwischen Autorennamen und Herausgebernamen unterscheiden, sondern nur allgemein Vor- und Nachnamen beschreiben. Dann ist keine Unterscheidung zwischen Autoren- und Herausgebernamen mehr möglich. Im Metamorph-Datenmodell können deshalb Literale innerhalb eines Datensatzes gruppiert werden. Diese Gruppen werden <i>Entitäten</i> genannt und habe ebenso wie Literale einen beliebigen Namen, um sie adressieren und die gruppierten Inhalte unterscheiden zu können.
 </p>
 
 <pre>
-title:
-author:
-	surname:
-	foreName:
-author:
-	surname:
-	forename:
-	forename:
-editor:
-	surname:
-	forename:
-publicationYear:
-publisher:
-location:
+Datensatz mit ID 978-3-525-20764-2:
+	title: Kinder- und Hausmärchen
+	author:
+		surname: Grimm
+		forename: Jacob
+	author:
+		surname: Grimm
+		forename: Wilhelm
+		forename: Carl
+	editor:
+		surname: Rölleke
+		forename: Heinz
+	publicationYear: 1986
+	publisher: Vandenhoeck und Ruprecht
+	location: Göttingen
+	isbn: 978-3-525-20764-2
 </pre>
 
 <p>Die Entitäten sind hier in der Darstellung durch Einrückungen gekennzeichnet. Du kannst dir Entitäten als eine Art von Literal mit komplexem strukturierten Inhalt oder als eine Art Datensatz im Datensatz vorstellen.
@@ -107,29 +115,28 @@ location:
 </p>
 
 <pre>
-title:
-author:
-	surname:
-	foreName:
-	affiliation:
-		institution:
-		country:
-author:
-	surname:
-	forename:
-	forename:
-	affiliation:
-		institution:
-		country:
-editor:
-	surname:
-	forename:
-	affiliation:
-		institution:
-		country:
-publicationYear:
-publisher:
-location:
+Datensatz mit ID 978-3-525-20764-2:
+	title: Kinder- und Hausmärchen
+	author:
+		surname: Grimm
+		forename: Jacob
+		affiliation:
+			institution: Friedrich-Wilhelms Universität zu Berlin
+			country: Preußen
+	author:
+		surname: Grimm
+		forename: Wilhelm
+		forename: Carl
+		affiliation:
+			institution: Universität Göttingen
+			country: Königreich Hannover
+	editor:
+		surname: Rölleke
+		forename: Heinz
+	publicationYear: 1986
+	publisher: Vandenhoeck und Ruprecht
+	location: Göttingen
+	isbn: 978-3-525-20764-2
 </pre>
 
 <p>Auf diese Weise lassen sich mit Entitäten auch komplexe hierarchische Datensatzstrukturen abbilden.
@@ -165,13 +172,14 @@ TODO: Allgemeines Modell für semistrukturierte Daten
 </p>
 
 <pre>
-003@:
-	0: 123
-021A:
-	0: TItel
+Datensatz mit ID 123:
+	003@:
+		0: 123
+	021A:
+		0: Titel
 </pre>
 
-<p>Als Datensatz-ID eignet sich bei PICA+ Datensätzen der Inhalt des Unterfelds 003@$0.
+<p>Als Datensatz-Identifikator wurde der Inhalt des Unterfelds 003@$0 verwendet. In diesem Unterfeld steht bei PICA+ gängigerweise eine eindeutige Datensatznummer.
 </p>
 
 <h1>Datenformate</h1> 
