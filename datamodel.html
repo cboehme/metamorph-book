@@ -247,58 +247,86 @@ TODO: Nur Stringdaten
 <p>Die Gesamtheit der domänenspezifischen Strukturen und Benennungen, die in einem konkreten Anwendungsfall verwendet werden, bezeichnen wir in Anlehnung an die Semantic Web verwendete Terminologie als <i>Vokabular</i> bzw. <i>Ontologie</i> (im XML-Jargon würde man hingegen von einem <i>Schema</i> sprechen). Vokabulare umfassen dabei nur die in einem Anwendungsfall erlaubten Literal- und Entitätsnamen, während Ontologien auch die Festlegungen zur Strukturierung beinhalten. Die folgende Tabelle listet in der ersten Spalte das Vokabular auf, das wir in unserem obigen Beispiel verwendet haben, und in der zweiten Spalte die dazugehörige Ontologiedefinition.</p>
 
 <table>
-<thead>
-<tr>
-	<th>Vokabular</th>
-	<th>Ontologie</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-	<td><i>Datensatz</i></td>
-	<td>Enthält eine oder mehrere author-Entitäten unter Berücksichtigung ihrer Reihenfolge, eine editor-Entität und je ein title-, publisherYear-, publisher-, location- und isdn-Literal</td>
-</tr>
-<tr>
-	<td>author</td>
-	<td>Entität, enthält ein surname-Literal und ein oder mehrere forename-Literale</td>
-</tr>
-<tr>
-	<td>editor</td>
-	<td>Entität, enthält ein surname-Literal und ein oder mehrere forename-Literale</td>
-</tr>
-<tr>
-	<td>title</td>
-	<td>Literal</td>
-</tr>
-<tr>
-	<td>publisherYear</td>
-	<td>Literal</td>
-</tr>
-<tr>
-	<td>publisher</td>
-	<td>Literal</td>
-</tr>
-<tr>
-	<td>location</td>
-	<td>Literal</td>
-</tr>
-<tr>
-	<td>isbn</td>
-	<td>Literal</td>
-</tr>
-<tr>
-	<td>surname</td>
-	<td>Literal</td>
-</tr>
-<tr>
-	<td>forename</td>
-	<td>Literal</td>
-</tr>
-</tbody>
+	<thead>
+		<tr>
+			<th>Vokabular</th>
+			<th>Ontologie</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><i>Datensatz</i></td>
+			<td>Enthält eine oder mehrere author-Entitäten unter Berücksichtigung ihrer Reihenfolge, eine editor-Entität und je ein title-, publisherYear-, publisher-, location- und isdn-Literal</td>
+		</tr>
+		<tr>
+			<td>author</td>
+			<td>Entität, enthält ein surname-Literal und ein oder mehrere forename-Literale</td>
+		</tr>
+		<tr>
+			<td>editor</td>
+			<td>Entität, enthält ein surname-Literal und ein oder mehrere forename-Literale</td>
+		</tr>
+		<tr>
+			<td>title</td>
+			<td>Literal</td>
+		</tr>
+		<tr>
+			<td>publisherYear</td>
+			<td>Literal</td>
+		</tr>
+		<tr>
+			<td>publisher</td>
+			<td>Literal</td>
+		</tr>
+		<tr>
+			<td>location</td>
+			<td>Literal</td>
+		</tr>
+		<tr>
+			<td>isbn</td>
+			<td>Literal</td>
+		</tr>
+		<tr>
+			<td>surname</td>
+			<td>Literal</td>
+		</tr>
+		<tr>
+			<td>forename</td>
+			<td>Literal</td>
+		</tr>
+	</tbody>
 </table>
 
-<p>Die freie Wählbarkeit der Literal- und Entitätsnamen erlaubt es uns nicht nur existierende Vokabulare zu verwenden, sondern wir können auch eigene Vorgaben für die Namen entwickeln. TODO: Nutzung Zeichen, um spezielle Literale darzustellen. * für Links ~ für Attribute etc.
-</p>
+<aside>
+	<h1>Strukturierte Literal- und Entitätsnamen</h1>
+	
+	<p>Manchmal gibt es zusätzliche Informationen zu einem Literal, die für die Arbeit mit dem Literal hilfreich sind und die deshalb in der Datenmodellierung enthalten sein sollten. Solche Informationen können bspw. Angaben zur Sprache eines Literalwerts sein oder ein Hinweis darauf, dass der Literalwert ein Verweis auf einen anderen Datensatz ist. Eine Möglichkeit solche Informationen in die Daten zu integrieren, ist die Nutzung einer Entität statt eines Literals, innerhalb derer dann der eigentliche Datenwert und die Zusatzinformationen in mehreren Literalen abgelegt sind. Auf diese Weise könnten wir Sprachangaben zu dem Literal <code>title: Grimms' Fairy Tales</code> in folgender Form darstellen:</p>
+	
+	<pre>
+		title:
+			value: Grimms' Fairy Tales
+			language: en
+	</pre>
+
+	<p>Das value-Literal entspricht hier dem ursprünglichen Wert des title-Literals und die Zusatzinformation zur Sprache ist als zusätzliches Literal in der Entität enthalten. Die Entität selbst wird dann anstelle des ursprünglichen title-Literals verwendet.
+	</p>
+
+	<p>Diese Lösung erfüllt ihren Zweck, hat allerdings den Nachteil, die Struktur des Datensatzes deutlich zu verändern. Dies ist nicht immer gewünscht, insbesondere wenn die Zusatzinformationen eigentlich recht kompakt sind, wie es etwa bei Sprachangaben oder Verknüpfungshinweisen der Fall ist. Eine Möglichkeit zu einer kompakteren Darstellung zu kommen, ist die Verwendung strukturierter Literal- und Entitätsnamen. So könnten wir im obigen Beispiel einfach festlegen, dass an einen Literalnamen ein @-Zeichen gefolgt von einem Sprachcode ergänzt werden kann, um die Sprache des Datenwerts anzugeben. Unser title-Literal sähe dann wie folgt aus: <code>title@en: Grimms' Fairy Tales</code>.
+	</p>
+
+	<p>Andere Varianten von strukturierten Namen, die wir bereits in Metafacture eingesetzt haben, sind das Voranstellen eines *-Zeichens, um URLs zu markieren, oder eines ~-Zeichens, um Literale zu kennzeichnen, die als XML-Attribute zu behandeln sind. Eine interessante Variante ist auch die Verwendung von [] als Suffix für Entitätsnamen in der JSON-Verarbeitung, um anzudeuten, dass der Inhalt der Entität als Array aufzufassen ist und die Namen der Elemente keine Bedeutung tragen. Das folgende Beispiel zeigt die Verwendung des Konstrukts, um ein Array mit drei Elementen zu modellieren:
+	</p>
+
+	<pre>
+		arrayEntity[]:
+			ignoredName: Erster Datenwert
+			ignoredName: Zweiter Datenwert
+			ignoredName: Dritter Datenwert
+	</pre>
+
+	<p>Die Integration von Zusatzinformationen in die Literal- und Entitätsnamen ist eine einfache und vielseitige Technik. Du solltest aber bei ihrem Einsatz bedenken, dass ihr Verwendnung nicht immer offensichtlich ist und dass die Bedeutung verschiedener Angaben in den Namen nicht immer selbsterklärend ist. Außerdem kann es notwendig werden, im Zuge der Datenverarbeitung die Zusatzinformationen wieder aufwändig aus den Namen herauszutrennen. Bei komplexeren Zusatzinformationen solltest du daher die oben beschriebene Entitäten-Methode der strukturierten Benennung vorziehen. Für Kleinigkeiten wie Hinweise auf Verweise, ist sie jedoch oft optimal.
+	</p>
+</aside>
 
 <h1>Datenformate</h1> 
 
