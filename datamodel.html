@@ -153,6 +153,8 @@ Datensatz mit ID 978-3-525-20764-2:
 	<li>Der <strong>Datensatz</strong> ist das äußerste Strukturelement des Metamorph-Datenmodells. Er fasst Entitäten und Literale zusammen. Um den Datensatz identifizieren zu können kann er mit einer Datensatz-ID versehen werden, die quasi als Name des Datensatzes fungiert.</li>
 </ul>
 
+<h2>Entitäten als Datensätze und Datensätze als Entitäten</h2>
+
 <p>Es fällt auf, dass die Beschreibung der Funktion der Entitäten und des Datensatzes sehr ähnlich ist. In der Tat ist es so, dass sich der Datensatz von der Entität strukturell nur dadurch unterscheidet, dass er die äußere Hülle der Datenstruktur bildet. Es ist daher problemlos möglich einen Datensatz in einen anderen als Entität einzubetten oder eine Entität aus einem Datensatz herauszuziehen und als eigenen Datensatz zu betrachten. Dabei sollte nur beachtet werden, dass sowohl Datensatz-ID als auch Entitätsname zwar beliebige Werte annehmen können, die ihnen zugeschriebene Bedeutung aber leicht unterschiedlich ist. Während die Datensatz-ID einen konkreten Datensatz bezeichnet und sich von Datensatz zu Datensatz unterscheidet, dient der Entitätsname der Identifikation einer Entität in der Datensatzstruktur und er ist bei jedem Datensatz gleich. Aus diesem Grund ist es sinnvoll, beim Umwandeln eines Datensatzes in eine Entität nicht die Datensatz-ID als Entitätsname zu verwenden, sondern einen festen Namen. Andersherum sollte beim Herauslösen eines Datensatzes eine ID generiert werden, statt einfach den Entitätsnamen zu verwenden.
 </p>
 
@@ -240,6 +242,62 @@ TODO: Nur Stringdaten
 </p>
 
 <p>Je nach Anwendungsfall können Literal- und Entitätsnamen ganz unterschiedlich gewählt werden. In dem Beispiel im vorigen Abschnitt habe ich einfache sprechende Namen gewählt, damit die Beispiele leicht verständlich sind. Wenn allerdings Daten verarbeitet werden sollen, die bereits in einem bestimmten domänenspezifischen Format vorliegen ist es meist sinnvoll, die Benennung und Strukturvorgaben dieses Formats zu übernehmen. So bleibt die ursprüngliche Bedeutung der Daten erhalten, trotzdem können sie aber mit Metamorph verarbeitet werden.
+</p>
+
+<p>Die Gesamtheit der domänenspezifischen Strukturen und Benennungen, die in einem konkreten Anwendungsfall verwendet werden, bezeichnen wir in Anlehnung an die Semantic Web verwendete Terminologie als <i>Vokabular</i> bzw. <i>Ontologie</i> (im XML-Jargon würde man hingegen von einem <i>Schema</i> sprechen). Vokabulare umfassen dabei nur die in einem Anwendungsfall erlaubten Literal- und Entitätsnamen, während Ontologien auch die Festlegungen zur Strukturierung beinhalten. Die folgende Tabelle listet in der ersten Spalte das Vokabular auf, das wir in unserem obigen Beispiel verwendet haben, und in der zweiten Spalte die dazugehörige Ontologiedefinition.</p>
+
+<table>
+<thead>
+<tr>
+	<th>Vokabular</th>
+	<th>Ontologie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td><i>Datensatz</i></td>
+	<td>Enthält eine oder mehrere author-Entitäten unter Berücksichtigung ihrer Reihenfolge, eine editor-Entität und je ein title-, publisherYear-, publisher-, location- und isdn-Literal</td>
+</tr>
+<tr>
+	<td>author</td>
+	<td>Entität, enthält ein surname-Literal und ein oder mehrere forename-Literale</td>
+</tr>
+<tr>
+	<td>editor</td>
+	<td>Entität, enthält ein surname-Literal und ein oder mehrere forename-Literale</td>
+</tr>
+<tr>
+	<td>title</td>
+	<td>Literal</td>
+</tr>
+<tr>
+	<td>publisherYear</td>
+	<td>Literal</td>
+</tr>
+<tr>
+	<td>publisher</td>
+	<td>Literal</td>
+</tr>
+<tr>
+	<td>location</td>
+	<td>Literal</td>
+</tr>
+<tr>
+	<td>isbn</td>
+	<td>Literal</td>
+</tr>
+<tr>
+	<td>surname</td>
+	<td>Literal</td>
+</tr>
+<tr>
+	<td>forename</td>
+	<td>Literal</td>
+</tr>
+</tbody>
+</table>
+
+<p>Die freie Wählbarkeit der Literal- und Entitätsnamen erlaubt es uns nicht nur existierende Vokabulare zu verwenden, sondern wir können auch eigene Vorgaben für die Namen entwickeln. TODO: Nutzung Zeichen, um spezielle Literale darzustellen. * für Links ~ für Attribute etc.
 </p>
 
 <h1>Datenformate</h1> 
