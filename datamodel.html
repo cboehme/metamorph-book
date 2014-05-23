@@ -142,7 +142,7 @@ Datensatz mit ID 978-3-525-20764-2:
 <p>Auf diese Weise lassen sich mit Entitäten auch komplexe hierarchische Datensatzstrukturen abbilden.
 </p>
 
-<p>Wir haben jetzt alle Strukturelemente des Metamorph-Datenmodells kennengelernt. Diese sind im Folgenden noch einmal kurz zusammengefasst:
+<p>Wir haben jetzt alle Strukturelemente des Metamorph-Datenmodells kennengelernt. Sie sind im Folgenden noch einmal kurz zusammengefasst:
 </p>
 
 <ul>
@@ -227,7 +227,7 @@ Datensatz mit ID 3:
 
 <p>Bei den Literalen mit den namen authorId und editorId handelt es sich um ganz normale Literale. Es liegt in den Händen des Anwenders, die Datenwerte dieser Literale als Verweise auf andere Datensätze zu interpretieren. Das Metamorph-Modell kennt kein besonderes Strukturelement für Verknüpfungen.</p>
 
-<p>Das Metamorph-Datenmodell mag auf den ersten Blick einfach und eingeschränkt erscheinen, es zeigt sich aber, dass das Datenmodell alle Strukturen abdeckt, die im Allgemeinen bei semistrukturierten Daten auftreten. In der Forschung zu semistrukturierten Daten wird davon ausgegangen, dass semistrukturierte Daten sich im Allgemeinen als <i>Edge-labelled Graph</i> darstellen lassen.
+<p>Das Metamorph-Datenmodell mag auf den ersten Blick einfach und eingeschränkt erscheinen, es zeigt sich aber, dass das Datenmodell alle Strukturen abdeckt, die im Allgemeinen bei semistrukturierten Daten auftreten. In der Forschung zu semistrukturierten Daten wird davon ausgegangen, dass semistrukturierte Daten sich im Allgemeinen als ein  <i>Edge-labelled Graph</i> darstellen lassen.
 
 TODO: Etwas ausführlichere Beschreibung des Edge-labelled Graph.
 TODO: Nur Stringdaten
@@ -311,7 +311,7 @@ TODO: Nur Stringdaten
 	<p>Das value-Literal entspricht hier dem ursprünglichen Wert des title-Literals und die Zusatzinformation zur Sprache ist als zusätzliches Literal in der Entität enthalten. Die Entität selbst wird dann anstelle des ursprünglichen title-Literals verwendet.
 	</p>
 
-	<p>Diese Lösung erfüllt ihren Zweck, hat allerdings den Nachteil, die Struktur des Datensatzes deutlich zu verändern. Dies ist nicht immer gewünscht, insbesondere wenn die Zusatzinformationen eigentlich recht kompakt sind, wie es etwa bei Sprachangaben oder Verknüpfungshinweisen der Fall ist. Eine Möglichkeit zu einer kompakteren Darstellung zu kommen, ist die Verwendung strukturierter Literal- und Entitätsnamen. So könnten wir im obigen Beispiel einfach festlegen, dass an einen Literalnamen ein @-Zeichen gefolgt von einem Sprachcode ergänzt werden kann, um die Sprache des Datenwerts anzugeben. Unser title-Literal sähe dann wie folgt aus: <code>title@en: Grimms' Fairy Tales</code>.
+	<p>Diese Lösung erfüllt ihren Zweck, hat allerdings den Nachteil, die Struktur des Datensatzes deutlich zu verändern. Dies ist nicht immer gewünscht, insbesondere wenn die Zusatzinformationen eigentlich recht kompakt sind, wie es etwa bei Sprachangaben oder Verknüpfungshinweisen der Fall ist. Eine Möglichkeit zu einer kompakteren Darstellung zu kommen, ist die Verwendung strukturierter Literal- und Entitätsnamen. So könnten wir im obigen Beispiel einfach festlegen, dass an einen Literalnamen ein @-Zeichen gefolgt von einem Sprachcode angehängt werden kann, um die Sprache des Datenwerts anzugeben. Unser title-Literal sähe dann wie folgt aus: <code>title@en: Grimms' Fairy Tales</code>.
 	</p>
 
 	<p>Andere Varianten von strukturierten Namen, die wir bereits in Metafacture eingesetzt haben, sind das Voranstellen eines *-Zeichens, um URLs zu markieren, oder eines ~-Zeichens, um Literale zu kennzeichnen, die als XML-Attribute zu behandeln sind. Eine interessante Variante ist auch die Verwendung von [] als Suffix für Entitätsnamen in der JSON-Verarbeitung, um anzudeuten, dass der Inhalt der Entität als Array aufzufassen ist und die Namen der Elemente keine Bedeutung tragen. Das folgende Beispiel zeigt die Verwendung des Konstrukts, um ein Array mit drei Elementen zu modellieren:
@@ -330,7 +330,10 @@ TODO: Nur Stringdaten
 
 <h1>Datenformate</h1> 
 
-<p>Neben der Trennung von Struktur und Semantik ist die zweite wichtige Eigenschaft des Metamorph-Datenmodells, dass es kein konkretes Format für die Darstellung und Ablage von Daten definiert. Der Grund dafür ist, dass sich die Datenformate in verschiedenen Anwendungsdomänen häufig stark unterscheiden. Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist aber in spezielle Dekodier- und Enkodiermodule ausgelagert, die unabhängig von Metamorph sind.
+<p>Neben der Trennung von Strukturelementen und Vokabular bzw. Ontologie ist die zweite wichtige Eigenschaft des Metamorph-Datenmodells, dass es kein konkretes Format für die Darstellung und Serialisierung von Daten vorgibt. Aus diesem Grund sind auch die Beispiele in diesem Kapitel grafisch strukturiert, da es kein festgelegtes Format für die Repräsentation der Datensätze im Metamorph-Datenmodell gibt. Der Grund dafür ist, dass sich die Datenformate in verschiedenen Anwendungsdomänen häufig stark unterscheiden. In vielen Bereichen werden bspw. XML-basierte Datenformate eingsetzt, in anderen sind dagegen JSON-Serialisierungen in den letzten Jahren sehr beliebt.
+</p>
+
+<p>Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist aber in spezielle Dekodier- und Enkodiermodule ausgelagert, die unabhängig von Metamorph sind.
 </p>
 
 <p>Das Metamorph-Datenmodell geht also davon aus, dass für die Arbeit mit Daten drei Dinge notwendig sind:
@@ -341,12 +344,6 @@ TODO: Nur Stringdaten
     <li>Die Datenstruktur: welche Möglichkeiten gibt es zur Strukturierung der Daten?</li>
     <li>Das Vokabular: wie sind einzelne Datenelemente benannt und wie werden sie konkret strukturiert?</li>
 </ol>
-
-<p>Diese Trennung der verschiedenen Aspekte der Datenbeschreibung findet sich in RDF wieder. RDF kann in verschiedenen Formaten serialisiert werden (u.a. RDF-XML und Turtle), es definiert eine allgemeine Datenstruktur (das RDF-Graphmodell) und es gibt Vokabulare bzw. Ontologien, die konkrete Namen und Strukturen definieren, um Domänenwissen in RDF zu beschreiben.
-</p>
-
-<p>Im Gegensatz zu RDF verwendet Metamorph ein etwas einfacheres Datenmodell und behält das Konzept des Datensatzes bei, dass es in RDF so nicht mehr gibt. Der Grund dafür ist, das sich in der täglichen Arbeit mit Daten zeigt, dass diese häufig in einer wohldefinierten Zusammenstellung benötigt werden und nicht nur in einem weitläufigen Netz.
-</p>
 
 <h1>Beispiele für die Darstellung verschiedener Formate im Metamorph-Datenmodell</h1>
 
@@ -398,6 +395,12 @@ Datensatz mit ID 123:
 <h2>Darstellung von XML im Metamorph-Datenmodell</h2>
 
 <h2>Darstellung von RDF im Metamorph-Datenmodell</h2>
+
+<p>Im Gegensatz zu RDF verwendet Metamorph ein etwas einfacheres Datenmodell und behält das Konzept des Datensatzes bei, dass es in RDF so nicht mehr gibt. Der Grund dafür ist, das sich in der täglichen Arbeit mit Daten zeigt, dass diese häufig in einer wohldefinierten Zusammenstellung benötigt werden und nicht nur in einem weitläufigen Netz.
+</p>
+
+<p>Diese Trennung der verschiedenen Aspekte der Datenbeschreibung findet sich in RDF wieder. RDF kann in verschiedenen Formaten serialisiert werden (u.a. RDF-XML und Turtle), es definiert eine allgemeine Datenstruktur (das RDF-Graphmodell) und es gibt Vokabulare bzw. Ontologien, die konkrete Namen und Strukturen definieren, um Domänenwissen in RDF zu beschreiben.
+</p>
 
 <h1>Zusammenfassung</h1>
 
