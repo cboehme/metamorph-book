@@ -43,6 +43,16 @@ Datensatz mit ID 978-3-525-20764-2:
 <p>Dies ermöglicht es bereits viele Arten von Informationen zu erfassen. Das Beispiel zeigt aber auch, dass die Literale allein einige Informationen nur sehr grob strukturiert erfassen. So sind alle Autoren in einem Literal enthalten und die Adressierung eines einzelen Autors ist nicht möglich. Im Metamorph-Datenmodell wird dieses Problem gelöst, dadurch dass Literale beliebig oft in einem Datensatz wiederholt werden können:
 </p>
 
+<aside>
+	<h1>Datentypen</h1>
+
+	<p>Wen du Erfahrung mit der Datenmodellierung in SQL, XML oder RDF hast, fragst du dich wahrscheinlich, ob das Metamorph-Datenmodell zwischen unterschiedlichen Typen von Datenwerten unterscheidet. Diese Frage kann leicht beantwortet werden: Es ist nicht der Fall. Das Datenmodell sieht keine Möglichkeit vor, festzulegen, dass ein Literal nur Werte eines bestimmten Datentyps (etwa Datumsangabe, Ziffer, oder Text) enthalten kann. Alle Namen und Datenwerte im Metamorph-Datenmodell sind immer Zeichenfolgen. Der Hintergrund für diese Entscheidung war, dass in bibliothekarischen Anwendungen &ndash; dem ersten Anwendungsfall von Metafacture &ndash; meist nur Textdaten Verwendung finden. Andere Datenwerte lassen sich außerdem im Normalfall leicht als Zeichenfolgen darstellen. Dies hat außerdem den Vorteil, das die Datenverarbeitung toleranter gegenüber unsauberen Daten wird. Würde bspw. publicationYear den Datentyp Datumsangabe besitzen, könnten Datensätze, die Angaben wie "ca. 1560" oder "anno 1066" nicht mehr ohne besondere Fehlerbehandlung verarbeitet werden. Da derartige Varianzen in semistrukturierten Daten häufig vorkommen können, bietet sich die Verwendung von Zeichenfolgen als allgemeinen Datentyp an.
+	</p>
+	
+	<p>In Abschnitt XX werden wir eine Methode kennelernen, wie man trotz dieser Beschränkung noch Typinformationen im Metamorph-Datenmodell ausdrücken (wenn auch nicht durchsetzen) kann.
+	</p>
+</aside>
+
 <pre>
 Datensatz mit ID 978-3-525-20764-2:
 	title: Kinder- und Hausmärchen
@@ -225,12 +235,10 @@ Datensatz mit ID 3:
 	forename: Heinz
 </pre>
 
-<p>Bei den Literalen mit den namen authorId und editorId handelt es sich um ganz normale Literale. Es liegt in den Händen des Anwenders, die Datenwerte dieser Literale als Verweise auf andere Datensätze zu interpretieren. Das Metamorph-Modell kennt kein besonderes Strukturelement für Verknüpfungen.</p>
+<p>Bei den Literalen mit den namen authorId und editorId handelt es sich um ganz normale Literale. Es liegt in den Händen des Anwenders, die Datenwerte dieser Literale als Verweise auf andere Datensätze zu interpretieren. Das Metamorph-Modell kennt kein besonderes Strukturelement für Verknüpfungen.
+</p>
 
-<p>Das Metamorph-Datenmodell mag auf den ersten Blick einfach und eingeschränkt erscheinen, es zeigt sich aber, dass das Datenmodell alle Strukturen abdeckt, die im Allgemeinen bei semistrukturierten Daten auftreten. In der Forschung zu semistrukturierten Daten wird davon ausgegangen, dass semistrukturierte Daten sich im Allgemeinen als ein  <i>Edge-labelled Graph</i> darstellen lassen.
-
-TODO: Etwas ausführlichere Beschreibung des Edge-labelled Graph.
-TODO: Nur Stringdaten
+<p>Das Metamorph-Datenmodell mag auf den ersten Blick einfach und eingeschränkt erscheinen, es hat sich aber in der praktischen Anwendung gezeigt, dass das Datenmodell alle Strukturen abdeckt, die im Allgemeinen bei semistrukturierten Daten auftreten. Im folgenden Abschnitt werden ich außerdem einige Möglichkeiten vorstellen, wie man auf einfache Weise auch spezielle Anwendungsfälle auf das Metamorph-Datenmodell abbilden kann.
 </p>
 
 <h1>Literal- und Entitätsnamen</h1> 
@@ -300,7 +308,7 @@ TODO: Nur Stringdaten
 <aside>
 	<h1>Strukturierte Literal- und Entitätsnamen</h1>
 	
-	<p>Manchmal gibt es zusätzliche Informationen zu einem Literal, die für die Arbeit mit dem Literal hilfreich sind und die deshalb in der Datenmodellierung enthalten sein sollten. Solche Informationen können bspw. Angaben zur Sprache eines Literalwerts sein oder ein Hinweis darauf, dass der Literalwert ein Verweis auf einen anderen Datensatz ist. Eine Möglichkeit solche Informationen in die Daten zu integrieren, ist die Nutzung einer Entität statt eines Literals, innerhalb derer dann der eigentliche Datenwert und die Zusatzinformationen in mehreren Literalen abgelegt sind. Auf diese Weise könnten wir Sprachangaben zu dem Literal <code>title: Grimms' Fairy Tales</code> in folgender Form darstellen:</p>
+	<p>Manchmal gibt es zusätzliche Informationen zu einem Literal, die für die Arbeit mit dem Literal hilfreich sind und die deshalb in der Datenmodellierung enthalten sein sollten. Solche Informationen können bspw. Angaben zur Sprache oder zum Datentyp eines Literalwerts sein oder ein Hinweis darauf, dass der Literalwert ein Verweis auf einen anderen Datensatz ist. Eine Möglichkeit solche Informationen in die Daten zu integrieren, ist die Nutzung einer Entität statt eines Literals, innerhalb derer dann der eigentliche Datenwert und die Zusatzinformationen in mehreren Literalen abgelegt sind. Auf diese Weise könnten wir Sprachangaben zu dem Literal <code>title: Grimms' Fairy Tales</code> in folgender Form darstellen:</p>
 	
 	<pre>
 		title:
