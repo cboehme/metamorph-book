@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>Metamorph-Datenmodell</title>
+
+	<link rel="stylesheet" href="layout.css" />
 </head>
 
 <body>
@@ -30,14 +32,15 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 <p>Das Metamorph-Datenmodell sieht außerdem vor, dass Datensätze einen Identifikator haben. Dieser wird in Metamorph meist als <i>Datensatz-ID</i> bezeichnet und ist ein beliebiger Datenwert, der geeignet ist, einen Datensatz möglichst eindeutig zu bezeichnen. Mögliche Identifikatoren wären etwa URLs, ID-Nummern oder die ISBN-Nummer aus dem obigen Beispiel. Auch wenn es meist sinnvoll ist, einen eindeutigen Identifikator für jeden Datensatz zu verwenden, erzwingt das Datenmodell dies nicht. Du kannst also auch einfach ein und denselben Wert oder sogar eine leere Zeichenfolge als Identifikator für alle Datensätze zu nutzen. Der verwendete Datenwert kann, muss aber nicht, zusätzlich auch als Literal im Datensatz enthalten sein, wie das Beispiel zeigt.</p>
 
 <pre>
-Datensatz mit ID 978-3-525-20764-2:
-	title: Kinder- und Hausmärchen
+<div class="Record">Datensatz mit ID 978-3-525-20764-2:
+	<div class="Literal"><span class="Name">title</span> Kinder- und Hausmärchen</div>
 	authors: Jacob Grimm, Wilhelm Carl Grimm
 	editor: Heinz Rölleke
 	publicationYear: 1986
 	publisher: Vandenhoeck und Ruprecht
 	location: Göttingen
 	isbn: 978-3-525-20764-2
+</div>
 </pre>
 
 <p>Dies ermöglicht es bereits viele Arten von Informationen zu erfassen. Das Beispiel zeigt aber auch, dass die Literale allein einige Informationen nur sehr grob strukturiert erfassen. So sind alle Autoren in einem Literal enthalten und die Adressierung eines einzelen Autors ist nicht möglich. Im Metamorph-Datenmodell wird dieses Problem gelöst, dadurch dass Literale beliebig oft in einem Datensatz wiederholt werden können:
@@ -96,24 +99,72 @@ Datensatz mit ID 978-3-525-20764-2:
 <p>Im Vergleich zu den vorangegangenen Beispielen ist unser Datensatz durch die Aufspaltung der Namen ziemlich unübersichtlich geworden. Es ist kaum noch ersichtlich, welcher Vor- und Nachname zusammen gehören. So können z. B. Autoren und Herausgeber nur noch auseinander gehalten werden, weil die Literale unterschiedliche Namen verwenden. Diese Lösung ist allerdings nicht besonders übersichtlich und auch nicht immer möglich. Wenn die Literalnamen bspw. vorgegeben sind (Gründe dafür werden wir in Abschnitt XX kennenlernen), dann kann es sein, dass vorgegebenen Literalnamen für die Namensteile nicht zwischen Autorennamen und Herausgebernamen unterscheiden, sondern nur allgemein Vor- und Nachnamen beschreiben. Dann ist keine Unterscheidung zwischen Autoren- und Herausgebernamen mehr möglich. Im Metamorph-Datenmodell können deshalb Literale innerhalb eines Datensatzes gruppiert werden. Diese Gruppen werden <i>Entitäten</i> genannt und habe ebenso wie Literale einen beliebigen Namen, um sie adressieren und die gruppierten Inhalte unterscheiden zu können.
 </p>
 
-<pre>
-Datensatz mit ID 978-3-525-20764-2:
-	title: Kinder- und Hausmärchen
-	author:
-		surname: Grimm
-		forename: Jacob
-	author:
-		surname: Grimm
-		forename: Wilhelm
-		forename: Carl
-	editor:
-		surname: Rölleke
-		forename: Heinz
-	publicationYear: 1986
-	publisher: Vandenhoeck und Ruprecht
-	location: Göttingen
-	isbn: 978-3-525-20764-2
-</pre>
+<div class="Example">
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID 978-3-525-20764-2</span>
+		<div class="Literal">
+			<span class="Name">title</span>
+			<span class="Value">Kinder- und Hausmärchen</span></div>
+		<div class="Entity">
+			<span class="Name">author</span>
+			<div class="Value">
+				<div class="Literal">
+					<span class="Name">surname</span>
+					<span class="Value">Grimm</span>
+				</div>
+				<div class="Literal">
+					<span class="Name">forename</span>
+					<span class="Value">Jacob</span>
+				</div>
+			</div>
+		</div>
+		<div class="Entity">
+			<span class="Name">author</span>
+			<div class="Value">
+				<div class="Literal">
+					<span class="Name">surname</span>
+					<span class="Value">Grimm</span>
+				</div>
+				<div class="Literal">
+					<span class="Name">forename</span>
+					<span class="Value">Wilhelm</span>
+				</div>
+				<div class="Literal">
+					<span class="Name">forename</span>
+					<span class="Value">Carl</span>
+				</div>
+			</div>
+		</div>
+		<div class="Entity"><span class="Name">editor</span>
+			<div class="Value">
+				<div class="Literal">
+					<span class="Name">surname</span>
+					<span class="Value">Rölleke</span>
+				</div>
+				<div class="Literal">
+					<span class="Name">forename</span>
+					<span class="Value">Heinz</span>
+				</div>
+			</div>
+		</div>
+		<div class="Literal">
+			<span class="Name">publicationYear</span>
+			<span class="Value">1986</span>
+		</div>
+		<div class="Literal">
+			<span class="Name">publisher</span>
+			<span class="Value">Vandenhoeck und Ruprecht</span>
+		</div>
+		<div class="Literal">
+			<span class="Name">location</span>
+			<span class="Value">Göttingen</span>
+		</div>
+		<div class="Literal">
+			<span class="Name">isbn</span>
+			<span class="Value">978-3-525-20764-2</span>
+		</div>
+	</div>
+</div>
 
 <p>Die Entitäten sind hier in der Darstellung durch Einrückungen gekennzeichnet. Du kannst dir Entitäten als eine Art von Literal mit komplexem strukturierten Inhalt oder als eine Art Datensatz im Datensatz vorstellen.
 </p>
