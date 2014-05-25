@@ -19,7 +19,8 @@
 <p>Wie sieht dieses generische Datenmodell aus? Wir nehmen als Beispiel bibliografische Informationen. Nehmen wir also an, wir haben folgende Informationen zu einem Buchtitel:
 </p>
 
-<p>Kinder- und Hausmärchen<br>
+<p class="Example">
+Kinder- und Hausmärchen<br>
 von Jacob Grimm, Wilhelm Carl Grimm<br>
 Heinz Rölleke (Hrsg.)<br>
 Vandenhoeck und Ruprecht, Göttingen 1986<br>
@@ -31,42 +32,49 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 
 <p>Das Metamorph-Datenmodell sieht außerdem vor, dass Datensätze einen Identifikator haben. Dieser wird in Metamorph meist als <i>Datensatz-ID</i> bezeichnet und ist ein beliebiger Datenwert, der geeignet ist, einen Datensatz möglichst eindeutig zu bezeichnen. Mögliche Identifikatoren wären etwa URLs, ID-Nummern oder die ISBN-Nummer aus dem obigen Beispiel. Auch wenn es meist sinnvoll ist, einen eindeutigen Identifikator für jeden Datensatz zu verwenden, erzwingt das Datenmodell dies nicht. Du kannst also auch einfach ein und denselben Wert oder sogar eine leere Zeichenfolge als Identifikator für alle Datensätze zu nutzen. Der verwendete Datenwert kann, muss aber nicht, zusätzlich auch als Literal im Datensatz enthalten sein, wie das Beispiel zeigt.</p>
 
-<pre>
-<div class="Record">Datensatz mit ID 978-3-525-20764-2:
-	<div class="Literal"><span class="Name">title</span> Kinder- und Hausmärchen</div>
-	authors: Jacob Grimm, Wilhelm Carl Grimm
-	editor: Heinz Rölleke
-	publicationYear: 1986
-	publisher: Vandenhoeck und Ruprecht
-	location: Göttingen
-	isbn: 978-3-525-20764-2
+<div class="RecordSet">
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
+		<dl>
+			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
+			<dt>authors</dt><dd>Jacob Grimm, Wilhelm Carl Grimm</dd>
+			<dt>editor</dt><dd>Heinz Rölleke</dd>
+			<dt>publicationYear</dt><dd>1986</dd>
+			<dt>publisher</dt><dd>Vandenhoeck und Ruprecht</dd>
+			<dt>location</dt><dd>Göttingen</dd>
+			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
+		</dl>
+	</div>
 </div>
-</pre>
 
 <p>Dies ermöglicht es bereits viele Arten von Informationen zu erfassen. Das Beispiel zeigt aber auch, dass die Literale allein einige Informationen nur sehr grob strukturiert erfassen. So sind alle Autoren in einem Literal enthalten und die Adressierung eines einzelen Autors ist nicht möglich. Im Metamorph-Datenmodell wird dieses Problem gelöst, dadurch dass Literale beliebig oft in einem Datensatz wiederholt werden können:
 </p>
 
+<div class="RecordSet">
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
+		<dl>
+			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
+			<dt>author</dt><dd>Jacob Grimm</dd>
+			<dt>author</dt><dd>Wilhelm Carl Grimm</dd>
+			<dt>editor</dt><dd>Heinz Rölleke</dd>
+			<dt>publicationYear</dt><dd>1986</dd>
+			<dt>publisher</dt><dd>Vandenhoeck und Ruprecht</dd>
+			<dt>location</dt><dd>Göttingen</dd>
+			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
+		</dl>
+	</div>
+</div>
+
 <aside>
 	<h1>Datentypen</h1>
 
-	<p>Wen du Erfahrung mit der Datenmodellierung in SQL, XML oder RDF hast, fragst du dich wahrscheinlich, ob das Metamorph-Datenmodell zwischen unterschiedlichen Typen von Datenwerten unterscheidet. Diese Frage kann leicht beantwortet werden: Es ist nicht der Fall. Das Datenmodell sieht keine Möglichkeit vor, festzulegen, dass ein Literal nur Werte eines bestimmten Datentyps (etwa Datumsangabe, Ziffer, oder Text) enthalten kann. Alle Namen und Datenwerte im Metamorph-Datenmodell sind immer Zeichenfolgen. Der Hintergrund für diese Entscheidung war, dass in bibliothekarischen Anwendungen &ndash; dem ersten Anwendungsfall von Metafacture &ndash; meist nur Textdaten Verwendung finden. Andere Datenwerte lassen sich außerdem im Normalfall leicht als Zeichenfolgen darstellen. Dies hat außerdem den Vorteil, das die Datenverarbeitung toleranter gegenüber unsauberen Daten wird. Würde bspw. publicationYear den Datentyp Datumsangabe besitzen, könnten Datensätze, die Angaben wie "ca. 1560" oder "anno 1066" nicht mehr ohne besondere Fehlerbehandlung verarbeitet werden. Da derartige Varianzen in semistrukturierten Daten häufig vorkommen können, bietet sich die Verwendung von Zeichenfolgen als allgemeinen Datentyp an.
+	<p>Wen du Erfahrung mit der Datenmodellierung in SQL, XML oder RDF hast, fragst du dich wahrscheinlich, ob das Metamorph-Datenmodell zwischen unterschiedlichen Typen von Datenwerten unterscheidet. Diese Frage kann leicht beantwortet werden: Es ist nicht der Fall. Das Datenmodell sieht keine Möglichkeit vor, festzulegen, dass ein Literal nur Werte eines bestimmten Datentyps (etwa Datumsangabe, Ziffer, oder Text) enthalten kann. Alle Namen und Datenwerte im Metamorph-Datenmodell sind immer Zeichenfolgen. Der Hintergrund für diese Entscheidung ist, dass in bibliothekarischen Anwendungen &ndash; dem ersten Anwendungsfall von Metafacture &ndash; meist nur Textdaten Verwendung finden. Andere Datenwerte lassen sich außerdem im Normalfall leicht als Zeichenfolgen darstellen. Dies hat außerdem den Vorteil, das die Datenverarbeitung toleranter gegenüber unsauberen Daten wird. Würde bspw. publicationYear den Datentyp Datumsangabe besitzen, könnten Datensätze, die Angaben wie "ca. 1560" oder "anno 1066" nicht mehr ohne besondere Fehlerbehandlung verarbeitet werden. Da derartige Varianzen in semistrukturierten Daten häufig vorkommen können, bietet sich die Verwendung von Zeichenfolgen als allgemeinen Datentyp an.
 	</p>
 	
 	<p>In Abschnitt XX werden wir eine Methode kennelernen, wie man trotz dieser Beschränkung noch Typinformationen im Metamorph-Datenmodell ausdrücken (wenn auch nicht durchsetzen) kann.
 	</p>
 </aside>
-
-<pre>
-Datensatz mit ID 978-3-525-20764-2:
-	title: Kinder- und Hausmärchen
-	author: Jacob Grimm
-	author: Wilhelm Carl Grimm
-	editor: Heinz Rölleke
-	publicationYear: 1986
-	publisher: Vandenhoeck und Ruprecht
-	location: Göttingen
-	isbn: 978-3-525-20764-2
-</pre>
 
 <p>Die Literale eines Datensatzes werden im Datenmodell als geordnete Menge aufgefasst. Die Reihenfolge der beiden author-Literale ist also nicht zufällig, sondern wohldefiniert und kann daher bedeutungstragend verwendet werden. Dies erlaubt es bspw. Erst- und Zweitautor zu unterscheiden, obwohl beide in einem Literal gleichen Namens abgelegt sind.
 </p>
@@ -80,89 +88,61 @@ Datensatz mit ID 978-3-525-20764-2:
 <p>Angenommen wir wollen die Namen unserer Autoren in ihre einzelnen Bestandteile zerlegt im Datensatz ablegen. Mit dem bisher Vorgestellten sieht dies so aus:
 </p>
 
-<pre>
-Datensatz mit ID 978-3-525-20764-2:
-	title: Kinder- und Hausmärchen
-	authorSurname: Grimm
-	authorForename: Jacob
-	authorSurname: Grimm
-	authorForename: Wilhelm
-	authorForename: Carl
-	editorSurname: Rölleke
-	editorForename: Heinz
-	publicationYear: 1986
-	publisher: Vandenhoeck und Ruprecht
-	location: Göttingen
-	isbn: 978-3-525-20764-2
-</pre>
+<div class="RecordSet">
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
+		<dl>
+			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
+			<dt>authorSurname</dt><dd>Grimm</dd>
+			<dt>authorForename</dt><dd>Jacob</dd>
+			<dt>authorSurname</dt><dd>Grimm</dd>
+			<dt>authorForename</dt><dd>Wilhelm</dd>
+			<dt>authorForename</dt><dd>Carl</dd>
+			<dt>editorSurname</dt><dd>Rölleke</dd>
+			<dt>editorForename</dt><dd>Heinz</dd>
+			<dt>publicationYear</dt><dd>1986</dd>
+			<dt>publisher</dt><dd>Vandenhoeck und Ruprecht</dd>
+			<dt>location</dt><dd>Göttingen</dd>
+			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
+		</dl>
+	</div>
+</div>
 
 <p>Im Vergleich zu den vorangegangenen Beispielen ist unser Datensatz durch die Aufspaltung der Namen ziemlich unübersichtlich geworden. Es ist kaum noch ersichtlich, welcher Vor- und Nachname zusammen gehören. So können z. B. Autoren und Herausgeber nur noch auseinander gehalten werden, weil die Literale unterschiedliche Namen verwenden. Diese Lösung ist allerdings nicht besonders übersichtlich und auch nicht immer möglich. Wenn die Literalnamen bspw. vorgegeben sind (Gründe dafür werden wir in Abschnitt XX kennenlernen), dann kann es sein, dass vorgegebenen Literalnamen für die Namensteile nicht zwischen Autorennamen und Herausgebernamen unterscheiden, sondern nur allgemein Vor- und Nachnamen beschreiben. Dann ist keine Unterscheidung zwischen Autoren- und Herausgebernamen mehr möglich. Im Metamorph-Datenmodell können deshalb Literale innerhalb eines Datensatzes gruppiert werden. Diese Gruppen werden <i>Entitäten</i> genannt und habe ebenso wie Literale einen beliebigen Namen, um sie adressieren und die gruppierten Inhalte unterscheiden zu können.
 </p>
 
-<div class="Example">
+<div class="RecordSet">
 	<div class="Record">
-		<span class="RecordId">Datensatz mit ID 978-3-525-20764-2</span>
-		<div class="Literal">
-			<span class="Name">title</span>
-			<span class="Value">Kinder- und Hausmärchen</span></div>
-		<div class="Entity">
-			<span class="Name">author</span>
-			<div class="Value">
-				<div class="Literal">
-					<span class="Name">surname</span>
-					<span class="Value">Grimm</span>
-				</div>
-				<div class="Literal">
-					<span class="Name">forename</span>
-					<span class="Value">Jacob</span>
-				</div>
-			</div>
-		</div>
-		<div class="Entity">
-			<span class="Name">author</span>
-			<div class="Value">
-				<div class="Literal">
-					<span class="Name">surname</span>
-					<span class="Value">Grimm</span>
-				</div>
-				<div class="Literal">
-					<span class="Name">forename</span>
-					<span class="Value">Wilhelm</span>
-				</div>
-				<div class="Literal">
-					<span class="Name">forename</span>
-					<span class="Value">Carl</span>
-				</div>
-			</div>
-		</div>
-		<div class="Entity"><span class="Name">editor</span>
-			<div class="Value">
-				<div class="Literal">
-					<span class="Name">surname</span>
-					<span class="Value">Rölleke</span>
-				</div>
-				<div class="Literal">
-					<span class="Name">forename</span>
-					<span class="Value">Heinz</span>
-				</div>
-			</div>
-		</div>
-		<div class="Literal">
-			<span class="Name">publicationYear</span>
-			<span class="Value">1986</span>
-		</div>
-		<div class="Literal">
-			<span class="Name">publisher</span>
-			<span class="Value">Vandenhoeck und Ruprecht</span>
-		</div>
-		<div class="Literal">
-			<span class="Name">location</span>
-			<span class="Value">Göttingen</span>
-		</div>
-		<div class="Literal">
-			<span class="Name">isbn</span>
-			<span class="Value">978-3-525-20764-2</span>
-		</div>
+		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
+		<dl>
+			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
+			<dt class="Entity">author</dt>
+			<dd>
+				<dl>
+					<dt>surname</dt><dd>Grimm</dd>
+					<dt>forename</dt><dd>Jacob</dd>
+				</dl>
+			</dd>
+			<dt class="Entity">author</dt>
+			<dd>
+				<dl>
+					<dt>surname</dt><dd>Grimm</dd>
+					<dt>forename</dt><dd>Wilhelm</dd>
+					<dt>forename</dt><dd>Carl</dd>
+				</dl>
+			</dd>
+			<dt class="Entity">editor</dt>
+			<dd>
+				<dl>
+					<dt>surname</dt><dd>Rölleke</dd>
+					<dt>forename</dt><dd>Heinz</dd>
+				</dl>
+			</dd>
+			<dt>publicationYear</dt><dd>1986</dd>
+			<dt>publisher</dt><dd>Vandenhoeck und Ruprecht</dd>
+			<dt>location</dt><dd>Göttingen</dd>
+			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
+		</dl>
 	</div>
 </div>
 
@@ -175,30 +155,54 @@ Datensatz mit ID 978-3-525-20764-2:
 <p>Entitäten können nicht nur auf Datensatzebene zur Gruppierung von Entitäten verwendet werden, sondern auch innerhalb von Entitäten. Wenn wir bspw. für jedem Autor auch noch Informationen zu seiner Institution ablegen wollen, können wir die Informationen zur Institution in einer verschachtelten Entität ablegen, um sie zusammenzufassen:
 </p>
 
-<pre>
-Datensatz mit ID 978-3-525-20764-2:
-	title: Kinder- und Hausmärchen
-	author:
-		surname: Grimm
-		forename: Jacob
-		affiliation:
-			institution: Friedrich-Wilhelms Universität zu Berlin
-			country: Preußen
-	author:
-		surname: Grimm
-		forename: Wilhelm
-		forename: Carl
-		affiliation:
-			institution: Universität Göttingen
-			country: Königreich Hannover
-	editor:
-		surname: Rölleke
-		forename: Heinz
-	publicationYear: 1986
-	publisher: Vandenhoeck und Ruprecht
-	location: Göttingen
-	isbn: 978-3-525-20764-2
-</pre>
+<div class="RecordSet">
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
+		<dl>
+			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
+			<dt class="Entity">author</dt>
+			<dd>
+				<dl>
+					<dt>surname</dt><dd>Grimm</dd>
+					<dt>forename</dt><dd>Jacob</dd>
+					<dt class="Entity">affiliation</dt>
+					<dd>
+						<dl>
+							<dt>institution</dt><dd>Friedrich-Wilhelms-Universität zu Berlin</dd>
+							<dt>country</dt><dd>Preußen</dd>
+						</dl>
+					</dd>
+				</dl>
+			</dd>
+			<dt class="Entity">author</dt>
+			<dd>
+				<dl>
+					<dt>surname</dt><dd>Grimm</dd>
+					<dt>forename</dt><dd>Wilhelm</dd>
+					<dt>forename</dt><dd>Carl</dd>
+					<dt class="Entity">affiliation</dt>
+					<dd>
+						<dl>
+							<dt>institution</dt><dd>Universität Göttingen</dd>
+							<dt>country</dt><dd>Königreich Hannover</dd>
+						</dl>
+					</dd>
+				</dl>
+			</dd>
+			<dt class="Entity">editor</dt>
+			<dd>
+				<dl>
+					<dt>surname</dt><dd>Rölleke</dd>
+					<dt>forename</dt><dd>Heinz</dd>
+				</dl>
+			</dd>
+			<dt>publicationYear</dt><dd>1986</dd>
+			<dt>publisher</dt><dd>Vandenhoeck und Ruprecht</dd>
+			<dt>location</dt><dd>Göttingen</dd>
+			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
+		</dl>
+	</div>
+</div>
 
 <p>Auf diese Weise lassen sich mit Entitäten auch komplexe hierarchische Datensatzstrukturen abbilden.
 </p>
@@ -222,69 +226,111 @@ Datensatz mit ID 978-3-525-20764-2:
 <p>Am Beispiel unseres Buchtitels können wir das Problem leicht nachvollziehen. Ich habe für das Beispiel die Entitäten mit den Angaben zu den Autoren und dem Herausgeber aus dem Titeldatensatz herausgezogen und als gesonderte Personendatensätze dargestellt. Dabei habe ich die Entitätsnamen einfach als Datensatz-IDs verwendet.
 </p>
 
-<pre>
-Datensatz mit ID 978-3-525-20764-2:
-	title: Kinder- und Hausmärchen
-	publicationYear: 1986
-	publisher: Vandenhoeck und Ruprecht
-	location: Göttingen
-	isbn: 978-3-525-20764-2
-
-Datensatz mit ID author:
-	surname: Grimm
-	forename: Jacob
-	affiliation:
-		institution: Friedrich-Wilhelms Universität zu Berlin
-		country: Preußen
-		
-Datensatz mit ID author:
-	surname: Grimm
-	forename: Wilhelm
-	forename: Carl
-	affiliation:
-		institution: Universität Göttingen
-		country: Königreich Hannover
-		
-Datensatz mit ID editor:
-	surname: Rölleke
-	forename: Heinz
-</pre>
+<div class="RecordSet">
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
+		<dl>
+			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
+			<dt>publicationYear</dt><dd>1986</dd>
+			<dt>publisher</dt><dd>Vandenhoeck und Ruprecht</dd>
+			<dt>location</dt><dd>Göttingen</dd>
+			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
+		</dl>
+	</div>
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID &ldquo;author&rdquo;</span>
+		<dl>
+			<dt>surname</dt><dd>Grimm</dd>
+			<dt>forename</dt><dd>Jacob</dd>
+			<dt class="Entity">affiliation</dt>
+			<dd>
+				<dl>
+					<dt>institution</dt><dd>Friedrich-Wilhelms-Universität zu Berlin</dd>
+					<dt>country</dt><dd>Preußen</dd>
+				</dl>
+			</dd>
+		</dl>
+	</div>
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID &ldquo;author&rdquo;</span>
+		<dl>
+			<dt>surname</dt><dd>Grimm</dd>
+			<dt>forename</dt><dd>Wilhelm</dd>
+			<dt>forename</dt><dd>Carl</dd>
+			<dt class="Entity">affiliation</dt>
+			<dd>
+				<dl>
+					<dt>institution</dt><dd>Universität Göttingen</dd>
+					<dt>country</dt><dd>Königreich Hannover</dd>
+				</dl>
+			</dd>
+		</dl>
+	</div>
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID &ldquo;editor&rdquo;</span>
+		<dl>
+			<dt>surname</dt><dd>Rölleke</dd>
+			<dt>forename</dt><dd>Heinz</dd>
+		</dl>
+	</div>
+</div>
 
 <p>Das Ergebnis zeigt, dass wir zwei Datensätze mit der ID author haben, sodass wir die Datensätze nicht mehr eindeutig identifizieren können. Ein weiterer Nachteil dieses Vorgehens ist, dass die Personen nun fest als Autoren oder Herausgeber benannt werden, obwohl das eine Eigenschaft ist, die sie eigentlich nur im Zusammenhang mit einem Buch besitzen. Es ist ja durchaus möglich, dass etwa Jacob Grimm bei einem Buch Autor und bei einem anderen Herausgeber war. 
 </p>
 
 <p>Um diese Probleme zu vermeiden, ist es sinnvoll, beim Herauslösen der Personendatensätze die Entitätsnamen durch eindeutige Bezeichner zu ersetzen. Dies erlaubt es uns dann nämlich auch in dem Titeldatensatz auf diese Datensätze zu verweisen und Jacob und Wilhelm Grimm so als Autoren und Heinz Rölleke als Herausgeber zu identifizieren.</p>
 
-<pre>
-Datensatz mit ID 978-3-525-20764-2:
-	title: Kinder- und Hausmärchen
-	authorId: 1
-	authorId: 2
-	editorId: 3
-	publicationYear: 1986
-	publisher: Vandenhoeck und Ruprecht
-	location: Göttingen
-	isbn: 978-3-525-20764-2
-
-Datensatz mit ID 1:
-	surname: Grimm
-	forename: Jacob
-	affiliation:
-		institution: Friedrich-Wilhelms Universität zu Berlin
-		country: Preußen
-		
-Datensatz mit ID 2:
-	surname: Grimm
-	forename: Wilhelm
-	forename: Carl
-	affiliation:
-		institution: Universität Göttingen
-		country: Königreich Hannover
-		
-Datensatz mit ID 3:
-	surname: Rölleke
-	forename: Heinz
-</pre>
+<div class="RecordSet">
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
+		<dl>
+			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
+			<dt>authorId</dt><dd>1</dd>
+			<dt>authorId</dt><dd>2</dd>
+			<dt>editorId</dt><dd>3</dd>
+			<dt>publicationYear</dt><dd>1986</dd>
+			<dt>publisher</dt><dd>Vandenhoeck und Ruprecht</dd>
+			<dt>location</dt><dd>Göttingen</dd>
+			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
+		</dl>
+	</div>
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID &ldquo;1&rdquo;</span>
+		<dl>
+			<dt>surname</dt><dd>Grimm</dd>
+			<dt>forename</dt><dd>Jacob</dd>
+			<dt class="Entity">affiliation</dt>
+			<dd>
+				<dl>
+					<dt>institution</dt><dd>Friedrich-Wilhelms-Universität zu Berlin</dd>
+					<dt>country</dt><dd>Preußen</dd>
+				</dl>
+			</dd>
+		</dl>
+	</div>
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID &ldquo;2&rdquo;</span>
+		<dl>
+			<dt>surname</dt><dd>Grimm</dd>
+			<dt>forename</dt><dd>Wilhelm</dd>
+			<dt>forename</dt><dd>Carl</dd>
+			<dt class="Entity">affiliation</dt>
+			<dd>
+				<dl>
+					<dt>institution</dt><dd>Universität Göttingen</dd>
+					<dt>country</dt><dd>Königreich Hannover</dd>
+				</dl>
+			</dd>
+		</dl>
+	</div>
+	<div class="Record">
+		<span class="RecordId">Datensatz mit ID &ldquo;3&rdquo;</span>
+		<dl>
+			<dt>surname</dt><dd>Rölleke</dd>
+			<dt>forename</dt><dd>Heinz</dd>
+		</dl>
+	</div>
+</div>
 
 <p>Bei den Literalen mit den namen authorId und editorId handelt es sich um ganz normale Literale. Es liegt in den Händen des Anwenders, die Datenwerte dieser Literale als Verweise auf andere Datensätze zu interpretieren. Das Metamorph-Modell kennt kein besonderes Strukturelement für Verknüpfungen.
 </p>
@@ -292,7 +338,7 @@ Datensatz mit ID 3:
 <p>Das Metamorph-Datenmodell mag auf den ersten Blick einfach und eingeschränkt erscheinen, es hat sich aber in der praktischen Anwendung gezeigt, dass das Datenmodell alle Strukturen abdeckt, die im Allgemeinen bei semistrukturierten Daten auftreten. Im folgenden Abschnitt werden ich außerdem einige Möglichkeiten vorstellen, wie man auf einfache Weise auch spezielle Anwendungsfälle auf das Metamorph-Datenmodell abbilden kann.
 </p>
 
-<h1>Literal- und Entitätsnamen</h1> 
+<h2>Literal- und Entitätsnamen</h2> 
 
 <p>Bei der Einführung der Literale habe ich bereits kurz erwähnt, dass die Literalnamen völlig beliebig sein können und dass das Metamorph-Datenmodell keinerlei Vorgaben macht, wie Namen für Literale und Entitäten zu gestalten sind. Dies ist eine wichtige Eigenschaft des Datenmodells. Es definiert nur die verfügbaren Strukturelemente (Literale und Entitäten), aber nicht wie diese kombiniert und benannt werden müssen, um Daten aus einem bestimmten Anwendungsbereich (bspw. bibliothekarische Titelaufnahmen) zu beschreiben. Dies kann je Art der Daten völlig unterschiedlich sein und ermöglicht es, Metamorph für die Verarbeitung von Daten aus verschiedensten Anwendungsbereichen einzusetzen. Voraussetzung ist nur, dass sich die Daten in einer hierarchischen Datenstruktur mit Schlüssel-Wert-Paaren abbilden lassen. 
 </p>
@@ -308,8 +354,7 @@ Datensatz mit ID 3:
 <table>
 	<thead>
 		<tr>
-			<th>Vokabular</th>
-			<th>Ontologie</th>
+			<th>Vokabular</th><th>Ontologie</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -326,24 +371,19 @@ Datensatz mit ID 3:
 			<td>Entität, enthält ein surname-Literal und ein oder mehrere forename-Literale</td>
 		</tr>
 		<tr>
-			<td>title</td>
-			<td>Literal</td>
+			<td>title</td><td>Literal</td>
 		</tr>
 		<tr>
-			<td>publisherYear</td>
-			<td>Literal</td>
+			<td>publisherYear</td><td>Literal</td>
 		</tr>
 		<tr>
-			<td>publisher</td>
-			<td>Literal</td>
+			<td>publisher</td><td>Literal</td>
 		</tr>
 		<tr>
-			<td>location</td>
-			<td>Literal</td>
+			<td>location</td><td>Literal</td>
 		</tr>
 		<tr>
-			<td>isbn</td>
-			<td>Literal</td>
+			<td>isbn</td><td>Literal</td>
 		</tr>
 		<tr>
 			<td>surname</td>
@@ -360,12 +400,18 @@ Datensatz mit ID 3:
 	<h1>Strukturierte Literal- und Entitätsnamen</h1>
 	
 	<p>Manchmal gibt es zusätzliche Informationen zu einem Literal, die für die Arbeit mit dem Literal hilfreich sind und die deshalb in der Datenmodellierung enthalten sein sollten. Solche Informationen können bspw. Angaben zur Sprache oder zum Datentyp eines Literalwerts sein oder ein Hinweis darauf, dass der Literalwert ein Verweis auf einen anderen Datensatz ist. Eine Möglichkeit solche Informationen in die Daten zu integrieren, ist die Nutzung einer Entität statt eines Literals, innerhalb derer dann der eigentliche Datenwert und die Zusatzinformationen in mehreren Literalen abgelegt sind. Auf diese Weise könnten wir Sprachangaben zu dem Literal <code>title: Grimms' Fairy Tales</code> in folgender Form darstellen:</p>
-	
-	<pre>
-		title:
-			value: Grimms' Fairy Tales
-			language: en
-	</pre>
+
+	<div class="RecordSnippet">
+		<dl>
+			<dt class="Entity">title</dt>
+			<dd>
+				<dl>
+					<dt>value</dt><dd>Grimms' Fairy Tales</dd>
+					<dt>language</dt><dd>en</dd>
+				</dl>
+			</dd>
+		</dl>
+	</div>
 
 	<p>Das value-Literal entspricht hier dem ursprünglichen Wert des title-Literals und die Zusatzinformation zur Sprache ist als zusätzliches Literal in der Entität enthalten. Die Entität selbst wird dann anstelle des ursprünglichen title-Literals verwendet.
 	</p>
@@ -376,18 +422,24 @@ Datensatz mit ID 3:
 	<p>Andere Varianten von strukturierten Namen, die wir bereits in Metafacture eingesetzt haben, sind das Voranstellen eines *-Zeichens, um URLs zu markieren, oder eines ~-Zeichens, um Literale zu kennzeichnen, die als XML-Attribute zu behandeln sind. Eine interessante Variante ist auch die Verwendung von [] als Suffix für Entitätsnamen in der JSON-Verarbeitung, um anzudeuten, dass der Inhalt der Entität als Array aufzufassen ist und die Namen der Elemente keine Bedeutung tragen. Das folgende Beispiel zeigt die Verwendung des Konstrukts, um ein Array mit drei Elementen zu modellieren:
 	</p>
 
-	<pre>
-		arrayEntity[]:
-			ignoredName: Erster Datenwert
-			ignoredName: Zweiter Datenwert
-			ignoredName: Dritter Datenwert
-	</pre>
+	<div class="RecordSnippet">
+		<dl>
+			<dt class="Entity">arrayEntity[]</dt>
+			<dd>
+				<dl>
+					<dt>ignoredName</dt><dd>Erster Datenwert</dd>
+					<dt>ignoredName</dt><dd>Zweiter Datenwert</dd>
+					<dt>ignoredName</dt><dd>Dritter Datenwert</dd>
+				</dl>
+			</dd>
+		</dl>
+	</div>
 
 	<p>Die Integration von Zusatzinformationen in die Literal- und Entitätsnamen ist eine einfache und vielseitige Technik. Du solltest aber bei ihrem Einsatz bedenken, dass ihr Verwendnung nicht immer offensichtlich ist und dass die Bedeutung verschiedener Angaben in den Namen nicht immer selbsterklärend ist. Außerdem kann es notwendig werden, im Zuge der Datenverarbeitung die Zusatzinformationen wieder aufwändig aus den Namen herauszutrennen. Bei komplexeren Zusatzinformationen solltest du daher die oben beschriebene Entitäten-Methode der strukturierten Benennung vorziehen. Für Kleinigkeiten wie Hinweise auf Verweise, ist sie jedoch oft optimal.
 	</p>
 </aside>
 
-<h1>Datenformate</h1> 
+<h2>Datenformate</h2> 
 
 <p>Neben der Trennung von Strukturelementen und Vokabular bzw. Ontologie ist die zweite wichtige Eigenschaft des Metamorph-Datenmodells, dass es kein konkretes Format für die Darstellung und Serialisierung von Daten vorgibt. Aus diesem Grund sind auch die Beispiele in diesem Kapitel grafisch strukturiert, da es kein festgelegtes Format für die Repräsentation der Datensätze im Metamorph-Datenmodell gibt. Der Grund dafür ist, dass sich die Datenformate in verschiedenen Anwendungsdomänen häufig stark unterscheiden. In vielen Bereichen werden bspw. XML-basierte Datenformate eingsetzt, in anderen sind dagegen JSON-Serialisierungen in den letzten Jahren sehr beliebt.
 </p>
@@ -404,12 +456,12 @@ Datensatz mit ID 3:
     <li>Das Vokabular: wie sind einzelne Datenelemente benannt und wie werden sie konkret strukturiert?</li>
 </ol>
 
-<h1>Beispiele für die Darstellung verschiedener Formate im Metamorph-Datenmodell</h1>
+<h2>Beispiele für die Darstellung verschiedener Formate im Metamorph-Datenmodell</h2>
 
 <p>Im Folgenden zeige ich wie verschiedene bekannte Datenformate im Metamorph-Datenmodell abgebildet werden können. Wir beginnen mit einem einfachen Datenformat aus dem Bibliotheksbereich und beschäftigen und anschließend mit XML, JSON und RDF. Diese Formate sind besonders interessant, da sie ebenfalls zur Erfassung beliebiger semistrukturierter Daten entwickelt wurden. Ihre Datenmodelle sind allerdings alle leicht unterschiedlich und unterscheiden sich auch vom Metamorph-Datenmodell. Wir werden aber sehen, dass es dennoch möglich ist, beliebig strukturierte Daten aus diesen Formate im Metamorph-Datenmodell zu modellieren. Dies zeit, dass sich jegliche in JSON, XML und RDF vorliegenden Daten mit Metamorph verarbeiten lassen.
 </p>
 
-<h2>Darstellung von PICA+ im Metamorph-Datenmodell</h2>
+<h3>Darstellung von PICA+ im Metamorph-Datenmodell</h3>
 
 <p>Einer der ersten Anwendungsfälle von Metamorph war die Konversion von bibliothekarischen Daten, die im PICA+ Format vorlagen. Dieses Datenformat ist recht einfach strukturiert. Es gibt Datensätze, die jeweils bspw. einen Buchtitel oder eine Zeitschrift beschreiben. Ein Datensatz setzt sich aus sogenannten Feldern zusammen, die Angaben zu bestimmten Aspekten des beschriebenen Objekts enthalten. Da die Angaben oftmals noch eine feinere Untergliederung aufweisen, bestehen die Felder aus Unterfeldern. Felder und Unterfelder können wiederholbar sein. Bei gleichnamigen Feldern garantiert PICA+ keine bestimmte Reihenfolge dieser Felder. Wenn dies Notwendig ist, kann der Feldname um eine sogenannte <i>Occurrence</i> ergänzt werden. Dabei handelt es sich um einen Index, der an den Feldnamen angehängt wird und die Position des Feldes beschreibt.
 </p>
@@ -417,7 +469,7 @@ Datensatz mit ID 3:
 <p>Das folgende Beispiel zeigt einen Auschnitt aus einem Datensatz im PICA+ Format. Die ersten vier Zeichen in jeder Zeile bezeichnen den Feldnamen, eine ggf. vorhandene <i>Occurrence</i> besteht aus zwei Ziffern, die mit einem Schrägstrich vom Feldnamen abgetrennt sind. Das $-Zeichen trennt die einzelnen Unterfelder in einem Datenfeld ab. Das erste Zeichen hinter dem $-Zeichen ist der Name des Unterfelds, die restlichen Zeichen sind der eigentliche Inhalt des Unterfelds:
 </p>
 
-<pre>
+<pre class="Example">
 003@ $0123
 021A $0
 028A/01
@@ -439,21 +491,33 @@ TODO: Beispiel kompletieren
 <p>Im Metamorph-Datenmodell sieht der obige Datensatz dann so aus: 
 </p>
 
-<pre>
-Datensatz mit ID 123:
-	003@:
-		0: 123
-	021A:
-		0: Titel
-</pre>
+<div class="RecordSet">
+	<div class="Record">
+		<span class="RecordId">Datensatz mit Id &ldquo;123&rd;</span>
+		<dl>
+			<dt class="Entity">003@</dt>
+			<dd>
+				<dl>
+					<dt>0</dt><dd>123</dd>
+				</dl>
+			</dd>
+			<dt class="Entity">021A</dt>
+			<dd>
+				<dl>
+					<dt>0</dt><dd>Titel</dd>
+				</dl>
+			</dd>
+		</dl>
+	</div>
+</div>
 
 <p>Das Beispiel zeigt, dass sich außer den Strukturelementen zur Gliederung des Datensatzes durch die Umwandlung ins Metamorph-Datenmodell nichts an dem Datensatz geändert hat, was seine Bedeutung verändert. Auf die gleich Art und Weise können auch andere Datenformate aus dem bibliothekarischen Bereich wie etwa MARC21 ins Metamorph-Datenmodel übertragen werden.</p>
 
-<h2>Darstellung von JSON im Metamorph-Datenmodell</h2>
+<h3>Darstellung von JSON im Metamorph-Datenmodell</h3>
 
-<h2>Darstellung von XML im Metamorph-Datenmodell</h2>
+<h3>Darstellung von XML im Metamorph-Datenmodell</h3>
 
-<h2>Darstellung von RDF im Metamorph-Datenmodell</h2>
+<h3>Darstellung von RDF im Metamorph-Datenmodell</h3>
 
 <p>Im Gegensatz zu RDF verwendet Metamorph ein etwas einfacheres Datenmodell und behält das Konzept des Datensatzes bei, dass es in RDF so nicht mehr gibt. Der Grund dafür ist, das sich in der täglichen Arbeit mit Daten zeigt, dass diese häufig in einer wohldefinierten Zusammenstellung benötigt werden und nicht nur in einem weitläufigen Netz.
 </p>
@@ -461,7 +525,7 @@ Datensatz mit ID 123:
 <p>Diese Trennung der verschiedenen Aspekte der Datenbeschreibung findet sich in RDF wieder. RDF kann in verschiedenen Formaten serialisiert werden (u.a. RDF-XML und Turtle), es definiert eine allgemeine Datenstruktur (das RDF-Graphmodell) und es gibt Vokabulare bzw. Ontologien, die konkrete Namen und Strukturen definieren, um Domänenwissen in RDF zu beschreiben.
 </p>
 
-<h1>Zusammenfassung</h1>
+<h2>Zusammenfassung</h2>
 
 <ol>
     <li>Einfache Datenwerte werden als &ndash; Literale genannte &ndash; Schlüssel-Wert-Paare dargestellt.</li>

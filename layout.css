@@ -1,73 +1,157 @@
-.Example {
-	width: 30em;
+body {
+	margin: 5em 15% 10em 15%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: sans;
+}
+
+aside > h1 {
+	font-size-adjust: .5;
+}
+
+p {
+	text-align: justify;
+}
+
+aside {
+	margin-top: 40px;
+	margin-bottom: 40px;
+	padding: 15px 30px 15px 30px;
+	
+	border-top: 3px #204a87 solid;
+	border-bottom: 3px #204a87 solid;
+}
+
+/* Tabellen */
+
+table {
+	display: block;
+	width: 50%;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	font-family: Sans;
+}
+
+th {
+	padding: 2px;
+	
+	color: white;
+	
+	background-color: #3465A4;
+}
+
+tbody td {
+	padding: 2px 5px;
+	
+	border-bottom: 1px #749fcf solid;
+
+	vertical-align: top;
+}
+
+tbody tr:last-of-type td {
+	border-bottom: 2px #3465A4 solid;
+}
+
+/* Layout of examples and records */
+
+.Example,
+.RecordSet,
+.RecordSnippet {
+	width: 33em;
 	margin: 0.2em auto 0.2em auto;
 	padding: 1em;
+}
+
+.RecordSet,
+.RecordSnippet {
+	text-align: center;
 	
 	font-family: Sans;
-	font-size: 12pt;
+}
+
+.RecordSnippet {
+	overflow: hidden;
 }
 
 .Record {
-	padding: 6px;
+	display: inline-block;
 
+	overflow: hidden;
+
+	margin: 10px;
+	padding: 6px 15px;
+	
 	border: 2px #3465A4 solid;
 	border-radius: 3px;
-	
-	white-space: nowrap;
+
+	text-align: center;
 }
 
 .RecordId {
 	display: block;
-	padding: 2px;
-	margin: -6px -6px 8px -6px; 
+	
+	padding: 2px 6px;
+	margin: -6px -15px 8px -15px;
+
+	text-align: left;
+	color: white;
+	
 	background-color: #3465A4;
 }
 
-.Literal,
-.Entity {
+dl {
+	display: inline-block;
+
+	margin: 0px;
+	padding: 0px;
+}
+
+dt, dd {
 	display: block;
-	margin: 3px auto 3px 0em;
+	float: left;
 
-	white-space: nowrap;
-	white-space-collapse: discard;
+	margin: 3px 0px;
+	padding: 2px 3px;
 
-	font-size: 0;  /* Workaround for white-space-collapse */
-}
-
-.Literal > *,
-.Entity > * {
-	font-size: 12pt;  /* Workaround for white-space-collapse */
-}
-
-.Name {
-	display: inline-block;	
-	padding: 0.1em 0.4em 0.1em 0.4em;
-	
-	border-top: 2px #749fcf solid;
-	border-left: 2px #749fcf solid;
-	border-bottom: 2px #749fcf solid;
-	border-top-left-radius: 3px;
-	border-bottom-left-radius: 3px;
+	border: 2px #749fcf solid;
 
 	vertical-align: top;
+	white-space: normal;
+}
+
+dt {
+	clear: left;
+
+	border-right: none;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
 
 	background-color: #749fcf;
 }
 
-.Value {
-	display: inline-block;
-	padding: 0.1em 0.4em 0.1em 0.4em;
-
-	border-top: 2px #749fcf solid;
-	border-right: 2px #749fcf solid;
-	border-bottom: 2px #749fcf solid;
+dd {	
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
 
 	background-color: white;
 }
 
-.Entity > .Value {
-	border-left: 2px #749fcf solid;	
+dt.Entity {
+	margin-bottom: 0px;
+
+	border-bottom: none;
+	border-top-right-radius: 3px;
+	border-bottom-left-radius: 0px;
+}
+
+dt.Entity + dd {
+	clear: left;
+
+	margin-top: 0px;
+	padding: 8px 8px 3px 8px;
+
 	border-bottom-left-radius: 3px;
 }
