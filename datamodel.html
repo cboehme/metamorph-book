@@ -441,13 +441,12 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 
 <h2>Datenformate</h2> 
 
-<p>Neben der Trennung von Strukturelementen und Vokabular bzw. Ontologie ist die zweite wichtige Eigenschaft des Metamorph-Datenmodells, dass es kein konkretes Format für die Darstellung und Serialisierung von Daten vorgibt. Aus diesem Grund sind auch die Beispiele in diesem Kapitel grafisch strukturiert, da es kein festgelegtes Format für die Repräsentation der Datensätze im Metamorph-Datenmodell gibt. Der Grund dafür ist, dass sich die Datenformate in verschiedenen Anwendungsdomänen häufig stark unterscheiden. In vielen Bereichen werden bspw. XML-basierte Datenformate eingsetzt, in anderen sind dagegen JSON-Serialisierungen in den letzten Jahren sehr beliebt.
+<p>Die im vorhergehenden Abschnitt beschriebene Trennung von Strukturelementen und Vokabular bzw. Ontologie ist eine Voraussetzung, um das Metamorph-Datenmodell in verschiedenen Anwendungsbereichen nutzen zu können. Die zweite Voraussetzung ist die Unabhängigkeit von einem bestimmten Datenformat. 
+
+ kein konkretes Format für die Darstellung und Serialisierung von Daten vorgibt. Aus diesem Grund sind auch die Beispiele in diesem Kapitel grafisch strukturiert, da es kein festgelegtes Format für die Repräsentation der Datensätze im Metamorph-Datenmodell gibt. Der Grund dafür ist, dass sich die Datenformate in verschiedenen Anwendungsdomänen häufig stark unterscheiden. In vielen Bereichen werden bspw. XML-basierte Datenformate eingsetzt, in anderen sind dagegen JSON-Serialisierungen in den letzten Jahren sehr beliebt.
 </p>
 
 <p>Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist aber in spezielle Dekodier- und Enkodiermodule ausgelagert, die unabhängig von Metamorph sind.
-</p>
-
-<p>Das Metamorph-Datenmodell geht also davon aus, dass für die Arbeit mit Daten drei Dinge notwendig sind:
 </p>
 
 <ol>
@@ -526,6 +525,15 @@ TODO: Beispiel kompletieren
 </p>
 
 <h2>Zusammenfassung</h2>
+
+<p>Das Metamorph-Datenmodell geht also davon aus, dass für die Arbeit mit Daten drei Dinge notwendig sind:
+</p>
+
+<ol>
+    <li>Das Datenformat: in welcher Form werden die Daten abgespeichert, eingegeben oder angezeigt?</li>
+    <li>Die Datenstruktur: welche Möglichkeiten gibt es zur Strukturierung der Daten?</li>
+    <li>Das Vokabular: wie sind einzelne Datenelemente benannt und wie werden sie konkret strukturiert?</li>
+</ol>
 
 <ol>
     <li>Einfache Datenwerte werden als &ndash; Literale genannte &ndash; Schlüssel-Wert-Paare dargestellt.</li>
