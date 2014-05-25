@@ -2,6 +2,12 @@ body {
 	margin: 5em 15% 10em 15%;
 }
 
+@media print {
+	body {
+		margin: 3em 2em;
+	}
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: sans;
 }
@@ -143,6 +149,7 @@ dt.Entity {
 	margin-bottom: 0px;
 
 	border-bottom: none;
+	border-right: 2px #749fcf solid;
 	border-top-right-radius: 3px;
 	border-bottom-left-radius: 0px;
 }
