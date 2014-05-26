@@ -29,6 +29,12 @@ aside {
 	border-bottom: 3px #204a87 solid;
 }
 
+.Footnote {
+	text-decoration: underline;
+	text-decoration-style: dotted;
+	-moz-text-decoration-style: dotted;
+}
+
 /* Tabellen */
 
 table {

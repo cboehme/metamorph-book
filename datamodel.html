@@ -108,7 +108,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</div>
 </div>
 
-<p>Im Vergleich zu den vorangegangenen Beispielen ist unser Datensatz durch die Aufspaltung der Namen ziemlich unübersichtlich geworden. Es ist kaum noch ersichtlich, welcher Vor- und Nachname zusammen gehören. So können z. B. Autoren und Herausgeber nur noch auseinander gehalten werden, weil die Literale unterschiedliche Namen verwenden. Diese Lösung ist allerdings nicht besonders übersichtlich und auch nicht immer möglich. Wenn die Literalnamen bspw. vorgegeben sind (Gründe dafür werden wir in Abschnitt XX kennenlernen), dann kann es sein, dass vorgegebenen Literalnamen für die Namensteile nicht zwischen Autorennamen und Herausgebernamen unterscheiden, sondern nur allgemein Vor- und Nachnamen beschreiben. Dann ist keine Unterscheidung zwischen Autoren- und Herausgebernamen mehr möglich. Im Metamorph-Datenmodell können deshalb Literale innerhalb eines Datensatzes gruppiert werden. Diese Gruppen werden <i>Entitäten</i> genannt und habe ebenso wie Literale einen beliebigen Namen, um sie adressieren und die gruppierten Inhalte unterscheiden zu können.
+<p>Im Vergleich zu den vorangegangenen Beispielen ist unser Datensatz durch die Aufspaltung der Namen ziemlich unübersichtlich geworden. Es ist kaum noch ersichtlich, welcher Vor- und Nachname zusammen gehören. So können z.&thinsp;B. Autoren und Herausgeber nur noch auseinander gehalten werden, weil die Literale unterschiedliche Namen verwenden. Diese Lösung ist allerdings nicht besonders übersichtlich und auch nicht immer möglich. Wenn die Literalnamen bspw. vorgegeben sind (Gründe dafür werden wir in Abschnitt XX kennenlernen), dann kann es sein, dass vorgegebenen Literalnamen für die Namensteile nicht zwischen Autorennamen und Herausgebernamen unterscheiden, sondern nur allgemein Vor- und Nachnamen beschreiben. Dann ist keine Unterscheidung zwischen Autoren- und Herausgebernamen mehr möglich. Im Metamorph-Datenmodell können deshalb Literale innerhalb eines Datensatzes gruppiert werden. Diese Gruppen werden <i>Entitäten</i> genannt und habe ebenso wie Literale einen beliebigen Namen, um sie adressieren und die gruppierten Inhalte unterscheiden zu können.
 </p>
 
 <div class="RecordSet">
@@ -441,19 +441,16 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 
 <h2>Datenformate</h2> 
 
-<p>Die im vorhergehenden Abschnitt beschriebene Trennung von Strukturelementen und Vokabular bzw. Ontologie ist eine Voraussetzung, um das Metamorph-Datenmodell in verschiedenen Anwendungsbereichen nutzen zu können. Die zweite Voraussetzung ist die Unabhängigkeit von einem bestimmten Datenformat. 
-
- kein konkretes Format für die Darstellung und Serialisierung von Daten vorgibt. Aus diesem Grund sind auch die Beispiele in diesem Kapitel grafisch strukturiert, da es kein festgelegtes Format für die Repräsentation der Datensätze im Metamorph-Datenmodell gibt. Der Grund dafür ist, dass sich die Datenformate in verschiedenen Anwendungsdomänen häufig stark unterscheiden. In vielen Bereichen werden bspw. XML-basierte Datenformate eingsetzt, in anderen sind dagegen JSON-Serialisierungen in den letzten Jahren sehr beliebt.
+<p>Die im vorhergehenden Abschnitt beschriebene Trennung von Strukturelementen und Vokabular bzw. Ontologie ist eine Voraussetzung, um das Metamorph-Datenmodell in verschiedenen Anwendungsbereichen nutzen zu können. Die zweite Voraussetzung ist die Möglichkeit verschiedenste Datenformate für die Ein- und Ausgabe verwenden zu können. Aus diesem Grund sind auch die Beispiele in diesem Kapitel grafisch dargestellt und nicht als formatierter Text: Es gibt kein festgelegtes Format für die Darstellung oder Serialisierung von Datensätzen im Metamorph-Datenmodell.  
 </p>
 
-<p>Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist aber in spezielle Dekodier- und Enkodiermodule ausgelagert, die unabhängig von Metamorph sind.
+<p>Um das Metamorph-Datenmodell praktisch einsetzen zu können, muss es aber natürlich möglich sein, Daten darstellen und vor allem ein- und auslesen (also serialisieren und deserialisieren) zu können. 
+<!-- TODO: hier weiterschreiben -->
+Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist aber in spezielle Dekodier- und Enkodiermodule ausgelagert, die unabhängig von Metamorph sind.
 </p>
 
-<ol>
-    <li>Das Datenformat: in welcher Form werden die Daten abgespeichert, eingegeben oder angezeigt?</li>
-    <li>Die Datenstruktur: welche Möglichkeiten gibt es zur Strukturierung der Daten?</li>
-    <li>Das Vokabular: wie sind einzelne Datenelemente benannt und wie werden sie konkret strukturiert?</li>
-</ol>
+<p>Wir haben gesehen, dass bei den meisten Datenformaten berücksichtig werden muss, dass sie keine eins-zu-eins Abbildung der Strukturelement des Metamorph-Datenmodells erlauben. Oft umfassen einzelne Datenformate nicht den vollen Umfang des Datenmodells, sondern beschränken einige Eigenschaften wie bspw. die erlaubte Verschachtelungstiefe von Entitäten oder ähnliches, sodass nicht alle Datenstrukturen in dem jeweiligen Format abgebildet werden können. Teilweise gibt es auch mehrere Varianten, wie ein Strukturelement eines Datenformats im Metamorph-Datenmodell abgebildet werden kann. Dies betrifft z.&thinsp;B. insbesondere die Darstellung von Listen oder Arrays. Da es in der Praxis häufig hilfreich ist, Daten direkt im Metamorph-Datenmodell darstellen oder ablegen zu können, ohne sich Gedanken über die Mächtigkeit eines Formats machen zu müssen, haben wir in Metafacture ein eigenes Datenformat namens <span class="Footnote" title="Formeta ist ein Wortspiel aus dem Wort Format und dem Englischen &ldquo;for meta&rdquo; d.&thinsp;h. für Metadaten."><i>Formeta</i>-Format</span> integriert. Dieses Datenformat wurde passend zum Metamorph-Datenmodell entworfen, sodass es alle in dem Datenmodell möglichen Datenstrukturen kompakt abbilden kann. Im Prinzip hätte ich die Datensätze in diesem Kapitel statt als Grafiken auch im Formeta-Format zeigen können. Ich habe aber darauf verzichtet, um deutlich zu machen, dass das Metamorph-Datenmodell keine bestimmte Serialisierungsform besitzt, sondern losgelöst davon definiert ist.
+</p>
 
 <h2>Beispiele für die Darstellung verschiedener Formate im Metamorph-Datenmodell</h2>
 
@@ -492,7 +489,7 @@ TODO: Beispiel kompletieren
 
 <div class="RecordSet">
 	<div class="Record">
-		<span class="RecordId">Datensatz mit Id &ldquo;123&rd;</span>
+		<span class="RecordId">Datensatz mit Id &ldquo;123&rdquo;</span>
 		<dl>
 			<dt class="Entity">003@</dt>
 			<dd>
@@ -521,7 +518,7 @@ TODO: Beispiel kompletieren
 <p>Im Gegensatz zu RDF verwendet Metamorph ein etwas einfacheres Datenmodell und behält das Konzept des Datensatzes bei, dass es in RDF so nicht mehr gibt. Der Grund dafür ist, das sich in der täglichen Arbeit mit Daten zeigt, dass diese häufig in einer wohldefinierten Zusammenstellung benötigt werden und nicht nur in einem weitläufigen Netz.
 </p>
 
-<p>Diese Trennung der verschiedenen Aspekte der Datenbeschreibung findet sich in RDF wieder. RDF kann in verschiedenen Formaten serialisiert werden (u.a. RDF-XML und Turtle), es definiert eine allgemeine Datenstruktur (das RDF-Graphmodell) und es gibt Vokabulare bzw. Ontologien, die konkrete Namen und Strukturen definieren, um Domänenwissen in RDF zu beschreiben.
+<p>Diese Trennung der verschiedenen Aspekte der Datenbeschreibung findet sich in RDF wieder. RDF kann in verschiedenen Formaten serialisiert werden (u.&thinsp;a. RDF-XML und Turtle), es definiert eine allgemeine Datenstruktur (das RDF-Graphmodell) und es gibt Vokabulare bzw. Ontologien, die konkrete Namen und Strukturen definieren, um Domänenwissen in RDF zu beschreiben.
 </p>
 
 <h2>Zusammenfassung</h2>
