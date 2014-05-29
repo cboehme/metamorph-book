@@ -462,8 +462,12 @@ Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph 
 <p>Einer der ersten Anwendungsfälle von Metamorph war die Konversion von bibliothekarischen Daten, die im PICA+ Format vorlagen. Dieses Datenformat ist recht einfach strukturiert. Es gibt Datensätze, die jeweils bspw. einen Buchtitel oder eine Zeitschrift beschreiben. Ein Datensatz setzt sich aus sogenannten Feldern zusammen, die Angaben zu bestimmten Aspekten des beschriebenen Objekts enthalten. Da die Angaben oftmals noch eine feinere Untergliederung aufweisen, bestehen die Felder aus Unterfeldern. Felder und Unterfelder können wiederholbar sein. Bei gleichnamigen Feldern garantiert PICA+ keine bestimmte Reihenfolge dieser Felder. Wenn dies Notwendig ist, kann der Feldname um eine sogenannte <i>Occurrence</i> ergänzt werden. Dabei handelt es sich um einen Index, der an den Feldnamen angehängt wird und die Position des Feldes beschreibt.
 </p>
 
-<p>Das folgende Beispiel zeigt einen Auschnitt aus einem Datensatz im PICA+ Format. Die ersten vier Zeichen in jeder Zeile bezeichnen den Feldnamen, eine ggf. vorhandene <i>Occurrence</i> besteht aus zwei Ziffern, die mit einem Schrägstrich vom Feldnamen abgetrennt sind. Das $-Zeichen trennt die einzelnen Unterfelder in einem Datenfeld ab. Das erste Zeichen hinter dem $-Zeichen ist der Name des Unterfelds, die restlichen Zeichen sind der eigentliche Inhalt des Unterfelds:
+<p>Das folgende Beispiel zeigt einen Auschnitt aus einem Datensatz im PICA+ Format. Die ersten vier Zeichen in jeder Zeile bezeichnen den Feldnamen, eine ggf. vorhandene <i>Occurrence</i> besteht aus zwei Ziffern, die mit einem Schrägstrich vom Feldnamen abgetrennt sind. Das $-Zeichen trennt die einzelnen Unterfelder in einem Datenfeld ab. Das erste Zeichen hinter dem $-Zeichen ist der Name des Unterfelds, die restlichen Zeichen sind der eigentliche Inhalt des Unterfelds:<a href="#footnote-1">1</a>
 </p>
+
+<section id="footnote-1">
+	Die genannten Sonderzeichen für die Kennzeichnung von Feldern und Unterfeldern sind die für die Darstellung in PICA-Systemen verwendeten. In den eigentlichen Daten werden stattdessen . Beim PICA+ Format wird zwischen dem Intern- und dem Externformat unterschieden. Diese beiden Formate unterscheiden sich nur in den verwendeten Feld- und Unterfeldnamen. Ich verwende hier die Feldnamen des Internformats. 
+</section>
 
 <pre class="Example">
 003@ $0123
