@@ -449,7 +449,52 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist aber in spezielle Dekodier- und Enkodiermodule ausgelagert, die unabhängig von Metamorph sind.
 </p>
 
-<p>Wir haben gesehen, dass bei den meisten Datenformaten berücksichtig werden muss, dass sie keine eins-zu-eins Abbildung der Strukturelement des Metamorph-Datenmodells erlauben. Oft umfassen einzelne Datenformate nicht den vollen Umfang des Datenmodells, sondern beschränken einige Eigenschaften wie bspw. die erlaubte Verschachtelungstiefe von Entitäten oder ähnliches, sodass nicht alle Datenstrukturen in dem jeweiligen Format abgebildet werden können. Teilweise gibt es auch mehrere Varianten, wie ein Strukturelement eines Datenformats im Metamorph-Datenmodell abgebildet werden kann. Dies betrifft z.&thinsp;B. insbesondere die Darstellung von Listen oder Arrays. Da es in der Praxis häufig hilfreich ist, Daten direkt im Metamorph-Datenmodell darstellen oder ablegen zu können, ohne sich Gedanken über die Mächtigkeit eines Formats machen zu müssen, haben wir in Metafacture ein eigenes Datenformat namens <span class="Footnote" title="Formeta ist ein Wortspiel aus dem Wort Format und dem Englischen &ldquo;for meta&rdquo; d.&thinsp;h. für Metadaten."><i>Formeta</i>-Format</span> integriert. Dieses Datenformat wurde passend zum Metamorph-Datenmodell entworfen, sodass es alle in dem Datenmodell möglichen Datenstrukturen kompakt abbilden kann. Im Prinzip hätte ich die Datensätze in diesem Kapitel statt als Grafiken auch im Formeta-Format zeigen können. Ich habe aber darauf verzichtet, um deutlich zu machen, dass das Metamorph-Datenmodell keine bestimmte Serialisierungsform besitzt, sondern losgelöst davon definiert ist.
+<h3>Das Formeta-Format</h3>
+
+<p>Wir haben gesehen, dass bei den meisten Datenformaten berücksichtigt werden muss, dass sie keine eins-zu-eins Abbildung der Strukturelemente des Metamorph-Datenmodells erlauben. Oft umfassen einzelne Datenformate nicht den vollen Umfang des Datenmodells, sondern beschränken einige Eigenschaften wie bspw. die erlaubte Verschachtelungstiefe von Entitäten oder ähnliches, sodass nicht alle Datenstrukturen in dem jeweiligen Format abgebildet werden können. Teilweise gibt es auch mehrere Varianten, wie ein Strukturelement eines Datenformats im Metamorph-Datenmodell abgebildet werden kann. Dies betrifft z.&thinsp;B. oft die Darstellbarkeit von Listen oder Arrays. Da es in der Praxis häufig hilfreich ist, Daten direkt im Metamorph-Datenmodell anzeigen oder ablegen zu können, ohne sich Gedanken über die Fähigkeiten eines Formats machen zu müssen, haben wir in Metafacture ein eigenes Datenformat namens <span class="Footnote" title="Formeta ist ein Wortspiel aus dem Wort Format und dem Englischen &ldquo;for meta&rdquo; d.&thinsp;h. für Metadaten."><i>Formeta</i>-Format</span> integriert. Dieses Datenformat wurde passend zum Metamorph-Datenmodell entworfen, sodass es alle in dem Datenmodell möglichen Datenstrukturen kompakt abbilden kann. Eigentlich hätte ich die Datensätze in diesem Kapitel statt als Grafiken auch im Formeta-Format zeigen können. Ich habe aber darauf verzichtet, um deutlich zu machen, dass das Metamorph-Datenmodell keine bestimmte Serialisierungsform besitzt, sondern losgelöst davon definiert ist.
+</p>
+
+<p>Das Formeta-Format ist sehr einfach aufgebaut, hat aber eine flexible Syntax, sodass wir Daten sowohl sehr kompakt als auch übersichtlich formatiert ausgeben können. Beim Entwurf der Syntax wurde außerdem darauf geachtet, dass auch eine händische Eingabe von Daten möglichst einfach ist.
+</p>
+
+<p>Es gibt nur zwei Elemente im Formeta-Format: Literale und Gruppen. Erstere entsprechen den Literalen des Metamorph-Datenmodells, Letztere werden für die Formatierung von Datensätzen und Entitäten verwendet. Das hat den Vorteil, dass es dadurch sehr einfach wird, die oben beschriebene Technik, Datensätze als Entitäten in andere Datensätze einzubetten, anzuwenden. Durch die völlig gleiche Darstellung kann die Anwenderin flexibel entscheiden, ob die äußerste Gruppe als Datensatz oder Entität zu verstehen ist.
+</p>
+
+<p>Das folgende Syntaxdiagram stellt die Grundstruktur des Formeta-Formats dar:
+</p>
+
+<figure id="formetaGruppe">
+	<img src="formeta-gruppe.svg" />
+	<figcaption>Schmematische Darstellung des Formeta-Formats.</figcaption>
+</figure>
+
+<figure id="formetaNameWert">
+	<img src="formeta-name-wert.svg" />
+	<figcaption>Namen und Werte können auf zwei Arten im Formeta-Format dargestellt werden. Entweder als Text in Anführungszeichen oder als Text ohne Anführungszeichen. Die Verwendung von Anführungszeichen reduziert die Anzahl der Zeichen, die maskiert werden müssen. Vor und nach einem Namen oder Wert darf beliebiger Leerraum vorhanden sein. Das Diagramm zeigt auch, dass leere Namen und Werte zulässig sind.</figcaption>
+</figure>
+
+<!-- Hier muss der Übergang noch verbessert werden -->
+
+<p>Ein Literal sind einfach zwei durch einen Doppelpunkt in Literalname und Literalwert aufgeteilte Texte:
+</p>
+
+<pre class="Example">
+title: Kinder- und Hausmärchen
+</pre>
+
+<p>Eine Gruppe besteht aus dem Gruppennamen &ndash; dies ist entweder der Entitätsname oder die Datensatz-ID &ndash; gefolgt von einer Liste von Literalen und Gruppen in geschweiften Klammern. Innerhalb der Liste sind die Literale und Gruppen mit Kommata getrennt:
+</p>
+
+<pre class="Example">
+author{	
+	surname: Grimm,
+	forename: Jacob,
+	affiliation{ institution: Friedrich-Wilhelms-Universität zu Berlin },
+	birthdate: 1786-01-04
+}
+</pre>
+
+<p>Damit haben wir die Grundstrukturen des Formeta-Formats kennengelernt und können uns nun einigen Feinheiten zuwenden
 </p>
 
 <h2>Beispiele für die Darstellung verschiedener Formate im Metamorph-Datenmodell</h2>

@@ -29,6 +29,17 @@ aside {
 	border-bottom: 3px #204a87 solid;
 }
 
+figure {
+	margin: 15px auto 30px auto;
+	text-align: center;
+}
+
+figcaption {
+	margin-top: 10px;
+
+	font-family: sans;
+}
+
 .Footnote {
 	text-decoration: underline;
 	text-decoration-style: dotted;
