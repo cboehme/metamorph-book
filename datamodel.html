@@ -388,48 +388,46 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</tbody>
 </table>
 
-<aside>
-	<h1>Strukturierte Literal- und Entitätsnamen</h1>
-	
-	<p>Manchmal gibt es zusätzliche Informationen zu einem Literal, die für die Arbeit mit dem Literal hilfreich sind und die deshalb in der Datenmodellierung enthalten sein sollten. Solche Informationen können bspw. Angaben zur Sprache oder zum Datentyp eines Literalwerts sein oder ein Hinweis darauf, dass der Literalwert ein Verweis auf einen anderen Datensatz ist. Eine Möglichkeit, solche Informationen in die Daten zu integrieren, ist die Nutzung einer Entität statt eines Literals, innerhalb derer dann der eigentliche Datenwert und die Zusatzinformationen in mehreren Literalen abgelegt sind. Auf diese Weise könnten wir Sprachangaben zu dem Literal <code>title: Grimms' Fairy Tales</code> in folgender Form darstellen:</p>
+<h1>Strukturierte Literal- und Entitätsnamen</h1>
 
-	<div class="RecordSnippet">
-		<dl>
-			<dt class="Entity">title</dt>
-			<dd>
-				<dl>
-					<dt>value</dt><dd>Grimms' Fairy Tales</dd>
-					<dt>language</dt><dd>en</dd>
-				</dl>
-			</dd>
-		</dl>
-	</div>
+<p>Manchmal gibt es zusätzliche Informationen zu einem Literal, die für die Arbeit mit dem Literal hilfreich sind und die deshalb in der Datenmodellierung enthalten sein sollten. Solche Informationen können bspw. Angaben zur Sprache oder zum Datentyp eines Literalwerts sein oder ein Hinweis darauf, dass der Literalwert ein Verweis auf einen anderen Datensatz ist. Eine Möglichkeit, solche Informationen in die Daten zu integrieren, ist die Nutzung einer Entität statt eines Literals, innerhalb derer dann der eigentliche Datenwert und die Zusatzinformationen in mehreren Literalen abgelegt sind. Auf diese Weise könnten wir Sprachangaben zu dem Literal <code>title: Grimms' Fairy Tales</code> in folgender Form darstellen:</p>
 
-	<p>Das value-Literal entspricht hier dem ursprünglichen Wert des title-Literals, und die Zusatzinformation zur Sprache ist als zusätzliches Literal in der Entität enthalten. Die Entität selbst wird dann anstelle des ursprünglichen title-Literals verwendet.
-	</p>
+<div class="RecordSnippet">
+	<dl>
+		<dt class="Entity">title</dt>
+		<dd>
+			<dl>
+				<dt>value</dt><dd>Grimms' Fairy Tales</dd>
+				<dt>language</dt><dd>en</dd>
+			</dl>
+		</dd>
+	</dl>
+</div>
 
-	<p>Diese Lösung erfüllt ihren Zweck, hat allerdings den Nachteil, die Struktur des Datensatzes deutlich zu verändern. Dies ist nicht immer gewünscht, insbesondere wenn die Zusatzinformationen eigentlich recht kompakt sind, wie es etwa bei Sprachangaben oder Verknüpfungshinweisen der Fall ist. Eine Möglichkeit, zu einer kompakteren Darstellung zu kommen, ist die Verwendung strukturierter Literal- und Entitätsnamen. So könnten wir im obigen Beispiel einfach festlegen, dass an einen Literalnamen ein @-Zeichen gefolgt von einem Sprachcode angehängt werden kann, um die Sprache des Datenwerts anzugeben. Unser title-Literal sähe dann wie folgt aus: <code>title@en: Grimms' Fairy Tales</code>.
-	</p>
+<p>Das value-Literal entspricht hier dem ursprünglichen Wert des title-Literals, und die Zusatzinformation zur Sprache ist als zusätzliches Literal in der Entität enthalten. Die Entität selbst wird dann anstelle des ursprünglichen title-Literals verwendet.
+</p>
 
-	<p>Andere Varianten von strukturierten Namen, die wir bereits in Metafacture eingesetzt haben, sind das Voranstellen eines *-Zeichens, um URLs zu markieren, oder eines ~-Zeichens, um Literale zu kennzeichnen, die als XML-Attribute zu behandeln sind. Eine interessante Variante ist auch die Verwendung von [] als Suffix für Entitätsnamen in der JSON-Verarbeitung, um anzudeuten, dass der Inhalt der Entität als Array aufzufassen ist und die Namen der Elemente keine Bedeutung tragen. Das folgende Beispiel zeigt die Verwendung des Konstrukts, um ein Array mit drei Elementen zu modellieren:
-	</p>
+<p>Diese Lösung erfüllt ihren Zweck, hat allerdings den Nachteil, die Struktur des Datensatzes deutlich zu verändern. Dies ist nicht immer gewünscht, insbesondere wenn die Zusatzinformationen eigentlich recht kompakt sind, wie es etwa bei Sprachangaben oder Verknüpfungshinweisen der Fall ist. Eine Möglichkeit, zu einer kompakteren Darstellung zu kommen, ist die Verwendung strukturierter Literal- und Entitätsnamen. So könnten wir im obigen Beispiel einfach festlegen, dass an einen Literalnamen ein @-Zeichen gefolgt von einem Sprachcode angehängt werden kann, um die Sprache des Datenwerts anzugeben. Unser title-Literal sähe dann wie folgt aus: <code>title@en: Grimms' Fairy Tales</code>.
+</p>
 
-	<div class="RecordSnippet">
-		<dl>
-			<dt class="Entity">arrayEntity[]</dt>
-			<dd>
-				<dl>
-					<dt>ignoredName</dt><dd>Erster Datenwert</dd>
-					<dt>ignoredName</dt><dd>Zweiter Datenwert</dd>
-					<dt>ignoredName</dt><dd>Dritter Datenwert</dd>
-				</dl>
-			</dd>
-		</dl>
-	</div>
+<p>Andere Varianten von strukturierten Namen, die wir bereits in Metafacture eingesetzt haben, sind das Voranstellen eines *-Zeichens, um URLs zu markieren, oder eines ~-Zeichens, um Literale zu kennzeichnen, die als XML-Attribute zu behandeln sind. Eine interessante Variante ist auch die Verwendung von [] als Suffix für Entitätsnamen in der JSON-Verarbeitung, um anzudeuten, dass der Inhalt der Entität als Array aufzufassen ist und die Namen der Elemente keine Bedeutung tragen. Das folgende Beispiel zeigt die Verwendung des Konstrukts, um ein Array mit drei Elementen zu modellieren:
+</p>
 
-	<p>Die Integration von Zusatzinformationen in die Literal- und Entitätsnamen ist eine einfache und vielseitige Technik. Ihre Verwendung ist nicht immer offensichtlich und die Bedeutung verschiedener Angaben in den Namen ist nicht immer selbsterklärend. Außerdem kann es notwendig werden, im Zuge der Datenverarbeitung die Zusatzinformationen wieder aufwändig aus den Namen herauszutrennen. Bei komplexeren Zusatzinformationen sollte man daher die oben beschriebene Entitäten-Methode der strukturierten Benennung vorziehen. Für Kleinigkeiten wie Hinweise auf Verweise, ist sie jedoch oft optimal.
-	</p>
-</aside>
+<div class="RecordSnippet">
+	<dl>
+		<dt class="Entity">arrayEntity[]</dt>
+		<dd>
+			<dl>
+				<dt>ignoredName</dt><dd>Erster Datenwert</dd>
+				<dt>ignoredName</dt><dd>Zweiter Datenwert</dd>
+				<dt>ignoredName</dt><dd>Dritter Datenwert</dd>
+			</dl>
+		</dd>
+	</dl>
+</div>
+
+<p>Die Integration von Zusatzinformationen in die Literal- und Entitätsnamen ist eine einfache und vielseitige Technik. Ihre Verwendung ist nicht immer offensichtlich und die Bedeutung verschiedener Angaben in den Namen ist nicht immer selbsterklärend. Außerdem kann es notwendig werden, im Zuge der Datenverarbeitung die Zusatzinformationen wieder aufwändig aus den Namen herauszutrennen. Bei komplexeren Zusatzinformationen sollte man daher die oben beschriebene Entitäten-Methode der strukturierten Benennung vorziehen. Für Kleinigkeiten wie Hinweise auf Verweise, ist sie jedoch oft optimal.
+</p>
 
 <h2>Datenformate</h2> 
 
@@ -457,14 +455,18 @@ Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph 
 
 <figure id="formetaGruppe">
 	<img src="formeta-gruppe.svg" />
+	<img src="formeta-name-wert.svg" />
+	<img src="formeta-text-in-af.svg" />
+	<img src="formeta-text.svg" />
+	<img src="formeta-leerraum.svg" >
+	<img src="formeta-esc-sequenz.svg" />
+	<img src="formeta-zeichen.svg" />
+	<img src="formeta-zeichen-in-af.svg" />
 	<figcaption>Schmematische Darstellung des Formeta-Formats.</figcaption>
 </figure>
 
-<figure id="formetaNameWert">
-	<img src="formeta-name-wert.svg" />
-	<figcaption>Namen und Werte können auf zwei Arten im Formeta-Format dargestellt werden. Entweder als Text in Anführungszeichen oder als Text ohne Anführungszeichen. Die Verwendung von Anführungszeichen reduziert die Anzahl der Zeichen, die maskiert werden müssen. Vor und nach einem Namen oder Wert darf beliebiger Leerraum vorhanden sein. Das Diagramm zeigt auch, dass leere Namen und Werte zulässig sind.</figcaption>
-</figure>
-
+<!--
+Namen und Werte können auf zwei Arten im Formeta-Format dargestellt werden. Entweder als Text in Anführungszeichen oder als Text ohne Anführungszeichen. Die Verwendung von Anführungszeichen reduziert die Anzahl der Zeichen, die maskiert werden müssen. Vor und nach einem Namen oder Wert darf beliebiger Leerraum vorhanden sein. Das Diagramm zeigt auch, dass leere Namen und Werte zulässig sind. -->
 <!-- Hier muss der Übergang noch verbessert werden -->
 
 <p>Ein Literal sind einfach zwei durch einen Doppelpunkt in Literalname und Literalwert aufgeteilte Texte:

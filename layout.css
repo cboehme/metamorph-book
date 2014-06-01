@@ -34,6 +34,11 @@ figure {
 	text-align: center;
 }
 
+figure img {
+	margin: 10px 10px; 
+	vertical-align: middle;
+}
+
 figcaption {
 	margin-top: 10px;
 
