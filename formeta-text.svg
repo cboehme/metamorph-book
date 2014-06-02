@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="790.87128"
-   height="117.00002"
+   width="790.87122"
+   height="127.00001"
    id="svg3551"
    version="1.1"
    inkscape:version="0.48.4 r9939"
@@ -53,9 +53,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.384549"
-     inkscape:cx="395.43564"
-     inkscape:cy="58.500011"
+     inkscape:zoom="1.3794912"
+     inkscape:cx="395.43563"
+     inkscape:cy="68.500009"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -83,8 +83,8 @@
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true"
-       originx="-29.360746px"
-       originy="-99px" />
+       originx="-29.36075px"
+       originy="-89.000003px" />
   </sodipodi:namedview>
   <metadata
      id="metadata3556">
@@ -102,11 +102,29 @@
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(150.71719,-158.96872)">
+     transform="translate(150.71719,-158.96873)">
+    <rect
+       style="color:#000000;fill:#729fcf;stroke:#204a87;stroke-width:1.99999988;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3074"
+       width="148"
+       height="48.000023"
+       x="370.92206"
+       y="180.96872"
+       rx="24.000008"
+       ry="24.000011" />
+    <rect
+       ry="24.000011"
+       rx="24.000008"
+       y="180.96872"
+       x="-29.077936"
+       height="48.000023"
+       width="148"
+       id="rect3487"
+       style="color:#000000;fill:#729fcf;stroke:#204a87;stroke-width:1.99999988;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <rect
        ry="4.2651143"
        rx="4.1701908"
-       y="230.70363"
+       y="240.70364"
        x="380.72803"
        height="28.459146"
        width="128.36423"
@@ -115,85 +133,39 @@
     <text
        sodipodi:linespacing="125%"
        id="text4502-4"
-       y="249.20667"
+       y="259.20667"
        x="444.47263"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        xml:space="preserve"><tspan
-         y="249.20667"
+         y="259.20667"
          x="444.47263"
          id="tspan4504-4"
          sodipodi:role="line">Esc-Sequenz</tspan></text>
-    <rect
-       style="color:#000000;fill:#729fcf;fill-opacity:1;fill-rule:nonzero;stroke:#204a87;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect4674"
-       width="108.17575"
-       height="48.175747"
-       x="-9.1658173"
-       y="180.88087"
-       rx="4.0878696"
-       ry="4.0878682" />
-    <text
-       sodipodi:linespacing="125%"
-       id="text4676"
-       y="200.93359"
-       x="45.320496"
-       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
-       xml:space="preserve"><tspan
-         y="200.93359"
-         x="45.320496"
-         sodipodi:role="line"
-         id="tspan4680">Zeichen</tspan><tspan
-         y="220.93359"
-         x="45.320496"
-         sodipodi:role="line"
-         id="tspan4482"
-         style="font-size:16px;font-style:italic;-inkscape-font-specification:Sans Italic">außer: &quot;</tspan></text>
     <rect
        style="color:#000000;fill:#729fcf;stroke:#204a87;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect2985"
        width="107.95958"
        height="28.459152"
        x="210.78746"
-       y="230.83414"
+       y="230.83415"
        rx="3.8249757"
        ry="4.1346059" />
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        x="264.66571"
-       y="250.78247"
+       y="250.78249"
        id="text3755"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3757"
          x="264.66571"
-         y="250.78247">Leerraum</tspan></text>
-    <rect
-       ry="4.1363454"
-       rx="4.1363468"
-       y="190.8324"
-       x="390.78571"
-       height="28.272694"
-       width="108.2727"
-       id="rect4528"
-       style="color:#000000;fill:#729fcf;fill-opacity:1;fill-rule:nonzero;stroke:#204a87;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-    <text
-       xml:space="preserve"
-       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
-       x="445.25018"
-       y="210.93359"
-       id="text4530"
-       sodipodi:linespacing="125%"><tspan
-         style="font-size:16px;font-style:normal;-inkscape-font-specification:Sans"
-         id="tspan4534"
-         sodipodi:role="line"
-         x="445.25018"
-         y="210.93359">Zeichen</tspan></text>
+         y="250.78249">Leerraum</tspan></text>
     <rect
        ry="4.1940541"
        rx="4.1701756"
-       y="240.77469"
-       x="-19.271988"
+       y="240.7747"
+       x="-19.271984"
        height="28.459152"
        width="128.36423"
        id="rect4500"
@@ -202,76 +174,76 @@
        sodipodi:linespacing="125%"
        id="text4502"
        y="259.27771"
-       x="44.47263"
+       x="44.472633"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        xml:space="preserve"><tspan
          y="259.27771"
-         x="44.47263"
+         x="44.472633"
          id="tspan4504"
          sodipodi:role="line">Esc-Sequenz</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m -70.07794,204.96874 c 15,0 20,5 20,20 l 0,10 c 0,15 5,20 20,20 l 10,0"
+       d="m -70.077936,204.96875 c 15,0 20,5 20,20 l 0,10 c 0,15 5,20 20,20 l 10,0"
        id="path4667"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccsc" />
     <path
        style="color:#000000;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-start:url(#TriangleOutL);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       d="m -100.07794,204.96874 90,0"
+       d="m -100.07794,204.96875 70.000004,-1e-5"
        id="path4789"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 109.92206,254.96874 10,0 c 15,0 20,-5 20,-20 l 0,-10 c 0,-15 5,-20 20,-20"
+       d="m 109.92206,254.96875 10,0 c 15,0 20,-5 20,-20 l 0,-10 c 0,-15 5,-20 20,-20"
        id="path4813"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 389.92206,204.96874 -290,0"
+       d="m 369.92206,204.96874 -250,0"
        id="path4547"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 559.92206,204.96872 c -15,0 -20,5 -20,20.00001 0,15 -5,20 -20,20 l -10,1e-5"
+       d="m 559.92206,204.96874 c -15,0 -20,5 -20,20.00001 l 0,9.99998 c 0,15 -5,20 -20,20 l -10,1e-5"
        id="path4568"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccc" />
+       sodipodi:nodetypes="ccccc" />
     <path
        sodipodi:nodetypes="ccccccc"
        inkscape:connector-curvature="0"
-       d="m 179.92206,224.96874 0,25 c 0,15 5,20 20,20 l 360,0 c 15,0 20,-5 20,-20 l 0,-25 c 0,-15 -5,-20 -20,-20"
+       d="m 179.92206,224.96875 0,34.99999 c 0,15 5,20 20,20 l 360,0 c 15,0 20,-5 20,-20 l 0,-34.99999 c 0,-15 -5,-20 -20,-20"
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="path4899" />
     <path
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"
        id="path4901"
-       d="m 499.92206,204.96874 125,0"
+       d="m 519.92206,204.96874 105,1e-5"
        style="color:#000000;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#TriangleOutL);visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Caladea;-inkscape-font-specification:Caladea"
-       x="-113.29532"
-       y="210.68748"
+       x="-113.29531"
+       y="210.6875"
        id="text5157"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5159"
-         x="-113.29532"
-         y="210.68748"
+         x="-113.29531"
+         y="210.6875"
          style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;font-family:Sans;-inkscape-font-specification:Sans">Text</tspan></text>
     <path
        sodipodi:nodetypes="cccc"
        inkscape:connector-curvature="0"
        id="path5753"
-       d="m 209.92206,244.96874 -10,0 c -15,0 -20,-5 -20,-20 0,-15 5,-20.00001 20,-20.00001"
+       d="m 209.92206,244.96875 -10,0 c -15,0 -20,-5 -20,-20 0,-15 5,-20.00001 20,-20.00001"
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 349.92206,224.96873 c 0,15.00001 5,20.00001 20,20.00001 l 10,0"
+       d="m 379.92206,254.96874 -10,0 c -15,0 -20,-5 -20,-20.00001 l 0,-9.99999"
        id="path5767"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccc" />
@@ -284,8 +256,60 @@
     <path
        id="path4161"
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 159.92206,204.96874 c 15,0 20,-5 20,-20.00001 0,-15.00001 5,-20.00001 20,-20.00001 l 360,2e-5 c 15,0 20,5 20,20 0,15 5,20 20,20"
+       d="m 159.92206,204.96875 c 15,0 20,-5 20,-20.00001 0,-15.00001 5,-20.00001 20,-20.00001 l 360,2e-5 c 15,0 20,5 20,20 0,15 5,20 20,20"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccsscc" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text3500"
+       y="196.19676"
+       x="45.183296"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Caladea;-inkscape-font-specification:Sans Italic"
+       xml:space="preserve"><tspan
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         id="tspan3502"
+         y="196.19676"
+         x="45.183296"
+         sodipodi:role="line">Beliebiges Unicode-</tspan><tspan
+         id="tspan3504"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         y="208.69676"
+         x="45.183296"
+         sodipodi:role="line">Zeichen außer: \ { } : , &quot;</tspan><tspan
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         y="221.19676"
+         x="45.183296"
+         sodipodi:role="line"
+         id="tspan7255"><tspan
+           style="font-style:italic;-inkscape-font-specification:Sans Italic"
+           id="tspan7257"><tspan
+   style="font-style:normal;-inkscape-font-specification:Sans"
+   id="tspan3102">oder</tspan> Leerraum</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Caladea;-inkscape-font-specification:Sans Italic"
+       x="445.18817"
+       y="196.19676"
+       id="text3076"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="445.18817"
+         y="196.19676"
+         id="tspan3078"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;stroke:none;font-family:Sans;-inkscape-font-specification:Sans">Beliebiges Unicode-</tspan><tspan
+         sodipodi:role="line"
+         x="445.18817"
+         y="208.69676"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         id="tspan3080">Zeichen außer: \ { } : ,</tspan><tspan
+         id="tspan3082"
+         sodipodi:role="line"
+         x="445.18817"
+         y="221.19676"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"><tspan
+           id="tspan3084"
+           style="font-style:italic;-inkscape-font-specification:Sans Italic"><tspan
+   style="font-style:normal;-inkscape-font-specification:Sans"
+   id="tspan3100">oder</tspan> Leerraum</tspan></tspan></text>
   </g>
 </svg>
