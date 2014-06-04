@@ -9,7 +9,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: sans;
+	font-family: sans-serif;
 }
 
 aside > h1 {
@@ -42,7 +42,7 @@ figure img {
 figcaption {
 	margin-top: 10px;
 
-	font-family: sans;
+	font-family: sans-serif;
 }
 
 .Footnote {
@@ -60,7 +60,7 @@ table {
 	margin-left: auto;
 	margin-right: auto;
 
-	font-family: Sans;
+	font-family: sans-serif;
 }
 
 th {
@@ -97,7 +97,7 @@ tbody tr:last-of-type td {
 .RecordSnippet {
 	text-align: center;
 	
-	font-family: Sans;
+	font-family: sans-serif;
 }
 
 .RecordSnippet {

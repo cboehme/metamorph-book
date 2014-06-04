@@ -13,10 +13,10 @@
 <p>Bevor wir mit dem Schreiben von Metamorph-Skripten beginnen können, müssen wir uns zunächst mit dem Datenmodel befassen, das hinter Metamorph steckt.
 </p>
 
-<p>Es ist eine wichtige Eigenschaft von Metamorph, dass es nicht auf die Verarbeitung eines bestimmten Datenformats wie etwa XML, Pica+, MARC21 oder JSON beschränkt ist, sondern dass beliebige semistrukturierte Datenformate verarbeitet werden können. Damit dies funktioniert, definiert Metamorph ein generisches Datenmodell.
+<p>Es ist eine wichtige <strong>Eigenschaft von Metamorph</strong>, dass es nicht auf die Verarbeitung eines bestimmten Datenformats wie etwa XML, Pica+, MARC21 oder JSON beschränkt ist, sondern dass beliebige semistrukturierte Datenformate verarbeitet werden können. Damit dies funktioniert, definiert Metamorph ein generisches Datenmodell. D.&thinsp;h. ein Datenmodell, das nicht auf ein bestimmtes Datenformats zugeschnitten ist, sondern so allgemein formuliert ist, dass verschiedenste Datenformate in dem Datenmodell abgebildet werden können.
 </p>
 
-<p>Wie sieht dieses generische Datenmodell aus? Nehmen wir als Beispiel bibliografische Informationen. Angenommen, wir haben folgende Informationen zu einem Buchtitel:
+<p>Wie sieht das <strong>generische Datenmodell</strong> von Metamorph aus? Verwenden wir als Beispiel bibliografische Daten. Angenommen, wir haben folgende Informationen zu einem Buchtitel:
 </p>
 
 <p class="Example">
@@ -27,10 +27,10 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 978-3-525-20764-2
 </p>
 
-<p>Um diese Informationen in Metamorph verarbeiten zu können, müssen sie in eine strukturierte Form gebracht werden. Die Grundlage für die Datenverarbeitung in Metamorph sind Datensätze. Die Informationen über einen Buchtitel können als ein Datensatz betrachtet werden. In diesem Datensatz müssen die Informationen so abgelegt werden, dass wir einzele Teile benennen und auf diese Weise adressieren können. Im Metamorph-Datenmodell werden dazu sogenannte <i>Literale</i> gebildet. Dies sind einfache Schlüssel-Wert-Paare. Der Schlüssel ist der Name der Information, die als Datenwert verwendet wird. Das Datenmodell macht dabei keine Vorgaben oder Einschränkungen für die Namen der Schlüssel; sie können völlig frei gewählt werden.
+<p>Um diese Informationen in Metamorph verarbeiten zu können, müssen sie in eine strukturierte Form gebracht werden. Die Grundlage für die Datenverarbeitung in Metamorph sind Datensätze. Die Informationen über einen Buchtitel können als ein Datensatz betrachtet werden. In diesem Datensatz müssen die Informationen so abgelegt werden, dass wir einzelne Teile benennen und auf diese Weise gezielt auswählen können. Im Metamorph-Datenmodell werden dazu sogenannte <strong><i>Literale</i></strong> gebildet. Dies sind einfache Schlüssel-Wert-Paare. Der Schlüssel ist der Name der Information, die als Datenwert verwendet wird. Das Datenmodell macht dabei keine Vorgaben oder Einschränkungen für die Namen der Schlüssel; sie können völlig frei gewählt werden.
 </p>
 
-<p>Das Metamorph-Datenmodell sieht außerdem vor, dass Datensätze einen Identifikator haben. Dieser wird in Metamorph meist als <i>Datensatz-ID</i> bezeichnet und ist ein beliebiger Datenwert, der geeignet ist, einen Datensatz möglichst eindeutig zu bezeichnen. Mögliche Identifikatoren wären etwa URLs, ID-Nummern oder die ISBN-Nummer aus dem obigen Beispiel. Auch wenn es meist sinnvoll ist, einen eindeutigen Identifikator für jeden Datensatz zu verwenden, erzwingt das Datenmodell dies nicht. Man kann also auch einfach ein und denselben Wert oder sogar eine leere Zeichenfolge als Identifikator für alle Datensätze nutzen. Der verwendete Datenwert kann, muss aber nicht, zusätzlich auch als Literal im Datensatz enthalten sein, wie das Beispiel zeigt:</p>
+<p>Das Metamorph-Datenmodell sieht außerdem vor, dass Datensätze einen Identifikator haben. Dieser wird in Metamorph meist als <strong><i>Datensatz-ID</i></strong> bezeichnet und ist ein beliebiger Datenwert, der geeignet ist, einen Datensatz möglichst eindeutig zu bezeichnen. Mögliche Identifikatoren wären etwa URLs, ID-Nummern oder die ISBN-Nummer aus dem obigen Beispiel. Auch wenn es meist sinnvoll ist, einen eindeutigen Identifikator für jeden Datensatz zu verwenden, erzwingt das Datenmodell dies nicht. Man kann also auch einfach ein und denselben Wert oder sogar eine leere Zeichenfolge als Identifikator für alle Datensätze nutzen. Der verwendete Datenwert kann, muss aber nicht, zusätzlich auch als Literal im Datensatz enthalten sein, wie das Beispiel zeigt:</p>
 
 <div class="RecordSet">
 	<div class="Record">
@@ -47,7 +47,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</div>
 </div>
 
-<p>Dies ermöglicht es bereits viele Arten von Informationen zu erfassen. Das Beispiel zeigt aber auch, dass die Literale allein einige Informationen nur sehr grob strukturiert erfassen. So sind alle Autoren in einem Literal enthalten und die Adressierung eines einzelnen Autors ist nicht möglich. Im Metamorph-Datenmodell wird dieses Problem dadurch gelöst, dass Literale beliebig oft in einem Datensatz wiederholt werden können:
+<p>Dies ermöglicht es bereits viele Arten von Informationen zu erfassen. Das Beispiel zeigt aber auch, dass die Literale einige Informationen nur sehr grob strukturiert erfassen. So sind alle Autoren in einem einzigen Literal enthalten und innerhalb des Literalwerts nur textlich durch Kommata voneinander getrennt. Damit kann ein einzelner Autorenname nicht gezielt ausgewählt werden. Dazu müsste jeder Autor in einem eigenen Literal zu erfasst sein. Um dies möglichst einfach zu machen, erlaubt es das Metamorph-Datenmodell, in einem Datensatz einen <strong>Literalnamen mehrfach einzusetzen</strong>:
 </p>
 
 <div class="RecordSet">
@@ -66,16 +66,13 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</div>
 </div>
 
-<h1>Datentypen</h1>
-
-<p>Das Metamorph-Datenmodell unterscheidet anders als XML und RDF nicht zwischen verschiedenen Typen von Datenwerten. Es ist nicht möglich, festzulegen, dass ein Literal nur eine bestimmte Art von Werten &ndash; etwa nur Datumsangaben oder Zahlen &ndash; enthält. Alle Namen und Datenwerte im Metamorph-Datenmodell sind immer Zeichenfolgen. Der Hintergrund für diese Entscheidung ist, dass in bibliothekarischen Anwendungen &ndash; dem ersten Anwendungsfall von Metafacture &ndash; meist nur Textdaten Verwendung finden. Andere Datenwerte lassen sich außerdem im Normalfall leicht als Zeichenfolgen darstellen. Dies hat außerdem den Vorteil, dass die Datenverarbeitung toleranter gegenüber unsauberen Daten wird. Würde bspw. &ldquo;publicationYear&rdquo; den Datentyp Datumsangabe besitzen, könnten Datensätze, die Angaben wie "ca. 1560" oder "anno 1066" nicht mehr ohne besondere Fehlerbehandlung verarbeitet werden. Da derartige Varianzen in semistrukturierten Daten häufig vorkommen können, bietet sich die Verwendung von Zeichenfolgen als allgemeinen Datentyp an.
+<p>Im Beispiel wurde das &ldquo;authors&rdquo;-Literal in zwei Literale zerlegt, die jeweils einen Autor repräsentieren. Dank der Möglichkeit Literalnamen beliebig zu wiederholen, können beide Literale den Namen &ldquo;author&rdquo; tragen, und es ist nicht nötig, künstliche Unterscheidungen etwa durch eine angehängte Nummerierung vorzunehmen.
 </p>
 
-<p>In Abschnitt XX werden wir eine Methode beschreiben, wie man trotz dieser Beschränkung noch Typinformationen im Metamorph-Datenmodell ausdrücken (wenn auch nicht durchsetzen) kann.
+<p>Die Literale eines Datensatzes werden im Datenmodell als <strong>geordnete Menge</strong> aufgefasst. Die Reihenfolge der beiden &ldquo;author&rdquo;-Literale ist also nicht zufällig, sondern wohldefiniert und kann daher bedeutungstragend verwendet werden. Dies erlaubt es bspw. Erst- und Zweitautor zu unterscheiden, obwohl beide in einem Literal gleichen Namens abgelegt sind. Das Metamorph-Datenmodell kennt keine spezielles Strukturelement für Listen. Diese werden einfach durch wiederholte Literale gleichen Namens abgebildet.
 </p>
 
-<p>Die Literale eines Datensatzes werden im Datenmodell als geordnete Menge aufgefasst. Die Reihenfolge der beiden author-Literale ist also nicht zufällig, sondern wohldefiniert und kann daher bedeutungstragend verwendet werden. Dies erlaubt es bspw. Erst- und Zweitautor zu unterscheiden, obwohl beide in einem Literal gleichen Namens abgelegt sind. Das Metamorph-Datenmodell kennt keine spezielles Strukturelement für Listen. Diese werden einfach durch wiederholte Literale gleichen Namens abgebildet.
-</p>
+<h2>Entitäten</h2>
 
 <p>Bisher haben wir nur den Datensatz als Element zum Zusammenfassen von Daten kennengelernt. Durch die Wiederholbarkeit der Literale entsteht allerdings oftmals der Bedarf, Literale auch innerhalb eines Datensatzes zu gruppieren, um ihre Zusammengehörigkeit auszudrücken.
 </p>
@@ -103,7 +100,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</div>
 </div>
 
-<p>Im Vergleich zu den vorangegangenen Beispielen ist unser Datensatz durch die Aufspaltung der Namen ziemlich unübersichtlich geworden. Es ist kaum noch ersichtlich, welche Vor- und Nachnamen zusammen gehören. So können z.&thinsp;B. Autoren und Herausgeber nur noch auseinandergehalten werden, weil die Literale unterschiedliche Namen verwenden. Diese Lösung ist allerdings nicht besonders übersichtlich und auch nicht immer möglich. Wenn die Literalnamen bspw. vorgegeben sind (Gründe dafür werden in Abschnitt XX beschrieben), dann kann es sein, dass vorgegebene Literalnamen für die Namensteile nicht zwischen Autorennamen und Herausgebernamen unterscheiden, sondern nur allgemein Vor- und Nachnamen beschreiben. Dann ist keine Unterscheidung zwischen Autoren- und Herausgebernamen mehr möglich. Im Metamorph-Datenmodell können deshalb Literale innerhalb eines Datensatzes gruppiert werden. Diese Gruppen werden <i>Entitäten</i> genannt und habe ebenso wie Literale einen beliebigen Namen, um sie adressieren und die gruppierten Inhalte unterscheiden zu können.
+<p>Im Vergleich zu den vorangegangenen Beispielen ist unser Datensatz durch die Aufspaltung der Namen ziemlich unübersichtlich geworden. Es ist kaum noch ersichtlich, welche Vor- und Nachnamen zusammen gehören. So können z.&thinsp;B. Autoren und Herausgeber nur noch auseinandergehalten werden, weil die Literale unterschiedliche Namen verwenden. Diese Lösung ist allerdings nicht besonders übersichtlich und auch nicht immer möglich. Wenn die Literalnamen bspw. vorgegeben sind (Gründe dafür werden in Abschnitt <a href="#nameDetails">Literal- und Entitätsnamen im Detail</a> beschrieben), kann es sein, dass die vorgegebenen Literalnamen für die Namensteile nicht zwischen Autorennamen und Herausgebernamen unterscheiden, sondern nur allgemein Vor- und Nachnamen beschreiben. Dann ist keine Unterscheidung zwischen Autoren- und Herausgebernamen mehr möglich. Im Metamorph-Datenmodell können deshalb Literale innerhalb eines Datensatzes gruppiert werden. Diese Gruppen werden <strong><i>Entitäten</i></strong> genannt und habe ebenso wie Literale einen beliebigen Namen, um sie gezielt auswählen und die gruppierten Inhalte unterscheiden zu können.
 </p>
 
 <div class="RecordSet">
@@ -141,13 +138,13 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</div>
 </div>
 
-<p>Die Entitäten sind hier in der Darstellung als Boxen gezeichnet, die Literale enthalten. Man kannst sich Entitäten als eine Art von Literal mit komplexem strukturierten Inhalt oder als eine Art Datensatz im Datensatz vorstellen.
+<p>Die Entitäten sind hier in der Darstellung als Boxen gezeichnet, die Literale enthalten. Man kann sich Entitäten als eine Art von Literal mit strukturiertem Inhalt oder als eine Art Datensatz im Datensatz vorstellen.
 </p>
 
-<p>Die Reihenfolge der Entitäten im Datensatz wird gemeinsam mit der Reihenfolge der Literale berücksichtigt. Es ist außerdem zulässig, denselben Namen einmal für ein Literal anschließend für eine Entität zu verwenden.
+<p>Die <strong>Reihenfolge der Entitäten</strong> im Datensatz wird gemeinsam mit der Reihenfolge der Literale berücksichtigt. Es ist außerdem zulässig, denselben Namen einmal für ein Literal anschließend für eine Entität zu verwenden.
 </p>
 
-<p>Entitäten können nicht nur auf Datensatzebene zur Gruppierung von Entitäten verwendet werden, sondern auch innerhalb von Entitäten. Wenn wir bspw. für jeden Autor auch Informationen zu seiner Institution ablegen wollen, können wir die Informationen zur Institution in einer verschachtelten Entität ablegen, um sie zusammenzufassen:
+<p>Entitäten können nicht nur auf Datensatzebene zur Gruppierung von Entitäten verwendet werden, sondern auch innerhalb von Entitäten. Wenn wir bspw. für jeden Autor auch Informationen zu seiner Institution ablegen wollen, können wir die Informationen zur Institution in einer <strong>verschachtelten Entität</strong> ablegen, um sie zusammenzufassen:
 </p>
 
 <div class="RecordSet">
@@ -206,14 +203,23 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 </p>
 
 <ul>
-	<li>Das grundlegende Strukturelement sind <strong>Literale</strong>. Sie erlauben es einen Datenwert mit einem Namen zu versehen. Damit wird deutlich, welche Bedeutung der Datenwert hat und man kann ihn adressieren.</li>
+	<li>Das grundlegende Strukturelement sind <strong>Literale</strong>. Sie erlauben es einen Datenwert mit einem Namen zu versehen. Dieser macht die Bedeutung des Datenwert deutlich und dient dazu, den Datenwert gezielt auswählen zu können.</li>
 
-	<li>Um komplexere Strukturen modellieren zu können, gibt es <strong>Entitäten</strong>. Entitäten fassen mehrere Literale und auch andere Entitäten zusammen. Sie sind ebenso wie Literale benannt, um die Bedeutung der in der Entität enthaltenen Literale und Entitäten auszudrücken und sie adressierbar zu machen.</li>
+	<li>Um komplexere Strukturen modellieren zu können, gibt es <strong>Entitäten</strong>. Entitäten fassen mehrere Literale und auch andere Entitäten zusammen. Sie sind ebenso wie Literale benannt, um die Bedeutung der in der Entität enthaltenen Literale und Entitäten auszudrücken und sie auswählbar zu machen.</li>
 
 	<li>Der <strong>Datensatz</strong> ist das äußerste Strukturelement des Metamorph-Datenmodells. Er fasst Entitäten und Literale zusammen. Um den Datensatz identifizieren zu können, kann er mit einer Datensatz-ID versehen werden, die quasi als Name des Datensatzes fungiert.</li>
 </ul>
 
-<h2>Entitäten als Datensätze und Datensätze als Entitäten</h2>
+<p>Das Metamorph-Datenmodell mag auf den ersten Blick einfach und eingeschränkt erscheinen, es hat sich aber in der praktischen Anwendung gezeigt, dass das Datenmodell alle Strukturen abdeckt, die bei semistrukturierten Daten auftreten.
+</p>
+
+<h2>Das Metamorph-Datenmodell im Detail</h2>
+
+<!-- TODO: Etwas ausführlichere Einleitung -->
+<p>In den folgenden Abschnitten werden einige Möglichkeiten vorstellt, wie spezielle Anwendungsfälle auf das Metamorph-Datenmodell abgebildet werden können.
+</p>
+
+<h3>Entitäten als Datensätze und Datensätze als Entitäten</h3>
 
 <p>Es fällt auf, dass die Beschreibung der Funktion der Entitäten und des Datensatzes sehr ähnlich ist. In der Tat ist es so, dass sich der Datensatz von der Entität strukturell nur dadurch unterscheidet, dass er die äußere Hülle der Datenstruktur bildet. Es ist daher problemlos möglich, einen Datensatz in einen anderen als Entität einzubetten oder eine Entität aus einem Datensatz herauszuziehen und als eigenen Datensatz zu betrachten. Dabei sollte nur beachtet werden, dass sowohl Datensatz-ID als auch Entitätsname zwar beliebige Werte annehmen können, die ihnen zugeschriebene Bedeutung aber leicht unterschiedlich ist. Während die Datensatz-ID einen konkreten Datensatz bezeichnet und sich von Datensatz zu Datensatz unterscheidet, dient der Entitätsname der Identifikation einer Entität in der Datensatzstruktur und ist bei jedem Datensatz gleich. Aus diesem Grund ist es sinnvoll, beim Umwandeln eines Datensatzes in eine Entität nicht die Datensatz-ID als Entitätsname zu verwenden, sondern einen festen Namen. Andersherum sollte beim Herauslösen eines Datensatzes eine ID generiert werden, statt einfach den Entitätsnamen zu verwenden.
 </p>
@@ -270,10 +276,10 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</div>
 </div>
 
-<p>Das Ergebnis zeigt, dass wir zwei Datensätze mit der ID author haben, sodass wir die Datensätze nicht mehr eindeutig identifizieren können. Ein weiterer Nachteil dieses Vorgehens ist, dass die Personen nun fest als Autoren oder Herausgeber benannt werden, obwohl dies eine Eigenschaft ist, die sie eigentlich nur im Zusammenhang mit einem Buch besitzen. Es ist ja durchaus möglich, dass etwa Jacob Grimm bei einem Buch Autor und bei einem anderen Herausgeber war. 
+<p>Das Ergebnis zeigt, dass wir zwei Datensätze mit der ID &ldquo;author&rdquo; haben, sodass wir die Datensätze nicht mehr eindeutig identifizieren können. Ein weiterer Nachteil dieses Vorgehens ist, dass die Personen nun fest als Autoren oder Herausgeber benannt werden, obwohl dies eine Eigenschaft ist, die sie eigentlich nur im Zusammenhang mit einem Buch besitzen. Es ist ja durchaus möglich, dass etwa Jacob Grimm bei einem Buch Autor und bei einem anderen Herausgeber war. 
 </p>
 
-<p>Um diese Probleme zu vermeiden, ist es sinnvoll, beim Herauslösen der Personendatensätze die Entitätsnamen durch eindeutige Datensatz-IDs zu ersetzen. Dies erlaubt es uns nämlich auch, in dem Titeldatensatz auf diese Datensätze zu verweisen und Jacob und Wilhelm Grimm so als Autoren und Heinz Rölleke als Herausgeber zu identifizieren.</p>
+<p>Um diese Probleme zu vermeiden, ist es sinnvoll, beim Herauslösen der Personendatensätze die Entitätsnamen durch <strong>eindeutige Datensatz-IDs</strong> zu ersetzen. Dies erlaubt es uns nämlich auch, in dem Titeldatensatz auf diese Datensätze zu verweisen und Jacob und Wilhelm Grimm so als Autoren und Heinz Rölleke als Herausgeber zu identifizieren.</p>
 
 <div class="RecordSet">
 	<div class="Record">
@@ -327,13 +333,12 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</div>
 </div>
 
-<p>Die Literale &ldquo;authorId&rdquo; und &ldquo;editorId&rdquo; unterscheiden sich nicht von anderen Literalen. Es liegt in den Händen des Anwenders, die Datenwerte dieser Literale als Verweise auf andere Datensätze zu interpretieren. Das Metamorph-Modell kennt kein besonderes Strukturelement für Verknüpfungen.
+<!-- TODO: Hier eine kurze Erläuterung zu den Id-Literalen ergänzen -->
+
+<p>Die Literale &ldquo;authorId&rdquo; und &ldquo;editorId&rdquo; unterscheiden sich nicht von anderen Literalen. Das Metamorph-Modell kennt kein besonderes Strukturelement für Verknüpfungen. Es liegt in den Händen des Anwenders, die Datenwerte dieser Literale als Verweise auf andere Datensätze zu interpretieren. 
 </p>
 
-<p>Das Metamorph-Datenmodell mag auf den ersten Blick einfach und eingeschränkt erscheinen, es hat sich aber in der praktischen Anwendung gezeigt, dass das Datenmodell alle Strukturen abdeckt, die bei semistrukturierten Daten auftreten. Der folgende Abschnitt stellt einige Möglichkeiten vor, wie man auf einfache Weise auch spezielle Anwendungsfälle auf das Metamorph-Datenmodell abbilden kann.
-</p>
-
-<h2>Literal- und Entitätsnamen im Detail</h2> 
+<h3 id="nameDetails">Literal- und Entitätsnamen im Detail</h3> 
 
 <p>Bei der Einführung der Literale wurde bereits kurz erwähnt, dass die Literalnamen völlig beliebig sein können und dass das Metamorph-Datenmodell keinerlei Vorgaben macht, wie Namen für Literale und Entitäten zu gestalten sind. Dies ist eine wichtige Eigenschaft des Datenmodells. Es definiert nur die verfügbaren Strukturelemente (Literale und Entitäten), aber nicht, wie diese kombiniert und benannt werden müssen, um Daten aus einem bestimmten Anwendungsbereich (bspw. bibliothekarische Titelaufnahmen) zu beschreiben. Dies kann je Art der Daten völlig unterschiedlich sein und ermöglicht es, Metamorph für die Verarbeitung von Daten aus verschiedensten Anwendungsbereichen einzusetzen. Voraussetzung ist nur, dass sich die Daten in einer hierarchischen Datenstruktur mit Schlüssel-Wert-Paaren abbilden lassen. Das ist dieselbe Idee, die auch XML zugrunde liegt: Es wird eine allgemeine Struktur vorgegeben, die konkrete Ausprägung bleibt aber dem Anwender überlassen, sodass eine Nutzung in unterschiedlichen Anwendungsbereichen möglich ist.
 </p>
@@ -388,7 +393,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</tbody>
 </table>
 
-<h1>Strukturierte Literal- und Entitätsnamen</h1>
+<h4>Strukturierte Literal- und Entitätsnamen</h4>
 
 <p>Manchmal gibt es zusätzliche Informationen zu einem Literal, die für die Arbeit mit dem Literal hilfreich sind und die deshalb in der Datenmodellierung enthalten sein sollten. Solche Informationen können bspw. Angaben zur Sprache oder zum Datentyp eines Literalwerts sein oder ein Hinweis darauf, dass der Literalwert ein Verweis auf einen anderen Datensatz ist. Eine Möglichkeit, solche Informationen in die Daten zu integrieren, ist die Nutzung einer Entität statt eines Literals, innerhalb derer dann der eigentliche Datenwert und die Zusatzinformationen in mehreren Literalen abgelegt sind. Auf diese Weise könnten wir Sprachangaben zu dem Literal <code>title: Grimms' Fairy Tales</code> in folgender Form darstellen:</p>
 
@@ -429,7 +434,15 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 <p>Die Integration von Zusatzinformationen in die Literal- und Entitätsnamen ist eine einfache und vielseitige Technik. Ihre Verwendung ist nicht immer offensichtlich und die Bedeutung verschiedener Angaben in den Namen ist nicht immer selbsterklärend. Außerdem kann es notwendig werden, im Zuge der Datenverarbeitung die Zusatzinformationen wieder aufwändig aus den Namen herauszutrennen. Bei komplexeren Zusatzinformationen sollte man daher die oben beschriebene Entitäten-Methode der strukturierten Benennung vorziehen. Für Kleinigkeiten wie Hinweise auf Verweise, ist sie jedoch oft optimal.
 </p>
 
-<h2>Datenformate</h2> 
+<h3>Datentypen</h3>
+
+<p>Das Metamorph-Datenmodell unterscheidet anders als bspw. XML und RDF nicht zwischen verschiedenen Typen von Datenwerten. Es ist nicht möglich, festzulegen, dass ein Literal nur eine bestimmte Art von Werten &ndash; etwa nur Datumsangaben oder Zahlen &ndash; enthält. Alle Namen und Datenwerte im Metamorph-Datenmodell sind immer Zeichenfolgen. Der Hintergrund für diese Entscheidung ist, dass im bibliothekarischen Bereich &ndash; in dem Metafacture seine Wurzeln hat &ndash; meist alle Informationen als Text erfasst werden, denn Zahlen, Datumsangaben und andere Datenwerte lassen sich im Normalfall leicht als Zeichenfolgen darstellen. Dies hat den Vorteil, dass auch von der Norm abweichende Angaben für einzelne Werte problemlos erfasst werden können. Würde bspw. &ldquo;publicationYear&rdquo; den Datentyp Datumsangabe besitzen, könnten Angaben wie &ldquo;ca. 1560&rdquo; oder &ldquo;anno 1066&rdquo; nicht mehr verarbeitet werden. Da derartige Sonderfälle in semistrukturierten Daten häufig vorkommen, bietet sich die Verwendung von <strong>Zeichenfolgen als allgemeinen Datentyp</strong> im Metamorph-Datenmodell an.
+</p>
+
+<p>Eine Möglichkeit, dennoch Informationen zum gewünschten Datentyp eines Literalwerts festzuhalten, bilden die im vorangegangenen Abschnitt vorgestellten strukturierten Literalnamen. Wenn wir z.&thinsp;B. ausdrücken wollen, dass im Literal &ldquo;publicationYear&rdquo; nur Datumsangaben stehen sollen, könnten wir den Namen einfach mit einer Angabe wie &ldquo;^^IsoDate&rdquo; versehen. Damit würden wir darauf hinweisen, dass das Erscheinungsjahr eine ISO-konforme Datumsangabe sein sollte. Es muss dabei immer beachtet werden, dass dies nur Hinweise an den Benutzer sind; Metamorph wertet diese Angaben in keiner Weise aus. Es ist aber natürlich möglich, Erweiterungen für Metafacture zu entwickeln, die diese Namensergänzungen bspw. für Überprüfungen oder Korrekturen verwenden. <!-- TODO: Verweis auf Kapitel zu Entwicklung von Modulen -->
+</p>
+
+<h2>Datenformate</h2>
 
 <p>Die im vorhergehenden Abschnitt beschriebene Trennung von Strukturelementen und Vokabular bzw. Ontologie ist eine Voraussetzung, um das Metamorph-Datenmodell in verschiedenen Anwendungsbereichen nutzen zu können. Die zweite Voraussetzung ist die Möglichkeit verschiedenste Datenformate für die Ein- und Ausgabe verwenden zu können. Aus diesem Grund sind auch die Beispiele in diesem Kapitel grafisch dargestellt und nicht als formatierter Text: Es gibt kein festgelegtes Format für die Darstellung oder Serialisierung von Datensätzen im Metamorph-Datenmodell.  
 </p>
@@ -468,7 +481,7 @@ Namen und Werte können auf zwei Arten im Formeta-Format dargestellt werden. Ent
 <!-- Hier muss der Übergang noch verbessert werden -->
 
 <p>Ein Literal sind einfach zwei durch einen Doppelpunkt in Literalname und Literalwert aufgeteilte Texte:
-</p>
+</p>  
 
 <pre class="Example">
 title: Kinder- und Hausmärchen
@@ -489,12 +502,12 @@ author{
 <p>Damit haben wir die Grundstrukturen des Formeta-Formats kennengelernt und können uns nun einigen Feinheiten zuwenden
 </p>
 
-<h2>Beispiele für die Darstellung verschiedener Formate im Metamorph-Datenmodell</h2>
+<h3>Beispiele für die Darstellung verschiedener Formate im Metamorph-Datenmodell</h3>
 
 <p>Im Folgenden zeige ich wie verschiedene bekannte Datenformate im Metamorph-Datenmodell abgebildet werden können. Wir beginnen mit einem einfachen Datenformat aus dem Bibliotheksbereich und beschäftigen und anschließend mit XML, JSON und RDF. Diese Formate sind besonders interessant, da sie ebenfalls zur Erfassung beliebiger semistrukturierter Daten entwickelt wurden. Ihre Datenmodelle sind allerdings alle leicht unterschiedlich und unterscheiden sich auch vom Metamorph-Datenmodell. Wir werden aber sehen, dass es dennoch möglich ist, beliebig strukturierte Daten aus diesen Formate im Metamorph-Datenmodell zu modellieren. Dies zeit, dass sich jegliche in JSON, XML und RDF vorliegenden Daten mit Metamorph verarbeiten lassen.
 </p>
 
-<h3>Darstellung von PICA+ im Metamorph-Datenmodell</h3>
+<h4>Darstellung von PICA+ im Metamorph-Datenmodell</h4>
 
 <p>Einer der ersten Anwendungsfälle von Metamorph war die Konversion von bibliothekarischen Daten, die im PICA+ Format vorlagen. Dieses Datenformat ist recht einfach strukturiert. Es gibt Datensätze, die jeweils bspw. einen Buchtitel oder eine Zeitschrift beschreiben. Ein Datensatz setzt sich aus sogenannten Feldern zusammen, die Angaben zu bestimmten Aspekten des beschriebenen Objekts enthalten. Da die Angaben oftmals noch eine feinere Untergliederung aufweisen, bestehen die Felder aus Unterfeldern. Felder und Unterfelder können wiederholbar sein. Bei gleichnamigen Feldern garantiert PICA+ keine bestimmte Reihenfolge dieser Felder. Wenn dies Notwendig ist, kann der Feldname um eine sogenannte <i>Occurrence</i> ergänzt werden. Dabei handelt es sich um einen Index, der an den Feldnamen angehängt wird und die Position des Feldes beschreibt.
 </p>
@@ -550,11 +563,11 @@ TODO: Beispiel kompletieren
 
 <p>Das Beispiel zeigt, dass sich außer den Strukturelementen zur Gliederung des Datensatzes durch die Umwandlung ins Metamorph-Datenmodell nichts an dem Datensatz geändert hat, was seine Bedeutung verändert. Auf die gleich Art und Weise können auch andere Datenformate aus dem bibliothekarischen Bereich wie etwa MARC21 ins Metamorph-Datenmodel übertragen werden.</p>
 
-<h3>Darstellung von JSON im Metamorph-Datenmodell</h3>
+<h4>Darstellung von JSON im Metamorph-Datenmodell</h4>
 
-<h3>Darstellung von XML im Metamorph-Datenmodell</h3>
+<h4>Darstellung von XML im Metamorph-Datenmodell</h4>
 
-<h3>Darstellung von RDF im Metamorph-Datenmodell</h3>
+<h4>Darstellung von RDF im Metamorph-Datenmodell</h4>
 
 <p>Im Gegensatz zu RDF verwendet Metamorph ein etwas einfacheres Datenmodell und behält das Konzept des Datensatzes bei, dass es in RDF so nicht mehr gibt. Der Grund dafür ist, das sich in der täglichen Arbeit mit Daten zeigt, dass diese häufig in einer wohldefinierten Zusammenstellung benötigt werden und nicht nur in einem weitläufigen Netz.
 </p>
