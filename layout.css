@@ -1,5 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Gentium+Basic:400,700,700italic,400italic);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
+
 body {
 	margin: 5em 15% 10em 15%;
+	font-family: 'Gentium Basic', serif;
+	font-size: 14pt;
+	line-height: 130%;
 }
 
 @media print {
@@ -9,24 +15,19 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: sans-serif;
+	font-family: 'PT Sans', sans-serif;
 }
 
-aside > h1 {
-	font-size-adjust: .5;
+li {
+	margin-bottom: 0.5em;
 }
 
 p {
 	text-align: justify;
 }
 
-aside {
-	margin-top: 40px;
-	margin-bottom: 40px;
-	padding: 15px 30px 15px 30px;
-	
-	border-top: 3px #204a87 solid;
-	border-bottom: 3px #204a87 solid;
+code {
+	font-size-adjust: .5;
 }
 
 figure {
@@ -42,7 +43,7 @@ figure img {
 figcaption {
 	margin-top: 10px;
 
-	font-family: sans-serif;
+	font-family: 'PT Sans', sans-serif;
 }
 
 .Footnote {
@@ -60,7 +61,7 @@ table {
 	margin-left: auto;
 	margin-right: auto;
 
-	font-family: sans-serif;
+	font-family: 'PT Sans', sans-serif;
 }
 
 th {
@@ -97,7 +98,7 @@ tbody tr:last-of-type td {
 .RecordSnippet {
 	text-align: center;
 	
-	font-family: sans-serif;
+	font-family: 'PT Sans', sans-serif;
 }
 
 .RecordSnippet {
@@ -106,7 +107,8 @@ tbody tr:last-of-type td {
 
 .Record {
 	display: inline-block;
-
+	min-width: 50%;
+	
 	overflow: hidden;
 
 	margin: 10px;
