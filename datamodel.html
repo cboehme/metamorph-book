@@ -392,9 +392,24 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</tbody>
 </table>
 
+<p>Im Gegensatz zu RDF und XML gibt es im Metamorph-Datenmodell keinen Standard, um eine <strong>Ontologie formal zu definieren</strong>. In der Tabelle sind die erwarteten Datenstrukturen deshalb textueller Form beschrieben.
+</p>
+
+<p>Grundsätzlich bietet die Möglichkeit, eine Datenstruktur formal beschreiben zu können, einige Vorteile bei der Datenverarbeitung. So bildet eine formale Ontologie eine unmissverständliche Dokumentation der in einer Anwendung zulässigen Datenstrukturen. Auch kann man mit ihr die Korrektheit von konkreten Ein- und Ausgabedaten leicht überprüfen. Wir haben uns dennoch dagegen entschieden, dem Metamorph-Datenmodell einen Standard für die formale Definition von Ontologien zur Seite zu stellen, sondern stattdessen den Fokus auf die Arbeit mit sogenannten <strong>schema-freien Daten</strong> gerichtet. Zum einen wird Metamorph in erster Linie verwendet, um Daten aus anderen existierenden Formaten darzustellen. Es liegen daher oftmals bereits formale Ontologiedefinitionen zu diesen Ursprungsformaten vor, die zur Dokumentation herangezogen werden können. Zum anderen steht dem Wunsch, die Korrektheit von Ein- und Ausgabedaten validieren zu können, die häufig große Varianz der verarbeiteten Daten gegenüber, die die Definition einer vollständigen Ontologie aufwändig und schwierig macht. Zur Komplexität der Ontologie trägt außerdem bei, dass die Struktur eines Datensatzes und die Bedeutung einzelner Namen oft auch abhängig von bestimmten Datenwerten im Datensatz ist. Angesichts dessen wurde beim Entwurf von Metamorph deshalb entschieden, das System für die Verarbeitung von schema-freie Daten auszulegen, sodass es robust gegenüber fehlerhaften oder unerwarteten Daten ist.
+</p>
+
 <h4>Strukturierte Literal- und Entitätsnamen</h4>
 
-<p>Manchmal gibt es zusätzliche Informationen zu einem Literal, die für die Arbeit mit dem Literal hilfreich sind und die deshalb in der Datenmodellierung enthalten sein sollten. Solche Informationen können bspw. Angaben zur Sprache oder zum Datentyp eines Literalwerts sein oder ein Hinweis darauf, dass der Literalwert ein Verweis auf einen anderen Datensatz ist. Eine Möglichkeit, solche Informationen in die Daten zu integrieren, ist die Nutzung einer Entität statt eines Literals, innerhalb derer dann der eigentliche Datenwert und die Zusatzinformationen in mehreren Literalen abgelegt sind. Auf diese Weise könnten wir Sprachangaben zu dem Literal <code>title: Grimms' Fairy Tales</code> in folgender Form darstellen:</p>
+<p>Manchmal gibt es zusätzliche Informationen zu einem Literal, die für die Arbeit mit dem Literal hilfreich sind und die deshalb in der Datenmodellierung enthalten sein sollten. Solche Informationen können bspw. Angaben zur Sprache oder zum Datentyp eines Literalwerts sein oder ein Hinweis darauf, dass der Literalwert ein Verweis auf einen anderen Datensatz ist. Eine Möglichkeit, solche Informationen in die Daten zu integrieren, ist die Nutzung einer Entität statt eines Literals, innerhalb derer dann der eigentliche Datenwert und die Zusatzinformationen in mehreren Literalen abgelegt sind. Angenommen wir haben in einem Datensatz folgendes Literal, da einen englischsprachigen Buchtitel enthält: 
+</p>
+
+<div class="RecordSnippet">
+	<dl>
+		<dt>title</dt><dd>Grimms' Fairy Tales</dd>
+	</dl>
+</div>
+
+<p>Um dieses Wissen, dass der Titel in diesem Literal in englischer Sprache vorliegt, festzuhalten, können wir das Literal in eine Entität mit Zusatzinformationen umbauen:</p>
 
 <div class="RecordSnippet">
 	<dl>
@@ -408,11 +423,17 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</dl>
 </div>
 
-<p>Das value-Literal entspricht hier dem ursprünglichen Wert des title-Literals, und die Zusatzinformation zur Sprache ist als zusätzliches Literal in der Entität enthalten. Die Entität selbst wird dann anstelle des ursprünglichen title-Literals verwendet.
+<p>Das &ldquo;value&rdquo;-Literal entspricht hier dem ursprünglichen Wert des &ldquo;title&rdquo;-Literals, und die Zusatzinformation zur Sprache ist als zusätzliches Literal in der Entität enthalten. Die Entität selbst wird dann anstelle des ursprünglichen &ldquo;title&rdquo;-Literals verwendet.
 </p>
 
-<p>Diese Lösung erfüllt ihren Zweck, hat allerdings den Nachteil, die Struktur des Datensatzes deutlich zu verändern. Dies ist nicht immer gewünscht, insbesondere wenn die Zusatzinformationen eigentlich recht kompakt sind, wie es etwa bei Sprachangaben oder Verknüpfungshinweisen der Fall ist. Eine Möglichkeit, zu einer kompakteren Darstellung zu kommen, ist die Verwendung strukturierter Literal- und Entitätsnamen. So könnten wir im obigen Beispiel einfach festlegen, dass an einen Literalnamen ein @-Zeichen gefolgt von einem Sprachcode angehängt werden kann, um die Sprache des Datenwerts anzugeben. Unser title-Literal sähe dann wie folgt aus: <code>title@en: Grimms' Fairy Tales</code>.
+<p>Diese Lösung erfüllt ihren Zweck, hat allerdings den Nachteil, die Struktur des Datensatzes deutlich zu verändern. Dies ist nicht immer gewünscht, insbesondere wenn die Zusatzinformationen eigentlich recht kompakt sind, wie es etwa bei Sprachangaben oder Verknüpfungshinweisen der Fall ist. Eine Möglichkeit, zu einer kompakteren Darstellung zu kommen, ist die Verwendung strukturierter Literal- und Entitätsnamen. So könnten wir im obigen Beispiel einfach festlegen, dass an einen Literalnamen ein @-Zeichen gefolgt von einem Sprachcode angehängt werden kann, um die Sprache des Datenwerts anzugeben. Unser title-Literal sähe dann wie folgt aus:
 </p>
+
+<div class="RecordSnippet">
+	<dl>
+		<dt>title@en</dt><dd>Grimms' Fairy Tales</dd>
+	</dl>
+</div>
 
 <p>Andere Varianten von strukturierten Namen, die wir bereits in Metafacture eingesetzt haben, sind das Voranstellen eines *-Zeichens, um URLs zu markieren, oder eines ~-Zeichens, um Literale zu kennzeichnen, die als XML-Attribute zu behandeln sind. Eine interessante Variante ist auch die Verwendung von [] als Suffix für Entitätsnamen in der JSON-Verarbeitung, um anzudeuten, dass der Inhalt der Entität als Array aufzufassen ist und die Namen der Elemente keine Bedeutung tragen. Das folgende Beispiel zeigt die Verwendung des Konstrukts, um ein Array mit drei Elementen zu modellieren:
 </p>

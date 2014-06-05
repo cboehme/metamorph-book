@@ -26,8 +26,8 @@ p {
 	text-align: justify;
 }
 
-code {
-	font-size-adjust: .5;
+pre, code {
+	font-size: 12pt;
 }
 
 figure {
@@ -92,6 +92,8 @@ tbody tr:last-of-type td {
 	width: 33em;
 	margin: 0.2em auto 0.2em auto;
 	padding: 1em;
+
+	page-break-inside: auto;
 }
 
 .RecordSet,
@@ -99,6 +101,7 @@ tbody tr:last-of-type td {
 	text-align: center;
 	
 	font-family: 'PT Sans', sans-serif;
+	font-size: 13pt;
 }
 
 .RecordSnippet {
