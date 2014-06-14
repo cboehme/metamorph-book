@@ -21,7 +21,7 @@
 
 <p class="Example">
 Kinder- und Hausmärchen<br>
-von Jacob Grimm, Wilhelm Carl Grimm<br>
+von Jacob Grimm und Wilhelm Carl Grimm<br>
 Heinz Rölleke (Hrsg.)<br>
 Vandenhoeck und Ruprecht, Göttingen 1986<br>
 978-3-525-20764-2
@@ -47,7 +47,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</div>
 </div>
 
-<p>Dies ermöglicht es bereits viele Arten von Informationen zu erfassen. Das Beispiel zeigt aber auch, dass die Literale einige Informationen nur sehr grob strukturiert erfassen. So sind alle Autoren in einem einzigen Literal enthalten und innerhalb des Literalwerts nur textlich durch Kommata voneinander getrennt. Ein einzelner Autorenname kann so nicht gezielt ausgewählt werden; dazu müsste jeder Autor in einem eigenen Literal abgelegt sein. Um dies möglichst einfach zu machen, erlaubt es das Metamorph-Datenmodell, in einem Datensatz <strong>Literalnamen mehrfach einzusetzen</strong>:
+<p>Dies ermöglicht es bereits viele Arten von Informationen zu erfassen. Das Beispiel zeigt aber auch, dass die Literale einige Informationen nur sehr grob strukturiert erfassen. So sind alle Autoren in einem einzigen Literal enthalten und innerhalb des Literalwerts nur textlich durch Kommata voneinander getrennt. Ein einzelner Autorenname kann so nicht gezielt ausgewählt werden; dazu müsste jeder Autor in einem eigenen Literal abgelegt sein. Um dies möglichst einfach zu machen, erlaubt es das Metamorph-Datenmodell, in einem Datensatz <strong>Literalnamen mehrfach zu verwenden</strong>:
 </p>
 
 <div class="RecordSet">
@@ -217,7 +217,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 
 <h2>Das Metamorph-Datenmodell im Detail</h2>
 
-<p>In den folgenden Abschnitten werden einige Detailaspekte des Metamorph-Datenmodells vorstellt. Ein besonderes Augenmerk liegt dabei auf Techniken, die sich daraus ergeben, um auch spezielle Anwendungsfälle im Metamorph-Datenmodell darstellen zu können.
+<p>In den folgenden Abschnitten werden einige Detailaspekte des Metamorph-Datenmodells vorstellt. Ein besonderes Augenmerk liegt dabei auf Techniken, die es ermöglichen, auch spezielle Anwendungsfälle im Metamorph-Datenmodell elegant darstellen zu können.
 </p>
 
 <h3 id="entitätenDatensätze">Entitäten als Datensätze und Datensätze als Entitäten</h3>
@@ -334,12 +334,12 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</div>
 </div>
 
-<p>Als Datensatz-IDs der herausgelösten Datensätze werden im Beispiel nun eindeutige Nummern verwendet. Außerdem wurden die &ldquo;author&rdquo;- und &ldquo;editor&rdquo;-Entitäten im Titeldatensatz  durch Literale ersetzt, die als Datenwert die Datensatz-ID der vormals dort eingebundenen Entität haben. Um kenntlich zu machen, dass diese Literale keinen Autoren- bzw. Herausgebernamen enthalten, wurden ihre Namen zu &ldquo;authorId&rdquo; und &ldquo;editorId&rdquo; geändert. Damit wird am Literalnamen erkennbar, dass die Literale nur Verweise enthalten. Gleichzeitig werden aber auch die Beziehungen zwischen dem Titeldatensatz und den Personendatensätzen beschrieben, ohne dass die Personen auf eine bestimmte Rolle festgelegt sind, wie im vorherigen Beispiel noch der Fall war. Trotz der besonderen Namen mit dem Anhängsel &ldquo;Id&rdquo; unterscheiden sich die Literale aus Sicht das Metamorph-Datenmodells nicht anderen Literalen. Das Datenmodell kennt keine besonderen Strukturelemente für Verknüpfungen zwischen Datensätzen. Es liegt in den Händen des Anwenders, die Datenwerte der neu eingefügten Literale als Verweise auf andere Datensätze zu deuten. 
+<p>Als Datensatz-IDs der herausgelösten Datensätze werden im Beispiel nun eindeutige Nummern verwendet. Außerdem wurden die &ldquo;author&rdquo;- und &ldquo;editor&rdquo;-Entitäten im Titeldatensatz  durch Literale ersetzt, die als Datenwert die Datensatz-ID der vormals dort eingebundenen Entität haben. Um kenntlich zu machen, dass diese Literale keinen Autoren- bzw. Herausgebernamen enthalten, wurden ihre Namen zu &ldquo;authorId&rdquo; und &ldquo;editorId&rdquo; geändert. Damit wird am Literalnamen erkennbar, dass die Literale nur Verweise enthalten. Gleichzeitig werden aber auch die Beziehungen zwischen dem Titeldatensatz und den Personendatensätzen beschrieben, ohne dass die Personen auf eine bestimmte Rolle festgelegt sind, wie im vorherigen Beispiel noch der Fall war. Trotz der besonderen Namen mit dem Anhängsel &ldquo;Id&rdquo; unterscheiden sich die Literale aus Sicht des Metamorph-Datenmodells nicht von anderen Literalen. Das Datenmodell kennt keine besonderen Strukturelemente für Verknüpfungen zwischen Datensätzen. Es liegt in den Händen des Anwenders, die Datenwerte der neu eingefügten Literale als Verweise auf andere Datensätze zu deuten. 
 </p>
 
 <h3 id="nameDetails">Vokabulare und Ontologien für Literale und Entitäten</h3> 
 
-<p>Bei der Einführung der Literale wurde bereits kurz erwähnt, dass die Literalnamen völlig beliebig sein können und dass das Metamorph-Datenmodell keinerlei Vorgaben macht, wie Namen für Literale und Entitäten zu gestalten sind. Dies ist eine wichtige Eigenschaft des Datenmodells. Es definiert nur die verfügbaren Strukturelemente (Literale und Entitäten), aber nicht, wie diese kombiniert und benannt werden müssen, um Daten aus einem bestimmten Anwendungsbereich (bspw. bibliothekarische Titelaufnahmen) zu beschreiben. Dies kann je Art der Daten völlig unterschiedlich sein und ermöglicht es, Metamorph für die Verarbeitung von Daten aus verschiedensten Anwendungsbereichen einzusetzen. Voraussetzung ist nur, dass sich die Daten in einer hierarchischen Datenstruktur mit Schlüssel-Wert-Paaren abbilden lassen. Das ist dieselbe Idee, die auch XML zugrunde liegt: Es wird eine allgemeine Struktur vorgegeben, die konkrete Ausprägung bleibt aber dem Anwender überlassen, sodass eine Nutzung in unterschiedlichen Anwendungsbereichen möglich ist.
+<p>Bei der Einführung der Literale wurde bereits kurz erwähnt, dass die Literalnamen völlig beliebig sein können und dass das Metamorph-Datenmodell keinerlei Vorgaben macht, wie Namen für Literale und Entitäten zu gestalten sind. Dies ist eine wichtige Eigenschaft des Datenmodells: Es definiert nur die verfügbaren Strukturelemente (Literale und Entitäten), aber nicht, wie diese kombiniert und benannt werden müssen, um Daten aus einem bestimmten Anwendungsbereich (bspw. bibliothekarische Titelaufnahmen) zu beschreiben. Dies kann je Art der Daten völlig unterschiedlich sein und ermöglicht es, Metamorph für die Verarbeitung von Daten aus verschiedensten Anwendungsbereichen einzusetzen. Voraussetzung ist nur, dass sich die Daten in einer hierarchischen Datenstruktur mit Schlüssel-Wert-Paaren abbilden lassen. Das ist dieselbe Idee, die auch XML zugrunde liegt: Es wird eine allgemeine Struktur vorgegeben, die konkrete Ausprägung bleibt aber dem Anwender überlassen, sodass eine Nutzung in unterschiedlichen Anwendungsbereichen möglich ist.
 </p>
 
 <p>Je nach Anwendungsfall können Literal- und Entitätsnamen unterschiedlich gewählt werden. In dem Beispiel im vorherigen Abschnitt folgen die Namen bspw. keinem bestimmtem bibliothekarischen Format, sondern wurden einfach so gewählt, dass ihre Bedeutung sofort verständlich wird. Wenn allerdings Daten verarbeitet werden sollen, die bereits in einem bestimmten domänenspezifischen Format vorliegen, ist es meist sinnvoll, die Benennung und Strukturvorgaben dieses Formats zu übernehmen. So bleibt die ursprüngliche Bedeutung der Daten erhalten und sie können trotzdem mit Metamorph verarbeitet werden.
@@ -392,15 +392,18 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</tbody>
 </table>
 
-<p>Im Gegensatz zu RDF und XML gibt es im Metamorph-Datenmodell keinen Standard, um eine <strong>Ontologie formal zu definieren</strong>. In der Tabelle sind die erlaubten Datenstrukturen deshalb in textueller Form beschrieben.
+<p>Im Gegensatz zu RDF und XML gibt es im Metamorph-Datenmodell keinen Standard, um eine <strong>Ontologie formal zu definieren</strong>. In der Tabelle sind die erlaubten Datenstrukturen deshalb in textueller Form beschrieben. Grundsätzlich bietet die Möglichkeit, eine Datenstruktur formal beschreiben zu können, einige Vorteile bei der Datenverarbeitung. So bildet eine formale Ontologie eine unmissverständliche Dokumentation der in einer Anwendung zulässigen Datenstrukturen. Auch kann man mit ihr die Korrektheit von konkreten Ein- und Ausgabedaten überprüfen und garantieren. Wir haben uns trotz dieser Vorteile dagegen entschieden, dem Metamorph-Datenmodell einen Standard für die formale Definition von Ontologien zur Seite zu stellen.
 </p>
 
-<p>Grundsätzlich bietet die Möglichkeit, eine Datenstruktur formal beschreiben zu können, einige Vorteile bei der Datenverarbeitung. So bildet eine formale Ontologie eine unmissverständliche Dokumentation der in einer Anwendung zulässigen Datenstrukturen. Auch kann man mit ihr die Korrektheit von konkreten Ein- und Ausgabedaten überprüfen und garantieren. Wir haben uns trotz dieser Vorteile dagegen entschieden, dem Metamorph-Datenmodell einen Standard für die formale Definition von Ontologien zur Seite zu stellen. Das Metamorph-Datenmodell wird in erster Linie verwendet, um Daten aus anderen existierenden Formaten darzustellen. Daher liegen oftmals bereits formale Ontologiedefinitionen zu diesen Ursprungsformaten vor, die zur Dokumentation herangezogen werden können. Eine spezielle Ontologiebeschreibung für die Repräsentation im Metamorph-Datenmodell böte keinen dokumentarischen Mehrwert. Weiterhin steht dem Wunsch, die Korrektheit von Ein- und Ausgabedaten validieren zu können, die hohe Variabilität semistrukturierter Daten entgegen, deren Struktur häufig nicht allgemein definiert ist, sondern von den konkret vorliegenden Daten abhängt. In der Praxis ist es für viele semistrukturierte Daten verhältnismäßig schwierig und aufwändig, Ontologien zu erstellen. Angesichts dessen wurde beim Entwurf von Metamorph entschieden, das System für die Verarbeitung von <strong>schema-freien Daten</strong>  &ndash; d.&thinsp;h. Daten, deren Struktur nicht in einer Ontologie definiert ist &ndash; auszulegen, und es robust gegenüber fehlerhaften oder unerwarteten Datenstrukturen zu gestalten.
+<p>Das Metamorph-Datenmodell wird in erster Linie verwendet, um Daten aus anderen existierenden Formaten darzustellen. Daher liegen oftmals bereits formale Ontologiedefinitionen zu diesen Ursprungsformaten vor, die zur Dokumentation herangezogen werden können. Eine spezielle Ontologiebeschreibung für die Repräsentation im Metamorph-Datenmodell böte keinen dokumentarischen Mehrwert. Weiterhin steht dem Wunsch, die Korrektheit von Ein- und Ausgabedaten validieren zu können, die hohe Variabilität semistrukturierter Daten entgegen, deren Struktur häufig nicht allgemein definiert ist, sondern von den konkret vorliegenden Daten abhängt. In der Praxis ist es für viele semistrukturierte Daten verhältnismäßig schwierig und aufwändig, Ontologien zu erstellen. Angesichts dessen wurde beim Entwurf von Metamorph entschieden, das System für die Verarbeitung von <strong>schema-freien Daten</strong>  &ndash; d.&thinsp;h. Daten, deren Struktur nicht in einer Ontologie definiert ist &ndash; auszulegen, und es robust gegenüber fehlerhaften oder unerwarteten Datenstrukturen zu gestalten.
 </p>
 
 <h4>Strukturierte Literal- und Entitätsnamen</h4>
 
-<p>Bei schema-freien Daten gibt es keine Möglichkeit Zusatzinformationen zu den einzelnen Literalen in einer Ontologie zu hinterlegen. Solche zusätzlichen Informationen sind aber oft für die Arbeit mit den Daten hilfreich, und es ist deshalb wünschenswert sie in der Datenmodellierung zu integrieren. Derartige Informationen können bspw. Angaben zur Sprache oder zum Datentyp eines Literalwerts sein oder ein Hinweis darauf, dass der Literalwert ein Verweis auf einen anderen Datensatz ist. Eine Möglichkeit, solche Informationen im Metamorph-Datenmodell zu integrieren, ist die Nutzung einer Entität statt eines Literals, innerhalb derer dann der eigentliche Datenwert und die Zusatzinformationen in mehreren Literalen abgelegt sind. Angenommen wir haben in einem Datensatz folgendes Literal, das einen englischsprachigen Buchtitel enthält: 
+<p>Bei schema-freien Daten gibt es keine Möglichkeit Zusatzinformationen zu einzelnen Literalen in einer Ontologie zu hinterlegen. Solche zusätzlichen Informationen sind aber oft für die Arbeit mit den Daten hilfreich, und es ist deshalb wünschenswert sie in die Datenmodellierung zu integrieren. Derartige Zusatzinformationen können bspw. Angaben zur Sprache oder zum Datentyp eines Literalwerts sein oder ein Hinweis darauf, dass der Datenwert eines Literals ein Verweis auf einen anderen Datensatz ist.
+</p>
+
+<p>Eine Möglichkeit, solche Informationen im Metamorph-Datenmodell darzustellen, ist die <strong>Ersetzung des Literals durch eine Entität</strong>. In dieser gibt es dann ein Literal, das den Wert des ursprünglichen Literals enthält und zusätzlich weitere Literale, in denen die zusätzlichen Informationen über den Datenwert abgelegt sind. Nehmen wir an, wir haben in einem Datensatz folgendes Literal, das einen englischsprachigen Buchtitel enthält: 
 </p>
 
 <div class="RecordSnippet">
@@ -423,10 +426,10 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</dl>
 </div>
 
-<p>Das &ldquo;value&rdquo;-Literal entspricht hier dem ursprünglichen Wert des &ldquo;title&rdquo;-Literals, und die Zusatzinformation zur Sprache ist als zusätzliches Literal in der Entität enthalten. Die Entität selbst wird dann anstelle des ursprünglichen &ldquo;title&rdquo;-Literals verwendet.
+<p>Das &ldquo;value&rdquo;-Literal in der &ldquo;title&rdquo;-Entität entspricht hier dem ursprünglichen Wert des &ldquo;title&rdquo;-Literals, und die Zusatzinformation zur Sprache ist als zusätzliches Literal in der Entität enthalten. Die Entität selbst wird dann anstelle des ursprünglichen &ldquo;title&rdquo;-Literals verwendet.
 </p>
 
-<p>Diese Lösung erfüllt ihren Zweck, hat allerdings den Nachteil, die Struktur des Datensatzes deutlich zu verändern. Dies ist nicht immer gewünscht, insbesondere wenn die Zusatzinformationen eigentlich recht kompakt sind, wie es etwa bei Sprachangaben oder Verknüpfungshinweisen der Fall ist. Eine Möglichkeit, zu einer kompakteren Darstellung zu kommen, ist die Verwendung strukturierter Literal- und Entitätsnamen. So könnten wir im obigen Beispiel einfach festlegen, dass an einen Literalnamen ein @-Zeichen gefolgt von einem Sprachcode angehängt werden kann, um die Sprache des Datenwerts anzugeben. Unser title-Literal sähe dann wie folgt aus:
+<p>Diese Lösung erfüllt ihren Zweck, hat allerdings den Nachteil, die Struktur des Datensatzes deutlich zu verändern. Dies ist nicht immer gewünscht, insbesondere wenn die Zusatzinformationen eigentlich recht kompakt sind, wie es etwa bei Sprachangaben oder Verknüpfungshinweisen der Fall ist. Eine Möglichkeit, zu einer kompakteren Darstellung zu kommen, ist die <strong>Verwendung strukturierter Literal- und Entitätsnamen</strong>. So könnten wir im obigen Beispiel einfach festlegen, dass an einen Literalnamen ein <span class="Footnote" title="Die Verwendung des @-Zeichens zur Angabe der Sprache wurde vom RDF-Turtle-Format übernommen. Im Prinzip hätten wir auch jedes beliebige andere Zeichen verwenden können. Der Rückgriff auf bereits etablierte Konventionen vereinfacht aber die Verständlichkeit der Daten.">@-Zeichen</span> gefolgt von einem Sprachcode angehängt werden kann, um die Sprache des Literalwerts anzugeben. Unser &ldquo;title&rdquo;-Literal sähe dann wie folgt aus:
 </p>
 
 <div class="RecordSnippet">
@@ -435,31 +438,35 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</dl>
 </div>
 
-<p>Andere Varianten von strukturierten Namen, die wir bereits in Metafacture eingesetzt haben, sind das Voranstellen eines *-Zeichens, um URLs zu markieren, oder eines ~-Zeichens, um Literale zu kennzeichnen, die als XML-Attribute zu behandeln sind. Eine interessante Variante ist auch die Verwendung von [] als Suffix für Entitätsnamen in der JSON-Verarbeitung, um anzudeuten, dass der Inhalt der Entität als Array aufzufassen ist und die Namen der Elemente keine Bedeutung tragen. Das folgende Beispiel zeigt die Verwendung des Konstrukts, um ein Array mit drei Elementen zu modellieren:
+<p>Andere Varianten von strukturierten Namen, die in Metafacture-basierten Anwendungen bereits eingesetzt wurden, sind das Voranstellen eines *-Zeichens oder eines ~-Zeichens, um Literale zu markieren, die eine URL als Verweis enthalten, oder Literale, die als XML-Attribute zu behandeln sind.</p>
+
+<p>Der Nutzen strukturierter Namen ist natürlich nicht nur auf Literale beschränkt, sondern kann auch bei Entitätsnamen angewendet werden. Ein Beispiel ist die Verwendung von [] als Anhängsel an Entitätsnamen zur Kennzeichnung, dass die Literale in der Entität als eine Auflistung zu verstehen sind:
 </p>
 
 <div class="RecordSnippet">
 	<dl>
-		<dt class="Entity">arrayEntity[]</dt>
+		<dt class="Entity">authors[]</dt>
 		<dd>
 			<dl>
-				<dt>ignoredName</dt><dd>Erster Datenwert</dd>
-				<dt>ignoredName</dt><dd>Zweiter Datenwert</dd>
-				<dt>ignoredName</dt><dd>Dritter Datenwert</dd>
+				<dt>author</dt><dd>Jacob Grimm</dd>
+				<dt>author</dt><dd>Wilhelm Carl Grimm</dd>
 			</dl>
 		</dd>
 	</dl>
 </div>
 
-<p>Die Integration von Zusatzinformationen in die Literal- und Entitätsnamen ist eine einfache und vielseitige Technik. Ihre Verwendung ist nicht immer offensichtlich und die Bedeutung verschiedener Angaben in den Namen ist nicht immer selbsterklärend. Außerdem kann es notwendig werden, im Zuge der Datenverarbeitung die Zusatzinformationen wieder aufwändig aus den Namen herauszutrennen. Bei komplexeren Zusatzinformationen sollte man daher die oben beschriebene Entitäten-Methode der strukturierten Benennung vorziehen. Für Kleinigkeiten wie Hinweise auf Verweise, ist sie jedoch oft optimal.
+<p>Die einzeln &ldquo;author&rdquo;-Literale für die Autoren eines Buches wurden in dem Beispiel nicht einfach direkt in einen Datensatz geschrieben, sondern in einer Entität mit dem Namen &ldquo;authors[]&rdquo; zusammengefassst. Dies erscheint auf den ersten Blick einfach eine Doppelung zu sein, die keinen semantischen Mehrwert bietet. Der Vorteil dieser Darstellungsweise ist indes, dass die Tatsache, dass es sich bei den &ldquo;author&rdquo;-Literalen um eine Liste handelt, nicht mehr nur implizit durch Wiederholung der Literale im Datensatz ausgedrückt ist, sondern explizit durch das Zusammenfassen in einer Entität, deren Name auf ihre Funktion als Liste hinweist. Dies kann die Arbeit mit derart strukturierten Daten sehr vereinfachen, da sofort ersichtlich ist, wenn Teile eines Datensatzes als Liste behandelt werden sollen.
+</p>
+
+<p>Die Integration von Zusatzinformationen in die Literal- und Entitätsnamen ist eine einfache und vielseitige Technik. Bei ihrer Verwendung sollte allerdings beachtet werden, dass diese Zusatzinformationen leicht übersehen werden können und dass die Bedeutung verschiedener Angaben in den Namen nicht immer selbsterklärend ist. Außerdem kann es notwendig werden, im Zuge der Datenverarbeitung die Zusatzinformationen wieder aufwändig aus den Namen herauszutrennen. Bei komplexeren Zusatzinformationen, die nicht nur aus einem einfachen Wert bestehen, sollte man die oben beschriebene Entitäten-Methode der strukturierten Benennung vorziehen. Für kompakte Informationen wie die Kennzeichung von Verweisen oder Hinweise auf Sprachangaben, ist sie jedoch oft die beste Lösung.
 </p>
 
 <h3>Datentypen</h3>
 
-<p>Das Metamorph-Datenmodell unterscheidet anders als bspw. XML und RDF nicht zwischen verschiedenen Typen von Datenwerten. Es ist nicht möglich, festzulegen, dass ein Literal nur eine bestimmte Art von Werten &ndash; etwa nur Datumsangaben oder Zahlen &ndash; enthält. Alle Namen und Datenwerte im Metamorph-Datenmodell sind immer Zeichenfolgen. Der Hintergrund für diese Entscheidung ist, dass im bibliothekarischen Bereich &ndash; in dem Metafacture seine Wurzeln hat &ndash; meist alle Informationen als Text erfasst werden, denn Zahlen, Datumsangaben und andere Datenwerte lassen sich im Normalfall leicht als Zeichenfolgen darstellen. Dies hat den Vorteil, dass auch von der Norm abweichende Angaben für einzelne Werte problemlos erfasst werden können. Würde bspw. &ldquo;publicationYear&rdquo; den Datentyp Datumsangabe besitzen, könnten Angaben wie &ldquo;ca. 1560&rdquo; oder &ldquo;anno 1066&rdquo; nicht mehr verarbeitet werden. Da derartige Sonderfälle in semistrukturierten Daten häufig vorkommen, bietet sich die Verwendung von <strong>Zeichenfolgen als allgemeinen Datentyp</strong> im Metamorph-Datenmodell an.
+<p>Die Verwendung strukturierter Literalnamen kann auch hilfreich sein, um damit umzugehen, dass das Metamorph-Datenmodell anders als bspw. XML und RDF nicht zwischen verschiedenen Typen von Datenwerten unterscheidet. So ist es nicht möglich, festzulegen, dass ein Literal nur eine bestimmte Art von Werten &ndash; etwa nur Datumsangaben oder Zahlen &ndash; enthält. Alle Namen und Datenwerte im Metamorph-Datenmodell sind immer Zeichenfolgen. Der Hintergrund für diese Entscheidung ist, dass im bibliothekarischen Bereich &ndash; in dem Metafacture seine Wurzeln hat &ndash; meist alle Informationen als Text erfasst werden, denn Zahlen, Datumsangaben und andere Datenwerte lassen sich im Normalfall leicht als Zeichenfolgen darstellen. Dies hat den Vorteil, dass auch von der Norm abweichende Angaben für einzelne Werte problemlos erfasst werden können. Würde bspw. &ldquo;publicationYear&rdquo; den Datentyp Datumsangabe besitzen, könnten Angaben wie &ldquo;ca. 1560&rdquo; oder &ldquo;anno 1066&rdquo; nicht mehr verarbeitet werden. Da derartige Sonderfälle in semistrukturierten Daten häufig vorkommen, bietet sich die Verwendung von <strong>Zeichenfolgen als allgemeinen Datentyp</strong> im Metamorph-Datenmodell an.
 </p>
 
-<p>Eine Möglichkeit, dennoch Informationen zum gewünschten Datentyp eines Literalwerts festzuhalten, bilden die im vorangegangenen Abschnitt vorgestellten strukturierten Literalnamen. Wenn wir z.&thinsp;B. ausdrücken wollen, dass im Literal &ldquo;publicationYear&rdquo; nur Datumsangaben stehen sollen, könnten wir den Namen einfach mit einer Angabe wie &ldquo;publicationYear^^IsoDate&rdquo; erweitern. Damit würden wir darauf hinweisen, dass das Erscheinungsjahr eine ISO-konforme Datumsangabe sein sollte. Es muss dabei immer beachtet werden, dass dies nur Hinweise an den Benutzer sind; Metamorph wertet diese Angaben in keiner Weise aus. Es ist aber natürlich möglich, Erweiterungen für Metafacture zu entwickeln, die diese Namensergänzungen bspw. für Überprüfungen oder Korrekturen verwenden. <!-- TODO: Verweis auf Kapitel zu Entwicklung von Modulen -->
+<p>Um dennoch Informationen zum gewünschten Datentyp eines Literalwerts festhalten zu können, bieten sich strukturierte Literal- und Entitätsnamen an. Wenn wir z.&thinsp;B. ausdrücken wollen, dass im Literal &ldquo;publicationYear&rdquo; nur Datumsangaben stehen sollen, könnten wir den Namen einfach mit einer Angabe wie <span class="Footnote" title="Die Verwendung von ^^ zur Kennzeichung des Datentyps ist &ndash; wie schon das @-Zeichen für Sprachangaben &ndash; ebenfalls vom RDF-Turtle-Format übernommen.">&ldquo;publicationYear^^IsoDate&rdquo;</span> erweitern. Damit würden wir darauf hinweisen, dass das Erscheinungsjahr eine ISO-konforme Datumsangabe sein sollte. Für die Angabe des Datenformats wurde hier ein selbstdefinierter Datentypname verwendet. Um die genutzten Datentypen eindeutig zu definieren, ist es gleichwohl meist hilfreich, auf bereits existierende Datentypdefinitionen aus anderen Standards zurückzugreifen. Ein Standard, der sich dafür anbietet, ist XML-Schema. Dieser definiert Datentypen für Datenarten, die in semistrukturierten Daten häufig anzutreffen sind. XML-Schema-Datentypen werden darüberhinaus oft auch für Datentypauszeichnungen in RDF verwendet. Im Metamorph-Datenmodell könnte ein Literalname für ein Literal mit Datumsangaben unter Verwendung von XML-Schema-Datentypen in der Form &ldquo;publicationYear^^xs:date&rdquo; beschrieben werden, wobei <span class="Footnote" title="Diese Schreibweise entspricht dem Format der Angabe von Namensräumen in XML und RDF. Auch wenn das Metamorph-Datenmodell keine Namensräume kennt, hilft diese Schreibweise deutlich zu machen, dass es sich um Datentypen aus XMl-Schema handelt.">&ldquo;xs:&rdquo; als Hinweis auf XML-Schema</span> dient. Auch bei der Verwendung etablierter Datentypen muss immer bedacht werden, dass dies nur Hinweise an den Benutzer sind; Metamorph wertet diese Angaben in keiner Weise aus. Es ist aber natürlich möglich, Erweiterungen für Metafacture zu entwickeln, die diese Namensergänzungen bspw. für Überprüfungen oder Korrekturen verwenden. <!-- TODO: Verweis auf Kapitel zu Entwicklung von Modulen -->
 </p>
 
 <h2>Datenformate</h2>
@@ -583,7 +590,7 @@ TODO: Beispiel kompletieren
 
 <p>Das Beispiel zeigt, dass sich außer den Strukturelementen zur Gliederung des Datensatzes durch die Umwandlung ins Metamorph-Datenmodell nichts an dem Datensatz geändert hat, was seine Bedeutung verändert. Auf die gleich Art und Weise können auch andere Datenformate aus dem bibliothekarischen Bereich wie etwa MARC21 ins Metamorph-Datenmodel übertragen werden.</p>
 
-<h4>Darstellung von JSON im Metamorph-Datenmodell</h4>
+<h4 id="exampleJson">Darstellung von JSON im Metamorph-Datenmodell</h4>
 
 <h4>Darstellung von XML im Metamorph-Datenmodell</h4>
 
