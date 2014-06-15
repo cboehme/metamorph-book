@@ -97,7 +97,7 @@ a.Footnote::before {
 }
 
 section.Footnote a:first-of-type::before {
-	margin-right: 1em;
+	margin-right: 0.5em;
 	content: counter(footnoteRef);
 }
 
