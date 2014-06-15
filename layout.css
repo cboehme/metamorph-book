@@ -2,7 +2,7 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
 
 body {
-	margin: 5em 15% 10em 15%;
+	margin: 5em 20% 10em 20%;
 	font-family: 'Gentium Basic', serif;
 	font-size: 14pt;
 	line-height: 130%;
@@ -46,10 +46,59 @@ figcaption {
 	font-family: 'PT Sans', sans-serif;
 }
 
-.Footnote {
+a[href] {
+	text-decoration: none;
+}
+
+a[href]:hover {
 	text-decoration: underline;
-	text-decoration-style: dotted;
-	-moz-text-decoration-style: dotted;
+}
+
+/* Fußnoten */
+
+body {
+	counter-reset: footnote footnoteRef;
+}
+
+section.Footnote {
+	float: right;
+	clear: right;
+
+	position: relative;
+	
+	width: 27%;
+	left: 30%;
+
+	margin-left: -30%;
+	
+	font-size: 80%;
+	line-height: 120%;
+
+	counter-increment: footnoteRef;
+}
+
+a.Footnote {
+	counter-increment: footnote;
+}
+
+a.Footnote,
+section.Footnote a:first-of-type {
+	position: relative;
+	bottom: 0.8em;
+	
+	vertical-align: baseline;
+	
+	font-size: 60%;
+}
+
+a.Footnote::before {
+	margin-left: 0.1em;
+	content: counter(footnote);
+}
+
+section.Footnote a:first-of-type::before {
+	margin-right: 1em;
+	content: counter(footnoteRef);
 }
 
 /* Tabellen */

@@ -5,9 +5,11 @@
 	<title>Metamorph-Datenmodell</title>
 
 	<link rel="stylesheet" href="layout.css" />
+	<script src="hyphenate.js" type="text/javascript"></script>
 </head>
 
-<body>
+<body class="Hyphenated">
+
 <h1>Das Metamorph-Datenmodell</h1>
 
 <p>Bevor wir mit dem Schreiben von Metamorph-Skripten beginnen können, müssen wir uns zunächst mit dem Datenmodel befassen, das hinter Metamorph steckt.
@@ -347,7 +349,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 
 <p>Die Gesamtheit der domänenspezifischen Strukturen und Benennungen, die in einem konkreten Anwendungsfall verwendet werden, bezeichnen wir in Anlehnung an die Semantic Web verwendete Terminologie als <dfn>Vokabular</dfn> bzw. <dfn>Ontologie</dfn> (im XML-Jargon würde man hingegen von einem <dfn>Schema</dfn> sprechen). Vokabulare umfassen dabei nur die in einem Anwendungsfall erlaubten Literal- und Entitätsnamen, während Ontologien auch die Festlegungen zur Strukturierung beinhalten. Die folgende Tabelle listet in der ersten Spalte das Vokabular auf, das wir in unserem obigen Beispiel verwendet haben, und in der zweiten Spalte die dazugehörige Ontologiedefinition.</p>
 
-<table>
+<table class="NotHyphenated">
 	<thead>
 		<tr>
 			<th>Vokabular</th><th>Ontologie</th>
@@ -429,8 +431,13 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 <p>Das &ldquo;value&rdquo;-Literal in der &ldquo;title&rdquo;-Entität entspricht hier dem ursprünglichen Wert des &ldquo;title&rdquo;-Literals, und die Zusatzinformation zur Sprache ist als zusätzliches Literal in der Entität enthalten. Die Entität selbst wird dann anstelle des ursprünglichen &ldquo;title&rdquo;-Literals verwendet.
 </p>
 
-<p>Diese Lösung erfüllt ihren Zweck, hat allerdings den Nachteil, die Struktur des Datensatzes deutlich zu verändern. Dies ist nicht immer gewünscht, insbesondere wenn die Zusatzinformationen eigentlich recht kompakt sind, wie es etwa bei Sprachangaben oder Verknüpfungshinweisen der Fall ist. Eine Möglichkeit, zu einer kompakteren Darstellung zu kommen, ist die <strong>Verwendung strukturierter Literal- und Entitätsnamen</strong>. So könnten wir im obigen Beispiel einfach festlegen, dass an einen Literalnamen ein <span class="Footnote" title="Die Verwendung des @-Zeichens zur Angabe der Sprache wurde vom RDF-Turtle-Format übernommen. Im Prinzip hätten wir auch jedes beliebige andere Zeichen verwenden können. Der Rückgriff auf bereits etablierte Konventionen vereinfacht aber die Verständlichkeit der Daten.">@-Zeichen</span> gefolgt von einem Sprachcode angehängt werden kann, um die Sprache des Literalwerts anzugeben. Unser &ldquo;title&rdquo;-Literal sähe dann wie folgt aus:
+<p>Diese Lösung erfüllt ihren Zweck, hat allerdings den Nachteil, die Struktur des Datensatzes deutlich zu verändern. Dies ist nicht immer gewünscht, insbesondere wenn die Zusatzinformationen eigentlich recht kompakt sind, wie es etwa bei Sprachangaben oder Verknüpfungshinweisen der Fall ist. Eine Möglichkeit, zu einer kompakteren Darstellung zu kommen, ist die <strong>Verwendung strukturierter Literal- und Entitätsnamen</strong>. So könnten wir im obigen Beispiel einfach festlegen, dass an einen Literalnamen ein @-Zeichen<a class="Footnote" href="#atCharForLanguage" id="atCharForLanguageRef"></a> gefolgt von einem Sprachcode angehängt werden kann, um die Sprache des Literalwerts anzugeben. Unser &ldquo;title&rdquo;-Literal sähe dann wie folgt aus:
 </p>
+
+<section class="Footnote">
+	<p><a href="#atCharForLanguageRef" id="atCharForLanguage"></a>Die Verwendung des @-Zeichens zur Angabe der Sprache wurde vom RDF-Turtle-Format übernommen. Im Prinzip hätten wir auch jedes beliebige andere Zeichen verwenden können. Der Rückgriff auf bereits etablierte Konventionen vereinfacht aber die Verständlichkeit der Daten.
+	</p>
+</section>
 
 <div class="RecordSnippet">
 	<dl>
@@ -463,34 +470,49 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 
 <h3>Datentypen</h3>
 
-<p>Die Verwendung strukturierter Literalnamen kann auch hilfreich sein, um damit umzugehen, dass das Metamorph-Datenmodell anders als bspw. XML und RDF nicht zwischen verschiedenen Typen von Datenwerten unterscheidet. So ist es nicht möglich, festzulegen, dass ein Literal nur eine bestimmte Art von Werten &ndash; etwa nur Datumsangaben oder Zahlen &ndash; enthält. Alle Namen und Datenwerte im Metamorph-Datenmodell sind immer Zeichenfolgen. Der Hintergrund für diese Entscheidung ist, dass im bibliothekarischen Bereich &ndash; in dem Metafacture seine Wurzeln hat &ndash; meist alle Informationen als Text erfasst werden, denn Zahlen, Datumsangaben und andere Datenwerte lassen sich im Normalfall leicht als Zeichenfolgen darstellen. Dies hat den Vorteil, dass auch von der Norm abweichende Angaben für einzelne Werte problemlos erfasst werden können. Würde bspw. &ldquo;publicationYear&rdquo; den Datentyp Datumsangabe besitzen, könnten Angaben wie &ldquo;ca. 1560&rdquo; oder &ldquo;anno 1066&rdquo; nicht mehr verarbeitet werden. Da derartige Sonderfälle in semistrukturierten Daten häufig vorkommen, bietet sich die Verwendung von <strong>Zeichenfolgen als allgemeinen Datentyp</strong> im Metamorph-Datenmodell an.
+<p>Die Verwendung strukturierter Literalnamen kann auch hilfreich sein, um damit umzugehen, dass das Metamorph-Datenmodell anders als bspw. XML und RDF nicht zwischen verschiedenen Typen von Datenwerten unterscheidet. So ist es nicht möglich, festzulegen, dass ein Literal nur eine bestimmte Art von Werten &ndash; etwa nur Datumsangaben oder Zahlen &ndash; enthält. Alle Namen und Datenwerte im Metamorph-Datenmodell sind immer Zeichenfolgen. Der Hintergrund für diese Entscheidung ist, dass im bibliothekarischen Bereich &ndash; in dem Metafacture seine Wurzeln hat &ndash; meist alle Informationen als Text erfasst werden, denn Zahlen, Datumsangaben und andere Datenwerte lassen sich im Normalfall leicht als Zeichenfolgen darstellen. Dies hat den Vorteil, dass auch von der Norm abweichende Angaben für einzelne Werte problemlos erfasst werden können. Würde bspw. das Literal &ldquo;publicationYear&rdquo; den Datentyp Datumsangabe besitzen, könnten Angaben wie &ldquo;ca. 1560&rdquo; oder &ldquo;anno 1066&rdquo; nicht mehr verarbeitet werden. Da derartige Sonderfälle in semistrukturierten Daten häufig vorkommen, bietet sich die Verwendung von <strong>Zeichenfolgen als allgemeiner Datentyp</strong> im Metamorph-Datenmodell an.
 </p>
 
-<p>Um dennoch Informationen zum gewünschten Datentyp eines Literalwerts festhalten zu können, bieten sich strukturierte Literal- und Entitätsnamen an. Wenn wir z.&thinsp;B. ausdrücken wollen, dass im Literal &ldquo;publicationYear&rdquo; nur Datumsangaben stehen sollen, könnten wir den Namen einfach mit einer Angabe wie <span class="Footnote" title="Die Verwendung von ^^ zur Kennzeichung des Datentyps ist &ndash; wie schon das @-Zeichen für Sprachangaben &ndash; ebenfalls vom RDF-Turtle-Format übernommen.">&ldquo;publicationYear^^IsoDate&rdquo;</span> erweitern. Damit würden wir darauf hinweisen, dass das Erscheinungsjahr eine ISO-konforme Datumsangabe sein sollte. Für die Angabe des Datenformats wurde hier ein selbstdefinierter Datentypname verwendet. Um die genutzten Datentypen eindeutig zu definieren, ist es gleichwohl meist hilfreich, auf bereits existierende Datentypdefinitionen aus anderen Standards zurückzugreifen. Ein Standard, der sich dafür anbietet, ist XML-Schema. Dieser definiert Datentypen für Datenarten, die in semistrukturierten Daten häufig anzutreffen sind. XML-Schema-Datentypen werden darüberhinaus oft auch für Datentypauszeichnungen in RDF verwendet. Im Metamorph-Datenmodell könnte ein Literalname für ein Literal mit Datumsangaben unter Verwendung von XML-Schema-Datentypen in der Form &ldquo;publicationYear^^xs:date&rdquo; beschrieben werden, wobei <span class="Footnote" title="Diese Schreibweise entspricht dem Format der Angabe von Namensräumen in XML und RDF. Auch wenn das Metamorph-Datenmodell keine Namensräume kennt, hilft diese Schreibweise deutlich zu machen, dass es sich um Datentypen aus XMl-Schema handelt.">&ldquo;xs:&rdquo; als Hinweis auf XML-Schema</span> dient. Auch bei der Verwendung etablierter Datentypen muss immer bedacht werden, dass dies nur Hinweise an den Benutzer sind; Metamorph wertet diese Angaben in keiner Weise aus. Es ist aber natürlich möglich, Erweiterungen für Metafacture zu entwickeln, die diese Namensergänzungen bspw. für Überprüfungen oder Korrekturen verwenden. <!-- TODO: Verweis auf Kapitel zu Entwicklung von Modulen -->
+<p>Um dennoch Informationen zum gewünschten Datentyp eines Literalwerts festhalten zu können, bieten sich strukturierte Literal- und Entitätsnamen an. Wenn wir z.&thinsp;B. ausdrücken wollen, dass im Literal &ldquo;publicationYear&rdquo; nur Datumsangaben stehen sollen, könnten wir den Namen einfach mit einer Angabe wie &ldquo;publicationYear^^IsoDate&rdquo;<a class="Footnote" href="#caretForDatatype" id="caretForDatatypeRef"></a> erweitern. Damit würden wir darauf hinweisen, dass das Erscheinungsjahr eine ISO-konforme Datumsangabe sein sollte. Für die Angabe des Datenformats wurde hier ein selbstdefinierter Datentypname verwendet. Um die genutzten Datentypen eindeutig zu definieren, ist es gleichwohl meist hilfreich, auf bereits existierende Datentypdefinitionen aus anderen Standards zurückzugreifen. Ein Standard, der sich dafür anbietet, ist XML-Schema. Dieser definiert Datentypen für Datenarten, die in semistrukturierten Daten häufig anzutreffen sind. XML-Schema-Datentypen werden darüberhinaus oft auch für Datentypauszeichnungen in RDF verwendet. Im Metamorph-Datenmodell könnte ein Literalname für ein Literal mit Datumsangaben unter Verwendung von XML-Schema-Datentypen in der Form &ldquo;publicationYear^^xs:date&rdquo; beschrieben werden, wobei &ldquo;xs:&rdquo; als Hinweis auf XML-Schema<a class="Footnote" href="#xmlSchemaDatatypes" id="xmlSchemaDatatypesRef"></a> dient. Auch bei der Verwendung etablierter Datentypen muss immer bedacht werden, dass dies nur Hinweise an den Benutzer sind; Metamorph wertet diese Angaben in keiner Weise aus. Es ist aber natürlich möglich, Erweiterungen für Metafacture zu entwickeln, die diese Informationen in den Literalnamen bspw. für Überprüfungen oder Korrekturen verwenden. <!-- TODO: Verweis auf Kapitel zu Entwicklung von Modulen -->
 </p>
+
+<section class="Footnote">
+	<p><a href="#caretForDatatypeRef" id="caretForDatatype"></a>Die Verwendung von ^^ zur Kennzeichung des Datentyps ist &ndash; wie schon das @-Zeichen für Sprachangaben &ndash; ebenfalls vom RDF-Turtle-Format übernommen.
+	</p>
+</section>
+
+<section class="Footnote">
+	<p><a href="#xmlSchemaDatatypesRef" id="xmlSchemaDatatypes"></a>Diese Schreibweise entspricht dem Format der Angabe von Namensräumen in XML und RDF. Auch wenn das Metamorph-Datenmodell keine Namensräume kennt, hilft diese Schreibweise deutlich zu machen, dass es sich um Datentypen aus XML-Schema handelt.
+	</p>
+</section>
 
 <h2>Datenformate</h2>
 
-<p>Die im vorhergehenden Abschnitt beschriebene Trennung von Strukturelementen und Vokabular bzw. Ontologie ist eine Voraussetzung, um das Metamorph-Datenmodell in verschiedenen Anwendungsbereichen nutzen zu können. Die zweite Voraussetzung ist die Möglichkeit verschiedenste Datenformate für die Ein- und Ausgabe verwenden zu können. Aus diesem Grund sind auch die Beispiele in diesem Kapitel grafisch dargestellt und nicht als formatierter Text: Es gibt kein festgelegtes Format für die Darstellung oder Serialisierung von Datensätzen im Metamorph-Datenmodell.  
+<p>Die oben beschriebene Trennung von Strukturelementen und Vokabular bzw. Ontologie ist eine Voraussetzung, um das Metamorph-Datenmodell in verschiedenen Anwendungsbereichen nutzen zu können. Die zweite Voraussetzung ist die Fähigkeit, verschiedene Datenformate für die Ein- und Ausgabe verwenden zu können. 
 </p>
 
 <p>Um das Metamorph-Datenmodell praktisch einsetzen zu können, muss es aber natürlich möglich sein, Daten darstellen und vor allem ein- und auslesen (also serialisieren und deserialisieren) zu können. 
-<!-- TODO: hier weiterschreiben -->
-Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist aber in spezielle Dekodier- und Enkodiermodule ausgelagert, die unabhängig von Metamorph sind.
+Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist in speziellen Dekodier- und Enkodiermodule umgesetzt, die unabhängig von Metamorph sind.
+</p>
+
+<p>Aus diesem Grund sind auch die Beispiele in diesem Kapitel grafisch dargestellt und nicht als formatierter Text: Es gibt kein festgelegtes Format für die Darstellung oder Serialisierung von Datensätzen im Metamorph-Datenmodell.  
 </p>
 
 <h3>Das Formeta-Format</h3>
 
-<p>Wir haben gesehen, dass bei den meisten Datenformaten berücksichtigt werden muss, dass sie keine eins-zu-eins Abbildung der Strukturelemente des Metamorph-Datenmodells erlauben. Oft umfassen einzelne Datenformate nicht den vollen Umfang des Datenmodells, sondern beschränken einige Eigenschaften wie bspw. die erlaubte Verschachtelungstiefe von Entitäten oder ähnliches, sodass nicht alle Datenstrukturen in dem jeweiligen Format abgebildet werden können. Teilweise gibt es auch mehrere Varianten, wie ein Strukturelement eines Datenformats im Metamorph-Datenmodell abgebildet werden kann. Dies betrifft z.&thinsp;B. oft die Darstellbarkeit von Listen oder Arrays. Da es in der Praxis häufig hilfreich ist, Daten direkt im Metamorph-Datenmodell anzeigen oder ablegen zu können, ohne sich Gedanken über die Fähigkeiten eines Formats machen zu müssen, haben wir in Metafacture ein eigenes Datenformat namens <span class="Footnote" title="Formeta ist ein Wortspiel aus dem Wort Format und dem Englischen &ldquo;for meta&rdquo; d.&thinsp;h. für Metadaten."><dfn>Formeta</dfn>-Format</span> integriert. Dieses Datenformat wurde passend zum Metamorph-Datenmodell entworfen, sodass es alle in dem Datenmodell möglichen Datenstrukturen kompakt abbilden kann. Eigentlich hätte ich die Datensätze in diesem Kapitel statt als Grafiken auch im Formeta-Format zeigen können. Ich habe aber darauf verzichtet, um deutlich zu machen, dass das Metamorph-Datenmodell keine bestimmte Serialisierungsform besitzt, sondern losgelöst davon definiert ist.
+<p>Bei den meisten Datenformaten muss berücksichtigt werden, dass sie keine eins-zu-eins Abbildung der Strukturelemente des Metamorph-Datenmodells erlauben. Oft umfassen einzelne Datenformate nicht den vollen Umfang des Datenmodells, sondern beschränken einige Eigenschaften wie bspw. die erlaubte Verschachtelungstiefe von Entitäten, sodass nicht alle Datenstrukturen in dem jeweiligen Format abgebildet werden können. Teilweise gibt es auch mehrere Varianten, wie ein Strukturelement eines Datenformats im Metamorph-Datenmodell abgebildet werden kann. Dies betrifft z.&thinsp;B. oft die Darstellung von Listen.
 </p>
 
-<p>Das Formeta-Format ist sehr einfach aufgebaut, hat aber eine flexible Syntax, sodass wir Daten sowohl sehr kompakt als auch übersichtlich formatiert ausgeben können. Beim Entwurf der Syntax wurde außerdem darauf geachtet, dass auch eine händische Eingabe von Daten möglichst einfach ist.
+<p>Da es in der Praxis häufig hilfreich ist, Daten direkt im Metamorph-Datenmodell anzeigen oder ablegen zu können, ohne sich Gedanken über die Fähigkeiten eines Formats machen zu müssen, haben wir in Metafacture ein eigenes Datenformat namens <dfn>Formeta</dfn> integriert. Dieses Datenformat wurde passend zum Metamorph-Datenmodell entworfen, sodass es alle in dem Datenmodell möglichen Datenstrukturen kompakt abbilden kann.
 </p>
 
-<p>Es gibt nur zwei Elemente im Formeta-Format: Literale und Gruppen. Erstere entsprechen den Literalen des Metamorph-Datenmodells, Letztere werden für die Formatierung von Datensätzen und Entitäten verwendet. Das hat den Vorteil, dass es dadurch sehr einfach wird, die oben beschriebene Technik, Datensätze als Entitäten in andere Datensätze einzubetten, anzuwenden. Durch die völlig gleiche Darstellung kann die Anwenderin flexibel entscheiden, ob die äußerste Gruppe als Datensatz oder Entität zu verstehen ist.
+<p>Das Formeta-Format ist einfach aufgebaut, hat aber eine flexible Syntax, sodass wir Daten sowohl sehr kompakt als auch übersichtlich formatiert ausgeben können. Beim Entwurf der Syntax wurde außerdem darauf geachtet, dass auch eine manuelle Eingabe von Daten recht einfach ist.
 </p>
 
-<p>Das folgende Syntaxdiagram stellt die Grundstruktur des Formeta-Formats dar:
+<p>Es gibt nur zwei Elemente im Formeta-Format: Literale und Gruppen. Erstere entsprechen den Literalen des Metamorph-Datenmodells, Letztere werden für die Formatierung von Datensätzen und Entitäten verwendet. Das hat den Vorteil, dass es dadurch einfach wird, die oben beschriebene Technik anzuwenden, Datensätze als Entitäten in andere Datensätze einzubetten. Durch die identische Darstellung kann die Anwenderin flexibel entscheiden, ob die äußerste Gruppe als Datensatz oder Entität zu verstehen ist.
+</p>
+
+<p>Die Grundstruktur des Formeta-Formats ist im folgenden Syntaxdiagramm dargestellt:
 </p>
 
 <figure id="formetaGruppe">
@@ -503,9 +525,8 @@ Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph 
 	<figcaption>Schmematische Darstellung des Formeta-Formats.</figcaption>
 </figure>
 
-<!--
-Namen und Werte können auf zwei Arten im Formeta-Format dargestellt werden. Entweder als Text in Anführungszeichen oder als Text ohne Anführungszeichen. Die Verwendung von Anführungszeichen reduziert die Anzahl der Zeichen, die maskiert werden müssen. Vor und nach einem Namen oder Wert darf beliebiger Leerraum vorhanden sein. Das Diagramm zeigt auch, dass leere Namen und Werte zulässig sind. -->
-<!-- Hier muss der Übergang noch verbessert werden -->
+<p>Namen und Werte können auf zwei Arten im Formeta-Format dargestellt werden. Entweder als Text in Anführungszeichen oder als Text ohne Anführungszeichen. Die Verwendung von Anführungszeichen reduziert die Anzahl der Zeichen, die maskiert werden müssen. Vor und nach einem Namen oder Wert darf beliebiger Leerraum vorhanden sein. Das Diagramm zeigt auch, dass leere Namen und Werte zulässig sind.
+</p>
 
 <p>Ein Literal sind einfach zwei durch einen Doppelpunkt in Literalname und Literalwert aufgeteilte Texte:
 </p>  
@@ -539,11 +560,12 @@ author{
 <p>Einer der ersten Anwendungsfälle von Metamorph war die Konversion von bibliothekarischen Daten, die im PICA+ Format vorlagen. Dieses Datenformat ist recht einfach strukturiert. Es gibt Datensätze, die jeweils bspw. einen Buchtitel oder eine Zeitschrift beschreiben. Ein Datensatz setzt sich aus sogenannten Feldern zusammen, die Angaben zu bestimmten Aspekten des beschriebenen Objekts enthalten. Da die Angaben oftmals noch eine feinere Untergliederung aufweisen, bestehen die Felder aus Unterfeldern. Felder und Unterfelder können wiederholbar sein. Bei gleichnamigen Feldern garantiert PICA+ keine bestimmte Reihenfolge dieser Felder. Wenn dies Notwendig ist, kann der Feldname um eine sogenannte <dfn>Occurrence</dfn> ergänzt werden. Dabei handelt es sich um einen Index, der an den Feldnamen angehängt wird und die Position des Feldes beschreibt.
 </p>
 
-<p>Das folgende Beispiel zeigt einen Auschnitt aus einem Datensatz im PICA+ Format. Die ersten vier Zeichen in jeder Zeile bezeichnen den Feldnamen, eine ggf. vorhandene <i>Occurrence</i> besteht aus zwei Ziffern, die mit einem Schrägstrich vom Feldnamen abgetrennt sind. Das $-Zeichen trennt die einzelnen Unterfelder in einem Datenfeld ab. Das erste Zeichen hinter dem $-Zeichen ist der Name des Unterfelds, die restlichen Zeichen sind der eigentliche Inhalt des Unterfelds:<a href="#footnote-1">1</a>
+<p>Das folgende Beispiel zeigt einen Auschnitt aus einem Datensatz im PICA+ Format. Die ersten vier Zeichen in jeder Zeile bezeichnen den Feldnamen, eine ggf. vorhandene <i>Occurrence</i> besteht aus zwei Ziffern, die mit einem Schrägstrich vom Feldnamen abgetrennt sind. Das $-Zeichen trennt die einzelnen Unterfelder in einem Datenfeld ab. Das erste Zeichen hinter dem $-Zeichen ist der Name des Unterfelds, die restlichen Zeichen sind der eigentliche Inhalt des Unterfelds:<a class="Footnote" href="#picaSpecialChars" id="picaSpecialCharsRef"></a>
 </p>
 
-<section id="footnote-1">
-	Die genannten Sonderzeichen für die Kennzeichnung von Feldern und Unterfeldern sind die für die Darstellung in PICA-Systemen verwendeten. In den eigentlichen Daten werden stattdessen . Beim PICA+ Format wird zwischen dem Intern- und dem Externformat unterschieden. Diese beiden Formate unterscheiden sich nur in den verwendeten Feld- und Unterfeldnamen. Ich verwende hier die Feldnamen des Internformats. 
+<section class="Footnote">
+	<p><a href="#picaSpecialCharsRef" id="picaSpecialChars"></a>Die genannten Sonderzeichen für die Kennzeichnung von Feldern und Unterfeldern sind die für die Darstellung in PICA-Systemen verwendeten. In den eigentlichen Daten werden stattdessen . Beim PICA+ Format wird zwischen dem Intern- und dem Externformat unterschieden. Diese beiden Formate unterscheiden sich nur in den verwendeten Feld- und Unterfeldnamen. Ich verwende hier die Feldnamen des Internformats. 
+	</p>
 </section>
 
 <pre class="Example">
