@@ -488,20 +488,24 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 
 <h2>Datenformate</h2>
 
-<p>Die oben beschriebene Trennung von Strukturelementen und Vokabular bzw. Ontologie ist eine Voraussetzung, um das Metamorph-Datenmodell in verschiedenen Anwendungsbereichen nutzen zu können. Die zweite Voraussetzung ist die Fähigkeit, verschiedene Datenformate für die Ein- und Ausgabe verwenden zu können. 
+<p>Die oben beschriebene Trennung von Strukturelementen und Vokabular bzw. Ontologie ist eine Voraussetzung, um das Metamorph-Datenmodell in verschiedenen Anwendungsbereichen nutzen zu können. Die zweite Voraussetzung ist die Fähigkeit, verschiedene Datenformate für die Ein- und Ausgabe verwenden zu können. Aus diesem Grund definiert das Metamorph-Datenmodell nur die logische Datenstruktur und macht keine Festlegungen zu konkreten Repräsentation von Daten bei der Anzeige oder bei der Speicherung. Die Beispiele in diesem Kapitel sind deshalb auch grafisch dargestellt und nicht als formatierter Text, denn es gibt kein festgelegtes Format für die Darstellung von Datensätzen im Metamorph-Datenmodell.</p>
+
+<p>Das Metamorph-Datenmodell unterscheidet sich in diesem Aspekt von XML und teilweise auch von RDF. XML kann zwar durch die Verwendung unterschiedlicher Vokabulare bzw. Schemata an unterschiedliche Anwendungsdomänen angepasst werden, das zu verwendende Datenformat ist aber fest vorgegeben. RDF geht an dieser Stelle weiter und definiert zuförderst ein Datenmodell und unabhängig davon verschiedene Serialisierungsformate für dieses Datenmodell. Die Serialisierungen sind aber nichtsdestotrotz ein wichtiger Bestandteil von RDF. Dies hängt natürlich auch mit der Verwendung von RDF als universelles Datenaustauschformat im <i>Semantic Web</i> zusammen. Dessen ungeachtet haben RDF und das Metamorph-Datenmodell ihre Fokussierung auf das Datenmodell statt auf ein Serialisierungsformat gemeinsam. Dies vereinfacht es, Daten aus verschiedensten Datenformaten im jeweiligen Datenmodell darzustellen.
+</p>
+
+<!-- Es fehlt hier der Aspekt, dass Daten aus beliebigen Formaten eingelesen werden können. Das kommt noch nicht richtig rüber -->
+
+<!-- Die Tatsache, dass Formate sehr unterschiedlich sein können muss noch detaillierter ausgeführt werden. Hier könnten Teile aus dem Formeta-Abschnitt übernommen werden -->
+<p>Bei den meisten Datenformaten muss berücksichtigt werden, dass sie keine eins-zu-eins Abbildung der Strukturelemente des Metamorph-Datenmodells erlauben. Oft umfassen einzelne Datenformate nicht den vollen Umfang des Datenmodells, sondern beschränken einige Eigenschaften wie bspw. die erlaubte Verschachtelungstiefe von Entitäten, sodass nicht alle Datenstrukturen in dem jeweiligen Format abgebildet werden können. Teilweise gibt es auch mehrere Varianten, wie ein Strukturelement eines Datenformats im Metamorph-Datenmodell abgebildet werden kann. Dies betrifft z.&thinsp;B. oft die Darstellung von Listen.
 </p>
 
 <p>Um das Metamorph-Datenmodell praktisch einsetzen zu können, muss es aber natürlich möglich sein, Daten darstellen und vor allem ein- und auslesen (also serialisieren und deserialisieren) zu können. 
 Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist in speziellen Dekodier- und Enkodiermodule umgesetzt, die unabhängig von Metamorph sind.
 </p>
 
-<p>Aus diesem Grund sind auch die Beispiele in diesem Kapitel grafisch dargestellt und nicht als formatierter Text: Es gibt kein festgelegtes Format für die Darstellung oder Serialisierung von Datensätzen im Metamorph-Datenmodell.  
-</p>
-
 <h3>Das Formeta-Format</h3>
 
-<p>Bei den meisten Datenformaten muss berücksichtigt werden, dass sie keine eins-zu-eins Abbildung der Strukturelemente des Metamorph-Datenmodells erlauben. Oft umfassen einzelne Datenformate nicht den vollen Umfang des Datenmodells, sondern beschränken einige Eigenschaften wie bspw. die erlaubte Verschachtelungstiefe von Entitäten, sodass nicht alle Datenstrukturen in dem jeweiligen Format abgebildet werden können. Teilweise gibt es auch mehrere Varianten, wie ein Strukturelement eines Datenformats im Metamorph-Datenmodell abgebildet werden kann. Dies betrifft z.&thinsp;B. oft die Darstellung von Listen.
-</p>
+
 
 <p>Da es in der Praxis häufig hilfreich ist, Daten direkt im Metamorph-Datenmodell anzeigen oder ablegen zu können, ohne sich Gedanken über die Fähigkeiten eines Formats machen zu müssen, haben wir in Metafacture ein eigenes Datenformat namens <dfn>Formeta</dfn> integriert. Dieses Datenformat wurde passend zum Metamorph-Datenmodell entworfen, sodass es alle in dem Datenmodell möglichen Datenstrukturen kompakt abbilden kann.
 </p>

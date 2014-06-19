@@ -31,6 +31,7 @@ pre, code {
 }
 
 figure {
+	width: 100%;
 	margin: 15px auto 30px auto;
 	text-align: center;
 }
@@ -38,6 +39,7 @@ figure {
 figure img {
 	margin: 10px 10px; 
 	vertical-align: middle;
+	max-width: 100%;
 }
 
 figcaption {
