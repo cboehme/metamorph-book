@@ -30,6 +30,14 @@ pre, code {
 	font-size: 12pt;
 }
 
+var {
+	font-family: monospace;
+	font-style: normal;
+	font-size-adjust: 0.5;
+	
+	/*color: #3465A4;*/
+}
+
 figure {
 	width: 100%;
 	margin: 15px auto 30px auto;
