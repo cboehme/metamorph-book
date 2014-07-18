@@ -561,14 +561,14 @@ author{
 
 <h4>Darstellung von PICA+ im Metamorph-Datenmodell</h4>
 
-<p>Einer der ersten Anwendungsfälle von Metamorph war die Konversion von bibliothekarischen Daten, die im PICA+ Format vorlagen. Dieses Datenformat ist recht einfach strukturiert. Es gibt Datensätze, die jeweils bspw. einen Buchtitel oder eine Zeitschrift beschreiben. Ein Datensatz setzt sich aus sogenannten Feldern zusammen, die Angaben zu bestimmten Aspekten des beschriebenen Objekts enthalten. Da die Angaben oftmals noch eine feinere Untergliederung aufweisen, bestehen die Felder aus Unterfeldern. Felder und Unterfelder können wiederholbar sein. Bei gleichnamigen Feldern garantiert PICA+ keine bestimmte Reihenfolge dieser Felder. Wenn dies Notwendig ist, kann der Feldname um eine sogenannte <dfn>Occurrence</dfn> ergänzt werden. Dabei handelt es sich um einen Index, der an den Feldnamen angehängt wird und die Position des Feldes beschreibt.
+<p>Einer der ersten Anwendungsfälle für Metamorph war die Konversion von bibliothekarischen Daten, die im PICA+ Format vorlagen. Dieses Datenformat ist recht einfach strukturiert. Es gibt Datensätze, die jeweils bspw. einen Buchtitel oder eine Zeitschrift beschreiben. Ein Datensatz setzt sich aus sogenannten Feldern zusammen, die Angaben zu bestimmten Aspekten des beschriebenen Objekts enthalten. Da die Angaben oftmals noch eine feinere Untergliederung aufweisen, bestehen die Felder aus Unterfeldern. Felder und Unterfelder können wiederholbar sein. Bei gleichnamigen Feldern garantiert PICA+ keine bestimmte Reihenfolge dieser Felder. Wenn dies notwendig ist, kann der Feldname um eine sogenannte <dfn>Occurrence</dfn> ergänzt werden. Dabei handelt es sich um einen Index, der an den Feldnamen angehängt wird und die Position des Feldes beschreibt.
 </p>
 
 <p>Das folgende Beispiel zeigt einen Auschnitt aus einem Datensatz im PICA+ Format. Die ersten vier Zeichen in jeder Zeile bezeichnen den Feldnamen, eine ggf. vorhandene <i>Occurrence</i> besteht aus zwei Ziffern, die mit einem Schrägstrich vom Feldnamen abgetrennt sind. Das $-Zeichen trennt die einzelnen Unterfelder in einem Datenfeld ab. Das erste Zeichen hinter dem $-Zeichen ist der Name des Unterfelds, die restlichen Zeichen sind der eigentliche Inhalt des Unterfelds:<a class="Footnote" href="#picaSpecialChars" id="picaSpecialCharsRef"></a>
 </p>
 
 <section class="Footnote">
-	<p><a href="#picaSpecialCharsRef" id="picaSpecialChars"></a>Die genannten Sonderzeichen für die Kennzeichnung von Feldern und Unterfeldern sind die für die Darstellung in PICA-Systemen verwendeten. In den eigentlichen Daten werden stattdessen . Beim PICA+ Format wird zwischen dem Intern- und dem Externformat unterschieden. Diese beiden Formate unterscheiden sich nur in den verwendeten Feld- und Unterfeldnamen. Ich verwende hier die Feldnamen des Internformats. 
+	<p><a href="#picaSpecialCharsRef" id="picaSpecialChars"></a>Die genannten Sonderzeichen für die Kennzeichnung von Feldern und Unterfeldern werden für die Darstellung in PICA-Systemen verwendet. In den eigentlichen Daten werden stattdessen die Zeichen <dfn>Field Separator</dfn> und <dfn>Subfield Separator</dfn> mit den Zeichencodes <i>0x1f</i> und <i>0x1e</i>. 
 	</p>
 </section>
 
@@ -614,11 +614,59 @@ TODO: Beispiel kompletieren
 	</div>
 </div>
 
-<p>Das Beispiel zeigt, dass sich außer den Strukturelementen zur Gliederung des Datensatzes durch die Umwandlung ins Metamorph-Datenmodell nichts an dem Datensatz geändert hat, was seine Bedeutung verändert. Auf die gleich Art und Weise können auch andere Datenformate aus dem bibliothekarischen Bereich wie etwa MARC21 ins Metamorph-Datenmodel übertragen werden.</p>
+<p>Das Beispiel zeigt, dass sich außer den Strukturelementen zur Gliederung des Datensatzes durch die Umwandlung ins Metamorph-Datenmodell nichts an dem Datensatz geändert hat, was seine Bedeutung verändert. Die Strukturelemente des PICA+ Formats lassen sich eins zu eins auf die Strukturelemente des Metamorphdatenmodells abbilden.</p>
+
+<p>Umgkehrt ist dies allerdings nicht der Fall: Im Metamorph-Datenmodell können Datenstrukturen aufgebaut werden, die sich nicht in PICA+ serialisieren lassen. So ist es bspw. nicht möglich, Strukturen mit verschachtelten Entitäten nach PICA+ zu serialisieren, da das Format nur eine Hierarchieebene (Felder und Unterfelder) kennt. Darüber hinaus sind die erlaubten Feld- und Unterfeldnamen stark beschränkt, sodass ein Entitätsname wie &ldquo;author&rdquo; nicht als Feldname verwendet werdem kann. Aus diesem Grund kann eine Abbildung vom Metamorph-Datenmodell auf PICA+ nur auf einer Teilmenge des Metamorph-Datenmodells definiert werden. Diese Teilmenge umfasst sinnvollerweise nur Datenstrukturen, die auf der Datensatzebene nur aus Entitäten bestehen, die dann wiederum nur Literale enthalten. Die Namen der Entitäten müssen den Regeln für PICA+ Feldnamen entsprechen und die Literalnamen dürfen nur aus einem alphanumerischen Zeichen bestehen. Daten, die im Metamorph-Datenmodell nicht dieser Struktur entsprechen, können nicht im PICA+ Format serialisiert werden. 
+</p>
+
+<p>Auf die gleich Art und Weise wie das PICA+ Format können auch andere Datenformate mit denen im bibliothekarischen Bereich üblichen Feld-Unterfeldstrukturen ins Metamorph-Datenmodel und wieder zurück übertragen werden. Unterschiedliche Details der Datenformate erfordern dabei natürlich spezifische Anpassungen.
+</p>
 
 <h4 id="exampleJson">Darstellung von JSON im Metamorph-Datenmodell</h4>
 
 <h4>Darstellung von XML im Metamorph-Datenmodell</h4>
+
+<p>XML ist ein weit verbreitetes Datenformat, das in vielen Bereichen eingesetzt wird. Um XML-Daten im Metamorph-Datemodell darzustellen, gibt es zwei Möglichkeiten:
+</p>
+
+<ol>
+	<li>Zum einen kann eine <strong>allgemeine Abbildung</strong> definiert werden, die festlegt, wie Elemente, Attribute und Text aus XML mit den Strukturelementen des Metamorph-Datenmodells modelliert werden können, ohne dabei auf die Eigenheiten bestimmter XML-Schemata einzugehen.</li>
+	<li>Zum anderen kann eine Abbildung aber auch Schemainformationen zu einem XML-Datenformat gezielt nutzen, um eine <strong>optimal angepasste Abbildung</strong> dieses Formats im Metamorph-Datenmodell zu definieren.</li>
+</ol>
+
+<p>Während der erste Ansatz den Vorteil hat, jedes beliebige XML-Datenformat im Metamorph-Datenmodell darstellen zu können, hat er den Nachteil, dass die entstehende Struktur sich nicht immer gut weiterverarbeiten lässt. Dies betrifft z.&thinsp;B. Formate wie MAB- oder MARC-XML, die generische Element- und Attributnamen verwenden und die eigentlichen Feldbezeichnungen als Attributwerte oder Textinhalt ablegen, wie der folgende Ausschnitt aus einem MARC-XML-Dokument zeigt:
+</p>
+
+<code><![CDATA[
+
+]]></code>
+
+<p>Bei der Abbildung dieses Formats auf das Metamorph-Datenmodell werden die Attribut- und Elementnamen zu Entitäts- und Literalnamen. Die eigentlich für die Arbeit relevanten Feldbezeichner werden hingegen zu Literalwerten. Das erschwert das Auswählen von Datenwerten anhand der Feldbezeichner deutlich und macht das zu Anfang des Kapitels beschriebene Grundkonzept des Metamorph-Datenmodells wirkungslos, Literal- und Entitätsnamen zur einfachen Auswahl von Datenwerten zu verwenden.
+</p>
+
+<p>In diesem Abschnitt wird eine allgemeine Abbildung von XML-Daten auf das Metamorph-Datenmodell vorgestellt. <!-- Hier könnte auf die Mf-Module GenericXmlDecoder und SimpleXmlEncoder verwiesen werden: Diese sind in den Metafacturemodulen GenericXmlDecoder und SimpleXmlEncoder umgesetzt. --> Diese funktioniert mit allen XML-Datenformaten, hat aber die oben genannten Nachteile. Bei der Arbeit mit XML-Formaten wie dem aus dem obigen Beispiel ist es sinnvoll, statt der allgemeinen Abbildung formatspezifische Abbildungen zu definieren, die die zur Selektion genutzten Datenwerte als Literal- und Entitätsnamen verwenden.
+</p>
+
+<p>Zum Einstieg in die Beschreibung der Abbildung stellen wir kurz noch einmal die relevanten Aspekte des XML-Formats vor. Den Kern von XML bilden Elemente bzw. Tags. Diese werden in spitzen Klammern geschrieben und dienen dem Aufbau der grundlegenden Datenstruktur. Elemente können beliebig verschachtelt werden. Jedes XML-Dokument hat dabei genau ein äußerstes Element, das als Wurzelelement bezeichnet wird. Elemente können leer sein oder aus einem öffnenden und schließenden Tag bestehen:
+</p>
+
+<code><![CDATA[
+
+]]></code>
+
+<p>Neben verschachtelten Elementen können Elemente auch einfachen Text enthalten, dieser kann sich mit Elementen abwechseln, wie das folgende Beispiel zeigt:
+</p>
+
+<code><![CDATA[
+
+]]></code>
+
+<p>Darüber hinaus können zusätzliche Informationen zu einem Element auch als Attribut im Element angegeben werden. Dabei handelt es sich um Schlüssel-Wert-Paare, die hinter dem Elementnamen innerhalb der spitzen Klammern angegeben sind:
+</p>
+
+<code><![CDATA[
+
+]]></code>
 
 <h4>Darstellung von RDF im Metamorph-Datenmodell</h4>
 
