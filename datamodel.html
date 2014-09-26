@@ -279,7 +279,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 	</div>
 </div>
 
-<p>Das Ergebnis zeigt, dass wir zwei Datensätze mit der ID &ldquo;author&rdquo; haben, sodass wir die Datensätze nicht mehr eindeutig identifizieren können. Ein weiterer Nachteil dieses Vorgehens ist, dass die Personen nun fest als Autoren oder Herausgeber benannt werden, obwohl dies eine Eigenschaft ist, die sie eigentlich nur im Zusammenhang mit einem Buch besitzen. Es ist ja durchaus möglich, dass etwa Jacob Grimm bei einem Buch Autor und bei einem anderen Herausgeber war. 
+<p>Das Ergebnis zeigt, dass wir zwei Datensätze mit der ID &ldquo;author&rdquo; haben, sodass wir die Datensätze nicht mehr eindeutig identifizieren können. Ein weiterer Nachteil dieses Vorgehens ist, dass die Personen nun fest als Autoren oder Herausgeber benannt werden, obwohl dies eine Eigenschaft ist, die sie eigentlich nur im Zusammenhang mit einem Buch besitzen. Es ist ja durchaus möglich, dass etwa Jacob Grimm bei einem Buch Autor und bei einem anderen Herausgeber war.
 </p>
 
 <p>Um diese Probleme zu vermeiden, ist es sinnvoll, beim Herauslösen der Personendatensätze die Entitätsnamen durch <strong>eindeutige Datensatz-IDs</strong> zu ersetzen. Dies erlaubt es uns nämlich auch, in dem Titeldatensatz auf diese Datensätze zu verweisen und Jacob und Wilhelm Grimm so als Autoren und Heinz Rölleke als Herausgeber zu identifizieren.</p>
@@ -289,9 +289,9 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
 		<dl>
 			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
-			<dt>authoredById</dt><dd>1</dd>
-			<dt>authoredById</dt><dd>2</dd>
-			<dt>editedById</dt><dd>3</dd>
+			<dt>authoredById</dt><dd>person-1</dd>
+			<dt>authoredById</dt><dd>person-2</dd>
+			<dt>editedById</dt><dd>person-3</dd>
 			<dt>publicationYear</dt><dd>1986</dd>
 			<dt>publisher</dt><dd>Vandenhoeck und Ruprecht</dd>
 			<dt>location</dt><dd>Göttingen</dd>
@@ -299,7 +299,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 		</dl>
 	</div>
 	<div class="Record">
-		<span class="RecordId">Datensatz mit ID &ldquo;1&rdquo;</span>
+		<span class="RecordId">Datensatz mit ID &ldquo;person-1&rdquo;</span>
 		<dl>
 			<dt>surname</dt><dd>Grimm</dd>
 			<dt>forename</dt><dd>Jacob</dd>
@@ -313,7 +313,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 		</dl>
 	</div>
 	<div class="Record">
-		<span class="RecordId">Datensatz mit ID &ldquo;2&rdquo;</span>
+		<span class="RecordId">Datensatz mit ID &ldquo;person-2&rdquo;</span>
 		<dl>
 			<dt>surname</dt><dd>Grimm</dd>
 			<dt>forename</dt><dd>Wilhelm</dd>
@@ -328,7 +328,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 		</dl>
 	</div>
 	<div class="Record">
-		<span class="RecordId">Datensatz mit ID &ldquo;3&rdquo;</span>
+		<span class="RecordId">Datensatz mit ID &ldquo;person-3&rdquo;</span>
 		<dl>
 			<dt>surname</dt><dd>Rölleke</dd>
 			<dt>forename</dt><dd>Heinz</dd>
@@ -339,7 +339,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 <p>Als Datensatz-IDs der herausgelösten Datensätze werden im Beispiel nun eindeutige Nummern verwendet. Außerdem wurden die <var>author</var>- und <var>editor</var>-Entitäten im Titeldatensatz  durch Literale ersetzt, die als Datenwert die Datensatz-ID der vormals dort eingebundenen Entität haben. Um kenntlich zu machen, dass diese Literale keinen Autoren- bzw. Herausgebernamen enthalten, wurden ihre Namen zu <var>authoredById</var> und <var>editedById</var> geändert. Damit wird am Literalnamen erkennbar, dass die Literale nur Verweise enthalten. Gleichzeitig werden aber auch die Beziehungen zwischen dem Titeldatensatz und den Personendatensätzen beschrieben, ohne dass die Personen auf eine bestimmte Rolle festgelegt sind, wie im vorherigen Beispiel noch der Fall war. Trotz der besonderen Namen mit dem Anhängsel <var>Id</var> unterscheiden sich die Literale aus Sicht des Metamorph-Datenmodells nicht von anderen Literalen. Das Datenmodell kennt keine besonderen Strukturelemente für Verknüpfungen zwischen Datensätzen. Es liegt in den Händen des Anwenders, die Datenwerte der neu eingefügten Literale als Verweise auf andere Datensätze zu deuten.
 </p>
 
-<h3 id="nameDetails">Vokabulare und Ontologien für Literale und Entitäten</h3> 
+<h3 id="nameDetails">Vokabulare und Ontologien für Literale und Entitäten</h3>
 
 <p>Bei der Einführung der Literale wurde bereits kurz erwähnt, dass die Literalnamen völlig beliebig sein können und dass das Metamorph-Datenmodell keinerlei Vorgaben macht, wie Namen für Literale und Entitäten zu gestalten sind. Dies ist eine wichtige Eigenschaft des Datenmodells: Es definiert nur die verfügbaren Strukturelemente (Literale und Entitäten), aber nicht, wie diese kombiniert und benannt werden müssen, um Daten aus einem bestimmten Anwendungsbereich (bspw. bibliothekarische Titelaufnahmen) zu beschreiben. Dies kann je Art der Daten völlig unterschiedlich sein und ermöglicht es, Metamorph für die Verarbeitung von Daten aus verschiedensten Anwendungsbereichen einzusetzen. Voraussetzung ist nur, dass sich die Daten in einer hierarchischen Datenstruktur mit Schlüssel-Wert-Paaren abbilden lassen. Das ist dieselbe Idee, die auch XML zugrunde liegt: Es wird eine allgemeine Struktur vorgegeben, die konkrete Ausprägung bleibt aber dem Anwender überlassen, sodass eine Nutzung in unterschiedlichen Anwendungsbereichen möglich ist.
 </p>
@@ -405,7 +405,7 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 <p>Bei schema-freien Daten gibt es keine Möglichkeit Zusatzinformationen zu einzelnen Literalen in einer Ontologie zu hinterlegen. Solche zusätzlichen Informationen sind aber oft für die Arbeit mit den Daten hilfreich, und es ist deshalb wünschenswert sie in die Datenmodellierung zu integrieren. Derartige Zusatzinformationen können bspw. Angaben zur Sprache oder zum Datentyp eines Literalwerts sein oder ein Hinweis darauf, dass der Datenwert eines Literals ein Verweis auf einen anderen Datensatz ist.
 </p>
 
-<p>Eine Möglichkeit, solche Informationen im Metamorph-Datenmodell darzustellen, ist die <strong>Ersetzung des Literals durch eine Entität</strong>. In dieser gibt es dann ein Literal, das den Wert des ursprünglichen Literals enthält und zusätzlich weitere Literale, in denen die zusätzlichen Informationen über den Datenwert abgelegt sind. Nehmen wir an, wir haben in einem Datensatz folgendes Literal, das einen englischsprachigen Buchtitel enthält: 
+<p>Eine Möglichkeit, solche Informationen im Metamorph-Datenmodell darzustellen, ist die <strong>Ersetzung des Literals durch eine Entität</strong>. In dieser gibt es dann ein Literal, das den Wert des ursprünglichen Literals enthält und zusätzlich weitere Literale, in denen die zusätzlichen Informationen über den Datenwert abgelegt sind. Nehmen wir an, wir haben in einem Datensatz folgendes Literal, das einen englischsprachigen Buchtitel enthält:
 </p>
 
 <div class="RecordSnippet">
@@ -488,73 +488,206 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 
 <h2>Datenformate</h2>
 
-<p>Die oben beschriebene Trennung von Strukturelementen und Vokabular bzw. Ontologie ist eine Voraussetzung, um das Metamorph-Datenmodell in verschiedenen Anwendungsbereichen nutzen zu können. Die zweite Voraussetzung ist die Fähigkeit, verschiedene Datenformate für die Ein- und Ausgabe verwenden zu können. Aus diesem Grund definiert das Metamorph-Datenmodell nur die logische Datenstruktur und macht keine Festlegungen zu konkreten Repräsentation von Daten bei der Anzeige oder bei der Speicherung. Die Beispiele in diesem Kapitel sind deshalb auch grafisch dargestellt und nicht als formatierter Text, denn es gibt kein festgelegtes Format für die Darstellung von Datensätzen im Metamorph-Datenmodell.</p>
-
-<p>Das Metamorph-Datenmodell unterscheidet sich in diesem Aspekt von XML und teilweise auch von RDF. XML kann zwar durch die Verwendung unterschiedlicher Vokabulare bzw. Schemata an unterschiedliche Anwendungsdomänen angepasst werden, das zu verwendende Datenformat ist aber fest vorgegeben. RDF geht an dieser Stelle weiter und definiert zuförderst ein Datenmodell und unabhängig davon verschiedene Serialisierungsformate für dieses Datenmodell. Die Serialisierungen sind aber nichtsdestotrotz ein wichtiger Bestandteil von RDF. Dies hängt natürlich auch mit der Verwendung von RDF als universelles Datenaustauschformat im <i>Semantic Web</i> zusammen. Dessen ungeachtet haben RDF und das Metamorph-Datenmodell ihre Fokussierung auf das Datenmodell statt auf ein Serialisierungsformat gemeinsam. Dies vereinfacht es, Daten aus verschiedensten Datenformaten im jeweiligen Datenmodell darzustellen.
+<p>Die oben beschriebene Trennung von Strukturelementen und Vokabular bzw. Ontologie ist eine Voraussetzung, um das Metamorph-Datenmodell in verschiedenen Anwendungsbereichen nutzen zu können. Die zweite Voraussetzung ist die Fähigkeit, <strong>verschiedene Datenformate für die Ein- und Ausgabe</strong> verwenden zu können. Aus diesem Grund definiert das Metamorph-Datenmodell nur die logische Datenstruktur und macht keine Festlegungen zur konkreten Repräsentation von Daten bei der Anzeige oder bei der Speicherung. Die Beispiele in diesem Kapitel sind deshalb auch grafisch und nicht als formatierter Text dargestellt.
 </p>
 
-<!-- Es fehlt hier der Aspekt, dass Daten aus beliebigen Formaten eingelesen werden können. Das kommt noch nicht richtig rüber -->
+<!-- Ab hier überarbeiten!
 
-<!-- Die Tatsache, dass Formate sehr unterschiedlich sein können muss noch detaillierter ausgeführt werden. Hier könnten Teile aus dem Formeta-Abschnitt übernommen werden -->
+Es fehlt hier der Aspekt, dass Daten aus beliebigen Formaten eingelesen werden können. Das kommt noch nicht richtig rüber.
+
+Die Tatsache, dass Formate sehr unterschiedlich sein können muss noch detaillierter ausgeführt werden.
+
+-->
+
+<p>Das Metamorph-Datenmodell unterscheidet sich in diesem Aspekt deutlich von XML. Durch die Verwendung verschiedener Vokabulare bzw. Schemata kann XML zwar an unterschiedliche Anwendungsdomänen angepasst werden, das zu verwendende Datenformat (XML) ist aber fest vorgegeben. RDF geht an dieser Stelle weiter und definiert in erster Linie ein Datenmodell und unabhängig davon mehrere Serialisierungsformate. Die Serialisierungen sind aber nichtsdestotrotz ein fester Bestandteil von RDF. Dies hängt natürlich auch mit der Verwendung von RDF als universelles Datenaustauschformat im <i>Semantic Web</i> zusammen. Dessen ungeachtet haben RDF und das Metamorph-Datenmodell ihre Fokussierung auf das Datenmodell statt auf ein Serialisierungsformat gemeinsam.
+</p>
+
 <p>Bei den meisten Datenformaten muss berücksichtigt werden, dass sie keine eins-zu-eins Abbildung der Strukturelemente des Metamorph-Datenmodells erlauben. Oft umfassen einzelne Datenformate nicht den vollen Umfang des Datenmodells, sondern beschränken einige Eigenschaften wie bspw. die erlaubte Verschachtelungstiefe von Entitäten, sodass nicht alle Datenstrukturen in dem jeweiligen Format abgebildet werden können. Teilweise gibt es auch mehrere Varianten, wie ein Strukturelement eines Datenformats im Metamorph-Datenmodell abgebildet werden kann. Dies betrifft z.&thinsp;B. oft die Darstellung von Listen.
 </p>
 
-<p>Um das Metamorph-Datenmodell praktisch einsetzen zu können, muss es aber natürlich möglich sein, Daten darstellen und vor allem ein- und auslesen (also serialisieren und deserialisieren) zu können. 
-Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist in speziellen Dekodier- und Enkodiermodule umgesetzt, die unabhängig von Metamorph sind.
+<p>Um das Metamorph-Datenmodell praktisch einsetzen zu können, muss es aber natürlich möglich sein, Daten darstellen und vor allem ein- und auslesen (also serialisieren und deserialisieren) zu können.  Um mit unterschiedlichen Datenformaten arbeiten zu können, definiert Metamorph nur eine Schnittstelle für das Empfangen und Senden von Datensätzen, die gemäß des Metamorph-Datenmodells strukturiert sind. Die Konstruktion dieser Datensätze aus konkreten Datenformaten ist in speziellen Dekodier- und Enkodiermodule umgesetzt, die unabhängig von Metamorph sind.
 </p>
 
 <h3>Das Formeta-Format</h3>
 
-
-
-<p>Da es in der Praxis häufig hilfreich ist, Daten direkt im Metamorph-Datenmodell anzeigen oder ablegen zu können, ohne sich Gedanken über die Fähigkeiten eines Formats machen zu müssen, haben wir in Metafacture ein eigenes Datenformat namens <dfn>Formeta</dfn> integriert. Dieses Datenformat wurde passend zum Metamorph-Datenmodell entworfen, sodass es alle in dem Datenmodell möglichen Datenstrukturen kompakt abbilden kann.
+<p>Da es in der Praxis häufig hilfreich ist, Daten direkt im Metamorph-Datenmodell anzeigen oder ablegen zu können, ohne sich Gedanken über die Fähigkeiten eines bestimmten Formats machen zu müssen, haben wir in Metafacture ein eigenes Datenformat namens <dfn>Formeta</dfn> integriert. Dieses Datenformat wurde passend zum Metamorph-Datenmodell entworfen, sodass es alle in dem Datenmodell möglichen Datenstrukturen direkt abbilden kann. Dabei muss aber noch einmal betont werden, dass Formeta nur <em>ein</em> mögliches Datenformat ist, um Daten im Metamorph-Datenmodell zu serialisieren. Im täglichen Gebrauch wird man weitaus häufiger etablierte Datenformate für die Ein- und Ausgabe verwenden und Formeta nur für die Anzeige oder Ablage von Zwischenergebnissen gebrauchen.
 </p>
 
 <p>Das Formeta-Format ist einfach aufgebaut, hat aber eine flexible Syntax, sodass wir Daten sowohl sehr kompakt als auch übersichtlich formatiert ausgeben können. Beim Entwurf der Syntax wurde außerdem darauf geachtet, dass auch eine manuelle Eingabe von Daten recht einfach ist.
 </p>
 
-<p>Es gibt nur zwei Elemente im Formeta-Format: Literale und Gruppen. Erstere entsprechen den Literalen des Metamorph-Datenmodells, Letztere werden für die Formatierung von Datensätzen und Entitäten verwendet. Das hat den Vorteil, dass es dadurch einfach wird, die oben beschriebene Technik anzuwenden, Datensätze als Entitäten in andere Datensätze einzubetten. Durch die identische Darstellung kann die Anwenderin flexibel entscheiden, ob die äußerste Gruppe als Datensatz oder Entität zu verstehen ist.
+<p>Das folgende Syntaxdiagramm zeigt die <strong>Grundstruktur des Formeta-Formats</strong>:
 </p>
 
-<p>Die Grundstruktur des Formeta-Formats ist im folgenden Syntaxdiagramm dargestellt:
-</p>
-
-<figure id="formetaGruppe">
-	<img src="formeta-gruppe.svg" />
-	<img src="formeta-name-wert.svg" />
-	<img src="formeta-text-in-af.svg" />
-	<img src="formeta-text.svg" />
-	<img src="formeta-esc-sequenz.svg" />
-	<img src="formeta-leerraum.svg" >
-	<figcaption>Schmematische Darstellung des Formeta-Formats.</figcaption>
+<figure>
+	<img src="formeta-grundstruktur.svg" />
+	<figcaption>Grundstruktur des Formeta-Formats</figcaption>
 </figure>
 
-<p>Namen und Werte können auf zwei Arten im Formeta-Format dargestellt werden. Entweder als Text in Anführungszeichen oder als Text ohne Anführungszeichen. Die Verwendung von Anführungszeichen reduziert die Anzahl der Zeichen, die maskiert werden müssen. Vor und nach einem Namen oder Wert darf beliebiger Leerraum vorhanden sein. Das Diagramm zeigt auch, dass leere Namen und Werte zulässig sind.
+<p>Eine Serialisierung im Formeta-Format ist eine Folge von Literalen und Gruppen (den Spezialfall des Leernamens betrachten wir später). Die Literale entsprechen denen des Metamorph-Datenmodells, die Gruppen dienen sowohl der Serialisierung von Datensätzen als auch von Entitäten. Durch die Verwendung derselben Syntax für Datensätze und Entitäten ist es sehr einfach,  die oben beschriebene Technik anzuwenden, Datensätze als Entitäten in andere Datensätze einzubetten. Durch die identische Darstellung kann die Anwenderin flexibel entscheiden, ob eine Gruppe als Datensatz oder Entität zu verstehen ist.
 </p>
 
-<p>Ein Literal sind einfach zwei durch einen Doppelpunkt in Literalname und Literalwert aufgeteilte Texte:
-</p>  
-
-<pre class="Example">
-title: Kinder- und Hausmärchen
-</pre>
-
-<p>Eine Gruppe besteht aus dem Gruppennamen &ndash; dies ist entweder der Entitätsname oder die Datensatz-ID &ndash; gefolgt von einer Liste von Literalen und Gruppen in geschweiften Klammern. Innerhalb der Liste sind die Literale und Gruppen mit Kommata getrennt:
+<p>Wie im Diagramm erkennbar ist, setzt Formeta nicht zwingend voraus, dass eine Serialisierung mit einer Gruppe &ndash; d.&thinsp;h. der serialisierten Form eines Datensatzes &ndash; beginnen muss. Es ist auch möglich, einzelne Literale und Entitäten direkt ohne einen umschließende Gruppe zu serialisieren. Auf diese Weise können auch Ausschnitte aus einem umfangreichen Datensatz dargestellt oder abgelegt werden. Wie auch bei der Entscheidung, ob eine Gruppe als Datensatz oder Entität zu sehen ist, liegt es in den Händen des Anwenders zu entscheiden, ob im konkreten Anwendungsfall vollständige Datensätze oder nur Ausschnitte verarbeitet werden. Die Syntax des Formeta-Formats erlaubt beides.
 </p>
 
-<pre class="Example">
-author{	
-	surname: Grimm,
-	forename: Jacob,
-	affiliation{ institution: Friedrich-Wilhelms-Universität zu Berlin },
-	birthdate: 1786-01-04
+<p>Neben Literalen und Gruppen kennt Formeta noch <strong>Leernamen</strong>. Diese haben im Gegensatz zu den anderen beiden Elementen keine inhaltliche Bedeutung, sondern ermöglichen nur eine flexiblere Syntax. Ein Leername ist eine Zeichenfolge, die entweder aus keinerlei Zeichen besteht oder nur aus Leerraum. Außerdem werden zwei direkt aufeinanderfolgende Anführungszeichen mit umgebendem Leerraum als Leername behandelt:
+</p>
+
+<figure>
+	<img src="formeta-leername.svg" />
+	<figcaption>Struktur der Leernamen im Formeta-Format</figcaption>
+</figure>
+
+<p>Ein Leername kann anstelle eines Literals oder einer Gruppe stehen, sodass direkt das Folgeelement angeschlossen werden kann. Da Leernamen keine semantische Bedeutung haben, ermöglicht es diese Konstruktion, nach Belieben Leerraum zwischen Literalen und Gruppen einzufügen.
+</p>
+
+<p>Als <strong>Leerraum</strong> gelten Leerzeichen, Zeilenumbrüche und Tabulatoren:
+</p>
+
+<figure>
+	<img src="formeta-leerraum.svg">
+	<figcaption>Die erlaubten Leerraum-Zeichen</figcaption>
+</figure>
+
+<p>Literale und Leernamen müssen mit einem Komma abgeschlossen werden, es sei den, es handelt sich um das letzte Element der Serialisierung, dann ist ein Komma optional (in Fall eines abschließenden Kommas folgt dann aus Sicht der Syntax einfach noch ein Leername nach diesem letzten Komma). Auf Gruppen kann direkt ein Literal, Leername oder eine weitere Gruppe folgen, ohne dass ein trennendes Komma nötig ist. Da auf eine Gruppe direkt ein Leername folgen darf, der mit einem Komma abgeschlossen wird, ist es auch möglich Gruppen mit Kommata zu trennen ohne die Semantik zu verändern. Die Leernamen erlauben es auch, mehrere direkt aufeinander folgende Kommata zu setzen, ohne dass dies semantisch von Bedeutung ist. Das folgende Beispiel illustriert, wie zwei Datensätze durch die flexible Kommasetzung auf unterschiedliche Weise mit Formeta serialisiert werden können. Trotz der optischen Unterschiede ist die Datenstruktur in beiden Fällen vollkommen identisch.
+</p>
+
+<figure>
+	<pre class="Example">
+person-1 {
+	Name: Grimm,
+	Vorname: Wilhelm,
+	Vorname: Carl
 }
-</pre>
+person-2 {
+	Name: Grimm,
+	Vorname: Jacob
+}
+<hr><!-- Umbruch ignorieren
+-->person-1 {
+	Name: Grimm,,
+	Vorname:Wilhelm,,
+	Vorname: Carl,,
+},
+person-2 {
+	Name: Grimm,
+	Vorname: Jacob,
+},<!-- Umbruch ignorieren
+--></pre>
+	<figcaption>Bei oberen Formeta-Serialisierung wurden nur die minimal notwendigen Kommata gesetzt. Bei der Unteren dagegen wurden Kommata großzügig auch an Stellen verwendet, wo sie nicht zwingend nötig wären</figcaption>
+</figure>
 
-<p>Damit haben wir die Grundstrukturen des Formeta-Formats kennengelernt und können uns nun einigen Feinheiten zuwenden
+<p><strong>Literale und Gruppen</strong> bestehen jeweils aus einem Namen gefolgt von einem Doppelpunkt oder einer öffnenden geschweiften Klammer. Anhand dieser beiden Zeichen kann ein Formeta-Parser unterscheiden, ob es sich um einen Literalnamen (Doppelpunkt) oder Gruppennamen (geschweifte Klammer) handelt. Im Falle des Literals folgt dann einfach der Literalwert. Bei Gruppen können innerhalb der Gruppe wieder alle Formeta-Elemente auftauchen. Damit können Daten in Formeta rekursiv &ndash; d.&thinsp;h. beliebig verschachtelt &ndash; abgelegt werden. Die Gruppe wird mit einer schließenden geschweiften Klammer abgeschlossen.
 </p>
 
-<h3>Beispiele für die Darstellung verschiedener Formate im Metamorph-Datenmodell</h3>
+<figure>
+	<img src="formeta-literal.svg">
+	<img src="formeta-gruppe.svg">
+	<figcaption>Aufbau der beiden bedeutungstragenden Grundelemente des Formeta-Formats</figcaption>
+</figure>
+
+<p><strong>Namen und Werte</strong> können auf zwei Arten im Formeta-Format dargestellt werden. Entweder als Text in einfachen Anführungszeichen (<var>Text-in-AF</var>) oder als Text ohne Anführungszeichen. Die Verwendung von Anführungszeichen reduziert die Anzahl der Zeichen, die maskiert werden müssen. Vor und nach einem Namen oder Wert darf beliebiger Leerraum vorhanden sein. Dadurch kann die Formeta-Serialisierung durch das Einfügen von Einrückungen und Zeilenumbrüchen übersichtlich gegliedert werden. Das Diagramm zeigt auch, dass leere Namen und Werte zulässig sind:
+</p>
+
+<figure>
+	<img src="formeta-name-wert.svg">
+	<figcaption>Darstellung von Namen und Werten im Formeta-Format</figcaption>
+</figure>
+
+<p>Innerhalb von <strong>Text in Anführungszeichen</strong> können beliebige Zeichenfolgen inklusive Leerraumzeichen und Sonderzeichen angegeben werden. Einzig das einfache Anführungszeichen und der Backslash haben eine Sonderfunktion und können nicht einfach im Text verwendet werden. Das einfache Anführungszeichen beendet den Text und der Backslash maskiert das nachfolgende Zeichen. Dies erlaubt es auch Anführungszeichen und Backslashs im Text einzugeben, indem ihnen ein Backslash vorangestellt werden, sodass sie ihre Spezialbedeutung verlieren.
+</p>
+
+<figure>
+	<img src="formeta-text-in-af.svg">
+	<figcaption>Text in Anführungszeichen</figcaption>
+</figure>
+
+Neben den beiden zwingend zu maskierenden Zeichen ist es möglich, noch weitere Zeichen mit einem Backslash in einer <strong>Escape-Sequenz</strong> zu maskieren:
+
+<figure>
+	<img src="formeta-esc-sequenz.svg">
+	<figcaption>Maskierung mit einem Backslash und maskierbare Zeichen.</figcaption>
+</figure>
+
+<p>Die sechs Interpunktionszeichen können mit einem Backslash maskiert werden, um sie ihrer Sonderfunktion, die sie ansonsten im Formeta-Format haben, zu berauben. Die Maskierung von Leerraumzeichen ermöglicht es, diese am Beginn oder Ende eines nicht in Anführungszeichen stehenden Textes zu nutzen. Während die vorgenannten Zeichen ihre Sonderfunktion durch die Maskierung verlieren, ist es bei den Zeichen <code>r</code> und <code>n</code> gerade umgekehrt. Die Maskierung dieser beiden Zeichen erzeugt einer Sonderbehandlung: Mit <code>\n</code> können Zeilenumbrüche und mit <code>\r</code> Wagenrückläufe einzufügt werden, ohne einen sichtbaren Zeilenumbruch eingeben zu müssen, der ggf. die visuelle Struktur der Serialisierung beeinträchtigen würde.
+</p>
+
+<p>Das letzte Element der Formeta-Syntax ist einfacher <strong>Text ohne Anführungszeichen</strong>. Dieser bietet sich für Namen und Werte an, die keine oder nur wenige Sonderzeichen enthalten, die maskiert werden müssen. Da Leerraum vor und nach Texten ignoriert wird, muss ein Text ohne Anführungszeichen mit einem Nichtleerraumzeichen beginnen und enden. Um trotzdem einen Text mit einem der vier Leerraumzeichen beginnen oder enden lassen zu können, können diese Zeichen maskiert werden. Leerraum innerhalb des Texts ist unproblematisch, solange dahinter ein weiteres Nichtleerraumzeichen oder ein maskiertes Leerraumzeichen folgt. Bei Text ohne Anführungszeichen müssen im Gegensatz zu Text in Anführungszeichen die Zeichen Doppelpunkt, Komma und öffnende und schließende geschweifte Klammer ebenfalls maskiert werden, damit ein Formeta-Parser erkennen kann, dass sie Teil des Textes sind und nicht das Ende des Namens oder Werts markieren.
+</p>
+
+<figure>
+	<img src="formeta-text.svg">
+	<figcaption>Text ohne Anführungszeichen</figcaption>
+</figure>
+
+<h4>Formeta im praktischen Beispiel</h4>
+
+<p>Zum Abschluss der Vorstellung von Formeta zeigt dieser Abschnitt einige Beispiele für die Beschreibung von Datensätzen im Formeta-Format, um einen Eindruck vom Aussehen der Serialisierung zu vermitteln. Als Datenbasis dienen die Beispieldatensätze aus diesem Kapitel. Die einzelnen Datensätze sind jeder mit einer anderen Schreibweise des Formeta-Formats dargestellt, um die verschiedenen Möglichkeiten zu illustrieren.
+</p>
+
+<p>Das erste Beispiel zeigt den Datensatz des Beispielbuchtitels aus diesem Kapitel in einer Formeta-Serialisierung, bei der alle Namen und Werte ohne Anführungszeichen geschrieben wurden. Der Doppelpunkt im Wert des Literals <var>publisher</var> wurde maskiert, um zu verhindern, dass er als Trennzeichen zwischen Literalnamen und Literalwert behandelt wird. Der Verzicht auf Anführungszeichen erlaubt eine zügige manuelle Eingabe und ergibt sehr übersichtliche Datensätze solange nicht zu viele Zeichen maskiert werden müssen. Zur zusätzlichen Verbesserung der Lesbarkeit wurden die Gruppeninhalte übersichtlich eingerückt.
+</p>
+
+<pre class="Example">
+978-3-525-20764-2 {
+	title: Kinder- und Hausmärchen,
+	authoredById: person-1,
+	authoredById: person-2,
+	editedById: person-3,
+	publicationYear: 1986,
+	publisher: Vandenhoeck und Ruprecht\: Göttingen,
+	isbn: 978-3-525-20764-2
+}<!-- Umbruch ignorieren
+--></pre>
+
+<p>Im Gegensatz zum ersten Beispiel wurden im Folgenden alle Namen und Werte in Anführungszeichen gesetzt, sodass der Doppelpunkt im Wert des Literals <var>institution</var> nicht maskiert werden muss. Zusätzlich wurde eine andere Schreibweise für den Umbruch und die Einrückung verwendet.
+</p>
+
+<pre class="Example">
+'person-1'
+	{
+	'surname':
+			'Grimm',
+	'forename':
+			'Jacob',
+	'birthdate':
+			'1786-01-04',
+	'affiliation'
+		{
+		'institution':
+				'Friedrich-Wilhelms-Universität: Berlin',
+		'country':
+				'Preußen'
+		}
+	}<!-- Umbruch ignorieren
+--></pre>
+
+<p>Die Serialisierung des folgenden Datensatz verwendet im Kontrast zum obigen Datensatz sehr viel weniger Leerraum zur optischen Gliederung. Das mehrfach verwendete Literal <var>forename</var> wird sogar komplett in einer Zeile angegeben. Weiterhin enden auch die letzten Literale und Entitäten einer Gruppe mit einem Komma. Durch diese Schreibweise können bei häufigen manuellen Veränderungen an Datensätzen Fehler durch fehlende Kommata vermieden werden, wenn neue Literale oder Entitäten am Ende einer Gruppe eingefügt werden. Als letzte Besonderheit wurden bei der Serialisierung sowohl Texte in Anführungszeichen als auch Texte ohne Anführungszeichen verwendet. Letztere wurden für alle Namen verwendet, Erstere für alle Werte. Diese Kombination ist häufig sinnvoll, da die Literal- und Entitätsnamen oftmals einzelne Worte sind, die keine Sonderzeichen enthalten. Der Verzicht auf Anführungszeichen kann dann zur Lesbarkeit beitragen.
+</p>
+
+<pre class="Example">
+person-2 {
+	surname: 'Grimm',
+	forename: 'Wilhelm', forename: 'Carl',
+	affiliation {
+		institution: 'Universität Göttingen',
+		country: 'Königreich Hannover',
+	},
+}<!-- Umbruch ignorieren
+--></pre>
+
+<p>Während die vorangegangenen Datensätzen eine hohe Lesbarkeit und teilweise auch eine einfache Veränderbarkeit der Daten im Vordergrund stand, zeigt das abschließende Beispiel, dass mit Formeta auch sehr kompakte Formatierungen möglich sind:
+</p>
+
+<pre class="Example">
+person-3{surname:Rölleke,forename:Heinz}<!-- Umbruch ignorieren
+--></pre>
+
+<p>Hier wurde auf alle unnötigen Leerräume, Kommata und Anführungszeichen verzichtet, um eine möglichst kompakte Darstellung zu erreichen. Diese ist für Menschen nur schwer lesbar, eignet sich aber gut für Daten, die nur vom Rechner gelesen und geschrieben werden.
+</p>
+
+
+<h3>Darstellung verschiedener Formate im Metamorph-Datenmodell</h3>
 
 <p>Im Folgenden zeige ich wie verschiedene bekannte Datenformate im Metamorph-Datenmodell abgebildet werden können. Wir beginnen mit einem einfachen Datenformat aus dem Bibliotheksbereich und beschäftigen und anschließend mit XML, JSON und RDF. Diese Formate sind besonders interessant, da sie ebenfalls zur Erfassung beliebiger semistrukturierter Daten entwickelt wurden. Ihre Datenmodelle sind allerdings alle leicht unterschiedlich und unterscheiden sich auch vom Metamorph-Datenmodell. Wir werden aber sehen, dass es dennoch möglich ist, beliebig strukturierte Daten aus diesen Formate im Metamorph-Datenmodell zu modellieren. Dies zeit, dass sich jegliche in JSON, XML und RDF vorliegenden Daten mit Metamorph verarbeiten lassen.
 </p>
@@ -568,7 +701,7 @@ author{
 </p>
 
 <section class="Footnote">
-	<p><a href="#picaSpecialCharsRef" id="picaSpecialChars"></a>Die genannten Sonderzeichen für die Kennzeichnung von Feldern und Unterfeldern werden für die Darstellung in PICA-Systemen verwendet. In den eigentlichen Daten werden stattdessen die Zeichen <dfn>Field Separator</dfn> und <dfn>Subfield Separator</dfn> mit den Zeichencodes <i>0x1f</i> und <i>0x1e</i>. 
+	<p><a href="#picaSpecialCharsRef" id="picaSpecialChars"></a>Die genannten Sonderzeichen für die Kennzeichnung von Feldern und Unterfeldern werden für die Darstellung in PICA-Systemen verwendet. In den eigentlichen Daten werden stattdessen die Zeichen <dfn>Field Separator</dfn> und <dfn>Subfield Separator</dfn> mit den Zeichencodes <i>0x1f</i> und <i>0x1e</i>.
 	</p>
 </section>
 
@@ -587,11 +720,11 @@ TODO: Beispiel kompletieren
 	<li>Der <strong>PICA+ Datensatz</strong> findet eine direkte Entsprechung im Datensatz des Metamorph-Datenmodells. Als Datensatz-Identifikator kann der Inhalt des Unterfelds 003@$0 verwendet werden. In diesem Unterfeld steht bei PICA+ gängigerweise eine eindeutige Datensatznummer.</li>
 
 	<li>Ein <strong>PICA+ Feld</strong> hat einen Namen und gruppiert ein oder mehrere Unterfelder. Dies können wir mit einer Entität nachbilden. Die ggf. vorhandenen Angaben zu <i>Occurrences</i> benötigen wir nicht, da die Reihenfolge der Entitäten im Metamorph-Datenmodell immer beachtet wird. Wir betrachten die <i>Occurrence</i> daher einfach als Teil des Feldnamens. Alternativ wäre es auch möglich, sie vom Feldnamen abzuschneiden und zu verwerfen.</li>
-	
+
 	<li>Ein <strong>Unterfeld</strong> ist einfach ein Pärchen von Namen und Datenwert, wir können es also einfach als ein Literal darstellen.</li>
 </ul>
 
-<p>Im Metamorph-Datenmodell sieht der obige Datensatz dann so aus: 
+<p>Im Metamorph-Datenmodell sieht der obige Datensatz dann so aus:
 </p>
 
 <div class="RecordSet">
@@ -616,7 +749,7 @@ TODO: Beispiel kompletieren
 
 <p>Das Beispiel zeigt, dass sich außer den Strukturelementen zur Gliederung des Datensatzes durch die Umwandlung ins Metamorph-Datenmodell nichts an dem Datensatz geändert hat, was seine Bedeutung verändert. Die Strukturelemente des PICA+ Formats lassen sich eins zu eins auf die Strukturelemente des Metamorphdatenmodells abbilden.</p>
 
-<p>Umgkehrt ist dies allerdings nicht der Fall: Im Metamorph-Datenmodell können Datenstrukturen aufgebaut werden, die sich nicht in PICA+ serialisieren lassen. So ist es bspw. nicht möglich, Strukturen mit verschachtelten Entitäten nach PICA+ zu serialisieren, da das Format nur eine Hierarchieebene (Felder und Unterfelder) kennt. Darüber hinaus sind die erlaubten Feld- und Unterfeldnamen stark beschränkt, sodass ein Entitätsname wie &ldquo;author&rdquo; nicht als Feldname verwendet werdem kann. Aus diesem Grund kann eine Abbildung vom Metamorph-Datenmodell auf PICA+ nur auf einer Teilmenge des Metamorph-Datenmodells definiert werden. Diese Teilmenge umfasst sinnvollerweise nur Datenstrukturen, die auf der Datensatzebene nur aus Entitäten bestehen, die dann wiederum nur Literale enthalten. Die Namen der Entitäten müssen den Regeln für PICA+ Feldnamen entsprechen und die Literalnamen dürfen nur aus einem alphanumerischen Zeichen bestehen. Daten, die im Metamorph-Datenmodell nicht dieser Struktur entsprechen, können nicht im PICA+ Format serialisiert werden. 
+<p>Umgkehrt ist dies allerdings nicht der Fall: Im Metamorph-Datenmodell können Datenstrukturen aufgebaut werden, die sich nicht in PICA+ serialisieren lassen. So ist es bspw. nicht möglich, Strukturen mit verschachtelten Entitäten nach PICA+ zu serialisieren, da das Format nur eine Hierarchieebene (Felder und Unterfelder) kennt. Darüber hinaus sind die erlaubten Feld- und Unterfeldnamen stark beschränkt, sodass ein Entitätsname wie &ldquo;author&rdquo; nicht als Feldname verwendet werdem kann. Aus diesem Grund kann eine Abbildung vom Metamorph-Datenmodell auf PICA+ nur auf einer Teilmenge des Metamorph-Datenmodells definiert werden. Diese Teilmenge umfasst sinnvollerweise nur Datenstrukturen, die auf der Datensatzebene nur aus Entitäten bestehen, die dann wiederum nur Literale enthalten. Die Namen der Entitäten müssen den Regeln für PICA+ Feldnamen entsprechen und die Literalnamen dürfen nur aus einem alphanumerischen Zeichen bestehen. Daten, die im Metamorph-Datenmodell nicht dieser Struktur entsprechen, können nicht im PICA+ Format serialisiert werden.
 </p>
 
 <p>Auf die gleich Art und Weise wie das PICA+ Format können auch andere Datenformate mit denen im bibliothekarischen Bereich üblichen Feld-Unterfeldstrukturen ins Metamorph-Datenmodel und wieder zurück übertragen werden. Unterschiedliche Details der Datenformate erfordern dabei natürlich spezifische Anpassungen.

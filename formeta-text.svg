@@ -13,7 +13,7 @@
    height="127.00001"
    id="svg3551"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="formeta-text.svg">
   <defs
      id="defs3553">
@@ -53,9 +53,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.3794912"
-     inkscape:cx="395.43563"
-     inkscape:cy="68.500009"
+     inkscape:zoom="3.1534153"
+     inkscape:cx="140.681"
+     inkscape:cy="63.500004"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -103,84 +103,6 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(150.71719,-158.96873)">
-    <rect
-       style="color:#000000;fill:#729fcf;stroke:#204a87;stroke-width:1.99999988;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect3074"
-       width="148"
-       height="48.000023"
-       x="370.92206"
-       y="180.96872"
-       rx="24.000008"
-       ry="24.000011" />
-    <rect
-       ry="24.000011"
-       rx="24.000008"
-       y="180.96872"
-       x="-29.077936"
-       height="48.000023"
-       width="148"
-       id="rect3487"
-       style="color:#000000;fill:#729fcf;stroke:#204a87;stroke-width:1.99999988;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-    <rect
-       ry="4.2651143"
-       rx="4.1701908"
-       y="240.70364"
-       x="380.72803"
-       height="28.459146"
-       width="128.36423"
-       id="rect4500-6"
-       style="color:#000000;fill:#729fcf;fill-opacity:1;fill-rule:nonzero;stroke:#204a87;stroke-width:1.99999988;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-    <text
-       sodipodi:linespacing="125%"
-       id="text4502-4"
-       y="259.20667"
-       x="444.47263"
-       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
-       xml:space="preserve"><tspan
-         y="259.20667"
-         x="444.47263"
-         id="tspan4504-4"
-         sodipodi:role="line">Esc-Sequenz</tspan></text>
-    <rect
-       style="color:#000000;fill:#729fcf;stroke:#204a87;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect2985"
-       width="107.95958"
-       height="28.459152"
-       x="210.78746"
-       y="230.83415"
-       rx="3.8249757"
-       ry="4.1346059" />
-    <text
-       xml:space="preserve"
-       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
-       x="264.66571"
-       y="250.78249"
-       id="text3755"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3757"
-         x="264.66571"
-         y="250.78249">Leerraum</tspan></text>
-    <rect
-       ry="4.1940541"
-       rx="4.1701756"
-       y="240.7747"
-       x="-19.271984"
-       height="28.459152"
-       width="128.36423"
-       id="rect4500"
-       style="color:#000000;fill:#729fcf;fill-opacity:1;fill-rule:nonzero;stroke:#204a87;stroke-width:1.99999988;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-    <text
-       sodipodi:linespacing="125%"
-       id="text4502"
-       y="259.27771"
-       x="44.472633"
-       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
-       xml:space="preserve"><tspan
-         y="259.27771"
-         x="44.472633"
-         id="tspan4504"
-         sodipodi:role="line">Esc-Sequenz</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m -70.077936,204.96875 c 15,0 20,5 20,20 l 0,10 c 0,15 5,20 20,20 l 10,0"
@@ -259,6 +181,15 @@
        d="m 159.92206,204.96875 c 15,0 20,-5 20,-20.00001 0,-15.00001 5,-20.00001 20,-20.00001 l 360,2e-5 c 15,0 20,5 20,20 0,15 5,20 20,20"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccsscc" />
+    <rect
+       ry="24.000011"
+       rx="24.000008"
+       y="180.96872"
+       x="-29.077936"
+       height="48.000023"
+       width="148"
+       id="rect3487"
+       style="color:#000000;fill:#729fcf;stroke:#204a87;stroke-width:1.99999988;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <text
        sodipodi:linespacing="125%"
        id="text3500"
@@ -275,7 +206,7 @@
          style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
          y="208.69676"
          x="45.183296"
-         sodipodi:role="line">Zeichen außer: \ { } : , &quot;</tspan><tspan
+         sodipodi:role="line">Zeichen außer: \ { } : , '</tspan><tspan
          style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
          y="221.19676"
          x="45.183296"
@@ -285,6 +216,35 @@
            id="tspan7257"><tspan
    style="font-style:normal;-inkscape-font-specification:Sans"
    id="tspan3102">oder</tspan> Leerraum</tspan></tspan></text>
+    <rect
+       ry="4.1940541"
+       rx="4.1701756"
+       y="240.7747"
+       x="-19.271984"
+       height="28.459152"
+       width="128.36423"
+       id="rect4500"
+       style="color:#000000;fill:#729fcf;fill-opacity:1;fill-rule:nonzero;stroke:#204a87;stroke-width:1.99999988;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4502"
+       y="259.27771"
+       x="44.472633"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       xml:space="preserve"><tspan
+         y="259.27771"
+         x="44.472633"
+         id="tspan4504"
+         sodipodi:role="line">Esc-Sequenz</tspan></text>
+    <rect
+       style="color:#000000;fill:#729fcf;stroke:#204a87;stroke-width:1.99999988;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3074"
+       width="148"
+       height="48.000023"
+       x="370.92206"
+       y="180.96872"
+       rx="24.000008"
+       ry="24.000011" />
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Caladea;-inkscape-font-specification:Sans Italic"
@@ -311,5 +271,45 @@
            style="font-style:italic;-inkscape-font-specification:Sans Italic"><tspan
    style="font-style:normal;-inkscape-font-specification:Sans"
    id="tspan3100">oder</tspan> Leerraum</tspan></tspan></text>
+    <rect
+       style="color:#000000;fill:#729fcf;stroke:#204a87;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect2985"
+       width="107.95958"
+       height="28.459152"
+       x="210.78746"
+       y="230.83415"
+       rx="3.8249757"
+       ry="4.1346059" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="264.66571"
+       y="250.78249"
+       id="text3755"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3757"
+         x="264.66571"
+         y="250.78249">Leerraum</tspan></text>
+    <rect
+       ry="4.2651143"
+       rx="4.1701908"
+       y="240.70364"
+       x="380.72803"
+       height="28.459146"
+       width="128.36423"
+       id="rect4500-6"
+       style="color:#000000;fill:#729fcf;fill-opacity:1;fill-rule:nonzero;stroke:#204a87;stroke-width:1.99999988;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4502-4"
+       y="259.20667"
+       x="444.47263"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       xml:space="preserve"><tspan
+         y="259.20667"
+         x="444.47263"
+         id="tspan4504-4"
+         sodipodi:role="line">Esc-Sequenz</tspan></text>
   </g>
 </svg>

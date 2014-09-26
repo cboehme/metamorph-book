@@ -13,7 +13,7 @@
    height="122.19343"
    id="svg3317"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="formeta-text-in-af.svg">
   <defs
      id="defs3319">
@@ -53,9 +53,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.365088"
-     inkscape:cx="238.04611"
-     inkscape:cy="61.096714"
+     inkscape:zoom="1.852042"
+     inkscape:cx="334.0727"
+     inkscape:cy="31.583139"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -100,40 +100,6 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-89.305344,-178.43804)">
-    <rect
-       style="color:#000000;fill:#729fcf;stroke:#204a87;stroke-width:1.99999976;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect4322"
-       width="128.04042"
-       height="38"
-       x="301.16556"
-       y="205.43803"
-       rx="18.959579"
-       ry="19" />
-    <g
-       transform="matrix(0.86747656,0,0,0.74993231,213.29906,-347.02922)"
-       id="g4498"
-       style="stroke-width:2.47964835;stroke-miterlimit:4;stroke-dasharray:none">
-      <rect
-         style="color:#000000;fill:#729fcf;fill-opacity:1;fill-rule:nonzero;stroke:#204a87;stroke-width:2.47964835;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-         id="rect4500"
-         width="148"
-         height="38.000008"
-         x="101.28977"
-         y="803.36218"
-         rx="4.8340535"
-         ry="5.5917482" />
-    </g>
-    <text
-       sodipodi:linespacing="125%"
-       id="text4502"
-       y="273.91995"
-       x="364.92114"
-       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
-       xml:space="preserve"><tspan
-         y="273.91995"
-         x="364.92114"
-         id="tspan4504"
-         sodipodi:role="line">Esc-Sequenz</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4884"
@@ -182,6 +148,15 @@
        id="path4643"
        d="m 185.16556,224.43804 115,0"
        style="color:#000000;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-start:url(#TriangleOutL);visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <rect
+       style="color:#000000;fill:#729fcf;stroke:#204a87;stroke-width:1.99999976;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4322"
+       width="128.04042"
+       height="38"
+       x="301.16556"
+       y="205.43803"
+       rx="18.959579"
+       ry="19" />
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Caladea;-inkscape-font-specification:Sans Italic"
@@ -198,6 +173,31 @@
          x="363.63724"
          y="233.5103"
          style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
-         id="tspan4328">Zeichen außer: \ &quot;</tspan></text>
+         id="tspan4328">Zeichen außer: ' \</tspan></text>
+    <g
+       transform="matrix(0.86747656,0,0,0.74993231,213.29906,-347.02922)"
+       id="g4498"
+       style="stroke-width:2.47964835;stroke-miterlimit:4;stroke-dasharray:none">
+      <rect
+         style="color:#000000;fill:#729fcf;fill-opacity:1;fill-rule:nonzero;stroke:#204a87;stroke-width:2.47964835;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect4500"
+         width="148"
+         height="38.000008"
+         x="101.28977"
+         y="803.36218"
+         rx="4.8340535"
+         ry="5.5917482" />
+    </g>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4502"
+       y="273.91995"
+       x="364.92114"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       xml:space="preserve"><tspan
+         y="273.91995"
+         x="364.92114"
+         id="tspan4504"
+         sodipodi:role="line">Esc-Sequenz</tspan></text>
   </g>
 </svg>
