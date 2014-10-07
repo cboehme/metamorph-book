@@ -34,8 +34,8 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 
 <p>Das Metamorph-Datenmodell sieht außerdem vor, dass Datensätze einen Identifikator haben. Dieser wird in Metamorph meist als <strong><dfn>Datensatz-ID</dfn></strong> bezeichnet und ist ein beliebiger Datenwert, der geeignet ist, einen Datensatz möglichst eindeutig zu bezeichnen. Mögliche Identifikatoren wären etwa URLs, ID-Nummern aus einer Datenbank oder die ISBN-Nummer aus dem obigen Beispiel. Auch wenn es meist sinnvoll ist, einen eindeutigen Identifikator für jeden Datensatz zu verwenden, erzwingt das Datenmodell dies nicht. Man kann also auch einfach ein und denselben Wert oder sogar eine leere Zeichenfolge als Identifikator für alle Datensätze nutzen. Der verwendete Datenwert kann, muss aber nicht, zusätzlich auch als Literal im Datensatz enthalten sein, wie das Beispiel zeigt:</p>
 
-<div class="RecordSet">
-	<div class="Record">
+<ul class="RecordSet">
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
 		<dl>
 			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
@@ -46,14 +46,14 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 			<dt>location</dt><dd>Göttingen</dd>
 			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
 		</dl>
-	</div>
-</div>
+	</li>
+</ul>
 
 <p>Dies ermöglicht es bereits viele Arten von Informationen zu erfassen. Das Beispiel zeigt aber auch, dass die Literale einige Informationen nur sehr grob strukturiert erfassen. So sind alle Autoren in einem einzigen Literal enthalten und innerhalb des Literalwerts nur textlich durch Kommata voneinander getrennt. Ein einzelner Autorenname kann so nicht gezielt ausgewählt werden; dazu müsste jeder Autor in einem eigenen Literal abgelegt sein. Um dies möglichst einfach zu machen, erlaubt es das Metamorph-Datenmodell, in einem Datensatz <strong>Literalnamen mehrfach zu verwenden</strong>:
 </p>
 
-<div class="RecordSet">
-	<div class="Record">
+<ul class="RecordSet">
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
 		<dl>
 			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
@@ -65,8 +65,8 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 			<dt>location</dt><dd>Göttingen</dd>
 			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
 		</dl>
-	</div>
-</div>
+	</li>
+</ul>
 
 <p>Im Beispiel wurde das <var>authors</var>-Literal in zwei Literale zerlegt, die jeweils einen Autor repräsentieren. Dank der Möglichkeit, Literalnamen beliebig zu wiederholen, können beide Literale den Namen <var>author</var> tragen, und es ist nicht nötig, künstliche Unterscheidungen etwa durch eine angehängte Nummerierung vorzunehmen.
 </p>
@@ -82,8 +82,8 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 <p>Angenommen, wir wollen die Namen unserer Autoren in ihre einzelnen Bestandteile zerlegt im Datensatz ablegen. Mit dem bisher Vorgestellten sieht dies so aus:
 </p>
 
-<div class="RecordSet">
-	<div class="Record">
+<ul class="RecordSet">
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
 		<dl>
 			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
@@ -99,14 +99,14 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 			<dt>location</dt><dd>Göttingen</dd>
 			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
 		</dl>
-	</div>
-</div>
+	</li>
+</ul>
 
 <p>Im Vergleich zu den vorangegangenen Beispielen ist unser Datensatz durch die Aufspaltung der Namen ziemlich unübersichtlich geworden. Es ist kaum noch ersichtlich, welche Vor- und Nachnamen zusammen gehören. So können z.&thinsp;B. Autoren und Herausgeber nur noch auseinandergehalten werden, weil die Literale unterschiedliche Namen verwenden. Diese Lösung ist allerdings nicht besonders übersichtlich und auch nicht immer möglich. Wenn die Literalnamen bspw. vorgegeben sind (Gründe dafür werden in Abschnitt <a href="#nameDetails">Vokabulare und Ontologien für Literale und Entitäten</a> beschrieben), kann es sein, dass die vorgegebenen Literalnamen für die Namensteile nicht zwischen Autorennamen und Herausgebernamen unterscheiden, sondern nur allgemein Vor- und Nachnamen beschreiben. Dann ist keine Unterscheidung zwischen Autoren- und Herausgebernamen mehr möglich. Im Metamorph-Datenmodell können deshalb Literale innerhalb eines Datensatzes gruppiert werden. Diese Gruppen werden <strong><dfn>Entitäten</dfn></strong> genannt und habe ebenso wie Literale einen beliebigen Namen, um sie gezielt auswählen und die gruppierten Inhalte unterscheiden zu können.
 </p>
 
-<div class="RecordSet">
-	<div class="Record">
+<ul class="RecordSet">
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
 		<dl>
 			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
@@ -137,8 +137,8 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 			<dt>location</dt><dd>Göttingen</dd>
 			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
 		</dl>
-	</div>
-</div>
+	</li>
+</ul>
 
 <p>Die Entitäten sind hier in der Darstellung als Boxen gezeichnet, die Literale enthalten. Man kann sich Entitäten als eine Art von Literal mit strukturiertem Inhalt oder als eine Art Datensatz im Datensatz vorstellen.
 </p>
@@ -149,8 +149,8 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 <p>Entitäten können nicht nur auf Datensatzebene zur Gruppierung von Literalen verwendet werden, sondern auch innerhalb von Entitäten. Wenn wir bspw. für jeden Autor auch Informationen zu seiner Institution ablegen wollen, können wir die Informationen zur Institution in einer <strong>verschachtelten Entität</strong> ablegen, um sie zusammenzufassen:
 </p>
 
-<div class="RecordSet">
-	<div class="Record">
+<ul class="RecordSet">
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
 		<dl>
 			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
@@ -195,8 +195,8 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 			<dt>location</dt><dd>Göttingen</dd>
 			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
 		</dl>
-	</div>
-</div>
+	</li>
+</ul>
 
 <p>Auf diese Weise lassen sich mit Entitäten auch komplexe hierarchische Datensatzstrukturen abbilden.
 </p>
@@ -230,8 +230,8 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 <p>Am Beispiel unseres Buchtitels können wir das Problem leicht nachvollziehen. Im folgenden Beispiel sind die Entitäten mit den Angaben zu den Autoren und dem Herausgeber aus dem Titeldatensatz herausgezogen und als gesonderte Personendatensätze dargestellt. Als Datensatz-IDs wurden einfach die Entitätsnamen verwendet:
 </p>
 
-<div class="RecordSet">
-	<div class="Record">
+<ul class="RecordSet">
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
 		<dl>
 			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
@@ -240,8 +240,8 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 			<dt>location</dt><dd>Göttingen</dd>
 			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
 		</dl>
-	</div>
-	<div class="Record">
+	</li>
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;author&rdquo;</span>
 		<dl>
 			<dt>surname</dt><dd>Grimm</dd>
@@ -254,8 +254,8 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 				</dl>
 			</dd>
 		</dl>
-	</div>
-	<div class="Record">
+	</li>
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;author&rdquo;</span>
 		<dl>
 			<dt>surname</dt><dd>Grimm</dd>
@@ -269,23 +269,23 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 				</dl>
 			</dd>
 		</dl>
-	</div>
-	<div class="Record">
+	</li>
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;editor&rdquo;</span>
 		<dl>
 			<dt>surname</dt><dd>Rölleke</dd>
 			<dt>forename</dt><dd>Heinz</dd>
 		</dl>
-	</div>
-</div>
+	</li>
+</ul>
 
 <p>Das Ergebnis zeigt, dass wir zwei Datensätze mit der ID &ldquo;author&rdquo; haben, sodass wir die Datensätze nicht mehr eindeutig identifizieren können. Ein weiterer Nachteil dieses Vorgehens ist, dass die Personen nun fest als Autoren oder Herausgeber benannt werden, obwohl dies eine Eigenschaft ist, die sie eigentlich nur im Zusammenhang mit einem Buch besitzen. Es ist ja durchaus möglich, dass etwa Jacob Grimm bei einem Buch Autor und bei einem anderen Herausgeber war.
 </p>
 
 <p>Um diese Probleme zu vermeiden, ist es sinnvoll, beim Herauslösen der Personendatensätze die Entitätsnamen durch <strong>eindeutige Datensatz-IDs</strong> zu ersetzen. Dies erlaubt es uns nämlich auch, in dem Titeldatensatz auf diese Datensätze zu verweisen und Jacob und Wilhelm Grimm so als Autoren und Heinz Rölleke als Herausgeber zu identifizieren.</p>
 
-<div class="RecordSet">
-	<div class="Record">
+<ul class="RecordSet">
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;978-3-525-20764-2&rdquo;</span>
 		<dl>
 			<dt>title</dt><dd>Kinder- und Hausmärchen</dd>
@@ -297,8 +297,8 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 			<dt>location</dt><dd>Göttingen</dd>
 			<dt>isbn</dt><dd>978-3-525-20764-2</dd>
 		</dl>
-	</div>
-	<div class="Record">
+	</li>
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;person-1&rdquo;</span>
 		<dl>
 			<dt>surname</dt><dd>Grimm</dd>
@@ -311,8 +311,8 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 				</dl>
 			</dd>
 		</dl>
-	</div>
-	<div class="Record">
+	</li>
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;person-2&rdquo;</span>
 		<dl>
 			<dt>surname</dt><dd>Grimm</dd>
@@ -326,15 +326,15 @@ Vandenhoeck und Ruprecht, Göttingen 1986<br>
 				</dl>
 			</dd>
 		</dl>
-	</div>
-	<div class="Record">
+	</li>
+	<li class="Record">
 		<span class="RecordId">Datensatz mit ID &ldquo;person-3&rdquo;</span>
 		<dl>
 			<dt>surname</dt><dd>Rölleke</dd>
 			<dt>forename</dt><dd>Heinz</dd>
 		</dl>
-	</div>
-</div>
+	</li>
+</ul>
 
 <p>Als Datensatz-IDs der herausgelösten Datensätze werden im Beispiel nun eindeutige Nummern verwendet. Außerdem wurden die <var>author</var>- und <var>editor</var>-Entitäten im Titeldatensatz  durch Literale ersetzt, die als Datenwert die Datensatz-ID der vormals dort eingebundenen Entität haben. Um kenntlich zu machen, dass diese Literale keinen Autoren- bzw. Herausgebernamen enthalten, wurden ihre Namen zu <var>authoredById</var> und <var>editedById</var> geändert. Damit wird am Literalnamen erkennbar, dass die Literale nur Verweise enthalten. Gleichzeitig werden aber auch die Beziehungen zwischen dem Titeldatensatz und den Personendatensätzen beschrieben, ohne dass die Personen auf eine bestimmte Rolle festgelegt sind, wie im vorherigen Beispiel noch der Fall war. Trotz der besonderen Namen mit dem Anhängsel <var>Id</var> unterscheiden sich die Literale aus Sicht des Metamorph-Datenmodells nicht von anderen Literalen. Das Datenmodell kennt keine besonderen Strukturelemente für Verknüpfungen zwischen Datensätzen. Es liegt in den Händen des Anwenders, die Datenwerte der neu eingefügten Literale als Verweise auf andere Datensätze zu deuten.
 </p>
@@ -727,8 +727,8 @@ TODO: Beispiel kompletieren
 <p>Im Metamorph-Datenmodell sieht der obige Datensatz dann so aus:
 </p>
 
-<div class="RecordSet">
-	<div class="Record">
+<ul class="RecordSet">
+	<li class="Record">
 		<span class="RecordId">Datensatz mit Id &ldquo;123&rdquo;</span>
 		<dl>
 			<dt class="Entity">003@</dt>
@@ -744,8 +744,8 @@ TODO: Beispiel kompletieren
 				</dl>
 			</dd>
 		</dl>
-	</div>
-</div>
+	</li>
+</ul>
 
 <p>Das Beispiel zeigt, dass sich außer den Strukturelementen zur Gliederung des Datensatzes durch die Umwandlung ins Metamorph-Datenmodell nichts an dem Datensatz geändert hat, was seine Bedeutung verändert. Die Strukturelemente des PICA+ Formats lassen sich eins zu eins auf die Strukturelemente des Metamorphdatenmodells abbilden.</p>
 
