@@ -160,6 +160,25 @@ tbody tr:last-of-type td {
 	border-bottom: 2px #3465A4 solid;
 }
 
+/* Markup for editing */
+
+.Todo {
+	position: relative;
+	left: -16px;
+
+	font-style: italic;
+	color: #909090;
+
+	border-left: 8px #dc0000 solid;
+	padding-left: 8px;
+}
+
+.Todo::before {
+	content: "To Do: ";
+
+	font-weight: bold;
+}
+
 /* Layout of examples and records */
 
 .Example,
