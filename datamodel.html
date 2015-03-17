@@ -788,47 +788,167 @@ person-3{surname:Rölleke,forename:Heinz}<!-- Umbruch ignorieren
 
 <h4>Darstellung von XML im Metamorph-Datenmodell</h4>
 
-<p>XML ist ein weit verbreitetes Datenformat, das in vielen Bereichen eingesetzt wird. Um XML-Daten im Metamorph-Datemodell darzustellen, gibt es zwei Möglichkeiten:
+<p>XML ist ein weit verbreitetes Datenformat, das in vielen Bereichen eingesetzt wird. Durch die Unterscheidung zwischen grundlegendem Datenmodell und anwendungsspezifischem Schema, die XML gemacht wird, ergeben sich zwei Möglichkeiten, um XML-Daten im Metamorph-Datenmodell darzustellen:
 </p>
 
 <ol>
-	<li>Zum einen kann eine <strong>allgemeine Abbildung</strong> definiert werden, die festlegt, wie Elemente, Attribute und Text aus XML mit den Strukturelementen des Metamorph-Datenmodells modelliert werden können, ohne dabei auf die Eigenheiten bestimmter XML-Schemata einzugehen.</li>
+	<li>Zum einen kann eine <strong>allgemeine Abbildung</strong> definiert werden, die festlegt, wie die Elemente, Attribute und Texte aus dem XML-Datenmodell mit den Strukturelementen des Metamorph-Datenmodells modelliert werden können, ohne dabei auf die Eigenheiten bestimmter XML-Schemata einzugehen.</li>
+
 	<li>Zum anderen kann eine Abbildung aber auch Schemainformationen zu einem XML-Datenformat gezielt nutzen, um eine <strong>optimal angepasste Abbildung</strong> dieses Formats im Metamorph-Datenmodell zu definieren.</li>
 </ol>
 
 <p>Während der erste Ansatz den Vorteil hat, jedes beliebige XML-Datenformat im Metamorph-Datenmodell darstellen zu können, hat er den Nachteil, dass die entstehende Struktur sich nicht immer gut weiterverarbeiten lässt. Dies betrifft z.&thinsp;B. Formate wie MAB- oder MARC-XML, die generische Element- und Attributnamen verwenden und die eigentlichen Feldbezeichnungen als Attributwerte oder Textinhalt ablegen, wie der folgende Ausschnitt aus einem MARC-XML-Dokument zeigt:
 </p>
 
-<code><![CDATA[
+<pre class="Example">
+&lt;datafield tag="245" ind1="1" ind2="0"&gt;
+	&lt;subfield code="a"&gt;Kinder- und Hausmärchen&lt;/subfield&gt;
+&lt;/datafield&gt;
+&lt;datafield tag="260" ind1="3" ind2=" "&gt;
+	&lt;subfield code="a"&gt;Göttingen&lt;/subfield&gt;
+	&lt;subfield code="b"&gt;Vandenhoeck und Ruprecht&lt;/subfield&gt;
+&lt;/datafield&gt;<!-- Umbruch ignorieren
+--></pre>
 
-]]></code>
-
-<p>Bei der Abbildung dieses Formats auf das Metamorph-Datenmodell werden die Attribut- und Elementnamen zu Entitäts- und Literalnamen. Die eigentlich für die Arbeit relevanten Feldbezeichner werden hingegen zu Literalwerten. Das erschwert das Auswählen von Datenwerten anhand der Feldbezeichner deutlich und macht das zu Anfang des Kapitels beschriebene Grundkonzept des Metamorph-Datenmodells wirkungslos, Literal- und Entitätsnamen zur einfachen Auswahl von Datenwerten zu verwenden.
+<p>Hier sind die Feld- und Unterfeldnamen, die für die Adressierung einzelner Informationen notwendig sind, in den Attributen <var>tag</var> und <var>code</var> abgelegt. Bei der Abbildung dieser Daten auf das Metamorph-Datenmodell werden die Attribut- und Elementnamen zu Entitäts- und Literalnamen. Die eigentlich für die weitere Verarbeitung relevanten Feldbezeichner werden hingegen zu Literalwerten. Das erschwert das Auswählen von Datenwerten anhand der Feldbezeichner deutlich und macht das zu Anfang des Kapitels beschriebene Grundkonzept des Metamorph-Datenmodells wirkungslos, Literal- und Entitätsnamen zur einfachen Auswahl von Datenwerten zu verwenden.
 </p>
 
-<p>In diesem Abschnitt wird eine allgemeine Abbildung von XML-Daten auf das Metamorph-Datenmodell vorgestellt. <!-- Hier könnte auf die Mf-Module GenericXmlDecoder und SimpleXmlEncoder verwiesen werden: Diese sind in den Metafacturemodulen GenericXmlDecoder und SimpleXmlEncoder umgesetzt. --> Diese funktioniert mit allen XML-Datenformaten, hat aber die oben genannten Nachteile. Bei der Arbeit mit XML-Formaten wie dem aus dem obigen Beispiel ist es sinnvoll, statt der allgemeinen Abbildung formatspezifische Abbildungen zu definieren, die die zur Selektion genutzten Datenwerte als Literal- und Entitätsnamen verwenden.
+<p>In diesem Abschnitt wird eine allgemeine Abbildung von XML-Daten auf das Metamorph-Datenmodell vorgestellt. <!-- Hier könnte auf die Mf-Module GenericXmlDecoder und SimpleXmlEncoder verwiesen werden: Diese sind in den Metafacturemodulen GenericXmlDecoder und SimpleXmlEncoder umgesetzt. --> Diese funktioniert mit allen XML-Datenformaten, hat aber die oben genannten Nachteile. Bei der Arbeit mit XML-Formaten wie dem aus dem obigen Beispiel ist es sinnvoll, statt der allgemeinen Abbildung formatspezifische Abbildungen zu definieren, die die zur Selektion genutzten Datenwerte als Literal- und Entitätsnamen verwenden. <!-- Verweis auf eine Beschreibung der Erstellung von XML-Modulen? -->
 </p>
 
-<p>Zum Einstieg in die Beschreibung der Abbildung stellen wir kurz noch einmal die relevanten Aspekte des XML-Formats vor. Den Kern von XML bilden Elemente bzw. Tags. Diese werden in spitzen Klammern geschrieben und dienen dem Aufbau der grundlegenden Datenstruktur. Elemente können beliebig verschachtelt werden. Jedes XML-Dokument hat dabei genau ein äußerstes Element, das als Wurzelelement bezeichnet wird. Elemente können leer sein oder aus einem öffnenden und schließenden Tag bestehen:
+<p>Zum Einstieg in die Beschreibung der Abbildung werden die relevanten Aspekte des XML-Formats kurz vorgestellt. Den Kern von XML bilden <strong>Elemente</strong>; diese werden häufig auch als <i>Tags</i> bezeichnet. Sie werden in spitzen Klammern geschrieben und dienen dem Aufbau der grundlegenden Datenstruktur. Elemente können beliebig verschachtelt werden. Jedes XML-Dokument hat dabei genau ein äußerstes Element, das als Wurzelelement bezeichnet wird. Elemente können leer sein oder aus einem öffnenden und schließenden Tag bestehen:
 </p>
 
-<code><![CDATA[
+<pre class="Example">
+&lt;wurzel-element&gt;
+	&lt;äußeres-element&gt;
+		&lt;inneres-element&gt;
+		&lt;/inneres-element&gt;
+		vleeres-element /&gt;
+	&lt;/äußeres-element&gt;
+&lt;/wurzel-element&gt;<!-- Umbruch ignorieren
+--></pre>
 
-]]></code>
-
-<p>Neben verschachtelten Elementen können Elemente auch einfachen Text enthalten, dieser kann sich mit Elementen abwechseln, wie das folgende Beispiel zeigt:
+<p>Neben verschachtelten Elementen können Elemente auch <strong>einfachen Text</strong> enthalten, dieser kann sich mit Elementen abwechseln, wie das folgende Beispiel zeigt:
 </p>
 
-<code><![CDATA[
+<pre class="Example">
+&lt;wurzel-element&gt;
+	Einfacher Text &lt;element&gt;Mehr Text&lt;/element&gt;
+	Noch mehr Text &lt;leeres-element /&gt;
+&lt;/wurzel-element&gt;<!-- Umbruch ignorieren
+--></pre>
 
-]]></code>
+<p>Durch die Kombination freie von Text und Elementen können XML-Dokumente erstellt werden, die in ihrem Aufbau Textdokumenten ähneln, die nur mit einzelnen strukturierenden Elementen durchsetzt sind. Ein typisches Beispiel für diese Anwendungsweise sind HTML-Dokumente.</p>
 
-<p>Darüber hinaus können zusätzliche Informationen zu einem Element auch als Attribut im Element angegeben werden. Dabei handelt es sich um Schlüssel-Wert-Paare, die hinter dem Elementnamen innerhalb der spitzen Klammern angegeben sind:
+<p>Darüber hinaus können zusätzliche Informationen zu einem Element auch als <strong>Attribut</strong> im Element angegeben werden. Dabei handelt es sich um Schlüssel-Wert-Paare, die hinter dem Elementnamen innerhalb der spitzen Klammern angegeben sind:
 </p>
 
-<code><![CDATA[
+<pre class="Example">
+&lt;element attribut-name="attribut-wert"
+		attribut-name="attribut-wert2" /&gt;<!-- Umbruch ignorieren
+--></pre>
 
-]]></code>
+<p>Zusammengefasst kennt das XML-Datenmodell folgende Strukturelemente, die auf das Metamorph-Datenmodell abgebildet werden müssen:
+</p>
+
+<ul>
+	<li><strong>Elemente</strong> sind Container für Text und weitere Elemente. Zusätzlich können Elemente Zusatzinformationen in der Form von Attributen erhalten.</li>
+
+	<li><strong>Attribute</strong> sind einfache Schlüssel-Wert-Paare, die einen Element zugeordnet sind.</li>
+
+	<li><strong>Text</strong>, der innerhalb und zwischen Elementen stehen kann.</li>
+</ul>
+
+<p>Diese Strukturelemente haben keine direkte Entsprechung im Metamorph-Datenmodell. Es kennt keinen einfachen Text und auch keine Attribute als Anhängsel an ein anderes Strukturelement.
+</p>
+
+<p>Elemente finden eine Entsprechung in Entitäten. Diese können auch beliebig verschachtelt werden und die Reihenfolge ihres Inhalts ist ebenfalls vorgegeben. Leere Elemente können als leere Entitäten modelliert werden.
+</p>
+
+<figure>
+	<pre class="Example">
+&lt;authors&gt;
+&lt;name&gt;
+	&lt;affiliation /&gt;
+&lt;/name&gt;
+&lt;name&gt;
+	&lt;affiliation /&gt;
+&lt;/name&gt;
+&lt;/authors&gt;<!-- Umbruch ignorieren
+--></pre>
+	<div class="RecordSnippet">
+		<dl>
+			<dt class="Entity">authors</dt>
+			<dd><dl>
+				<dt class="Entity">name</dt>
+				<dd><dl>
+					<dt class="Entity">institution</dt>
+					<dd></dd>
+				</dl></dd>
+				<dt class="Entity">name</dt>
+				<dd><dl>
+					<dt class="Entity">institution</dt>
+					<dd></dd>
+				</dl></dd>
+			</dl></dd>
+		</dl>
+	</div>
+	<figcaption>Die beiden XML-Elemente mit Attributen wurden auf Entitäten und Literale im Metamorph-Datenmodell abgebildet</figcaption>
+</figure>
+
+<p>Attribute sind Schlüssel-Werte-Paare. Als solche entsprechen sie den Literalen im Metamorph-Datenmodell. Allerdings sind diese nicht Ergänzung einer Entität, sondern in einer Entität enthalten und die Entität wird als das sie gruppierende Element verstanden. Dies ist allerdings nur eine Konvention, wie die Inhalte von Entitäten zu verstehen sind. Es spricht auch nichts dagegen, die in einer Entität enthaltenen Literale als Zusatzinformationen zur Entität zu betrachten. Wenn Literale mit diesem Verständnis betrachtet werden, eignen sie sich sehr gut, um die Attribute aus XML abzubilden.</p>
+
+<figure>
+	<pre class="Example">
+&lt;name firstname="Jacob" lastname="Grimm"&gt;
+	&lt;affiliation name="Friedrich-Wilhelms-Universität" /&gt;
+&lt;/name&gt;<!-- Umbruch ignorieren
+--></pre>
+	<div class="RecordSnippet">
+		<dl>
+			<dt class="Entity">name</dt>
+			<dd>
+				<dl>
+					<dt>firstname</dt><dd>Jacob</dd>
+					<dt>lastname</dt><dd>Grimm</dd>
+					<dt class="Entity">institution</dt>
+					<dd>
+						<dl>
+							<dt>name</dt><dd>Friedrich-Wilhelms-Universität</dd>
+						</dl>
+					</dd>
+				</dl>
+			</dd>
+		</dl>
+	</div>
+	<figcaption>Die beiden XML-Elemente mit Attributen wurden auf Entitäten und Literale im Metamorph-Datenmodell abgebildet</figcaption>
+</figure>
+
+<p>Für die Darstellung von einfachem Text gibt im Metamorph-Datenmodell keine Strukturelemente, die einen ähnlichen Anwendungszweck haben. Die einzige Stelle, an der Textinhalte im Metamorph-Datenmodell abgebildet werden können, sind die Werte von Literalen. Es liegt also nah, Texte aus dem XML-Datenmodell in Literalwerten abzulegen. Damit diese Text-Literale von den Literalen unterschieden werden können, die Attribute repräsentieren, ist es notwendig ihnen einen eindeutigen Namen zu geben, der sehr wahrscheinlich nicht für Attributnamen verwendet wird. Ein möglicher Name, der im folgenden Beispiel verwendet wird ist <var>_text</var>.
+</p>
+
+<figure>
+	<pre class="Example">
+&lt;name&gt;
+	Wilhelm Carl&lt;end-of-firstnames /&gt;Grimm
+&lt;/name&gt;<!-- Umbruch ignorieren
+--></pre>
+	<div class="RecordSnippet">
+		<dl>
+			<dt class="Entity">name</dt>
+			<dd>
+				<dl>
+					<dt>_text</dt><dd>Wilhelm Carl</dd>
+					<dt class="Entity">end-of-firstnames</dt>
+					<dd></dd>
+					<dt>_text</dt><dd>Grimm</dd>
+				</dl>
+			</dd>
+		</dl>
+	</div>
+	<figcaption>Der Text aus dem XML-Dokument wurde im Literal <var>_text</var> untergebracht</figcaption>
+</figure>
 
 <h4>Darstellung von RDF im Metamorph-Datenmodell</h4>
 
