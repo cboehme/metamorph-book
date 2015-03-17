@@ -312,3 +312,8 @@ dt.Entity + dd {
 
 	border-bottom-left-radius: 3px;
 }
+
+dt.Entity + dd:empty {
+	width: 10em;
+	height: 2ex;
+}

@@ -689,7 +689,7 @@ person-3{surname:Rölleke,forename:Heinz}<!-- Umbruch ignorieren
 
 <h3>Darstellung verschiedener Formate im Metamorph-Datenmodell</h3>
 
-<p>Im Folgenden zeige ich wie verschiedene bekannte Datenformate im Metamorph-Datenmodell abgebildet werden können. Wir beginnen mit einem einfachen Datenformat aus dem Bibliotheksbereich und beschäftigen und anschließend mit XML, JSON und RDF. Diese Formate sind besonders interessant, da sie ebenfalls zur Erfassung beliebiger semistrukturierter Daten entwickelt wurden. Ihre Datenmodelle sind allerdings alle leicht unterschiedlich und unterscheiden sich auch vom Metamorph-Datenmodell. Wir werden aber sehen, dass es dennoch möglich ist, beliebig strukturierte Daten aus diesen Formate im Metamorph-Datenmodell zu modellieren. Dies zeit, dass sich jegliche in JSON, XML und RDF vorliegenden Daten mit Metamorph verarbeiten lassen.
+<p>Im Folgenden zeige ich wie verschiedene bekannte Datenformate im Metamorph-Datenmodell abgebildet werden können. Wir beginnen mit einem einfachen Datenformat aus dem Bibliotheksbereich und beschäftigen und anschließend mit XML, JSON und RDF. Diese Formate sind besonders interessant, da sie ebenfalls zur Erfassung beliebiger semistrukturierter Daten entwickelt wurden. Ihre Datenmodelle sind allerdings alle leicht unterschiedlich und unterscheiden sich auch vom Metamorph-Datenmodell. Wir werden aber sehen, dass es dennoch möglich ist, beliebig strukturierte Daten aus diesen Formate im Metamorph-Datenmodell zu modellieren. Dies zeigt, dass sich jegliche in JSON, XML und RDF vorliegenden Daten mit Metamorph verarbeiten lassen.
 </p>
 
 <h4>Darstellung von PICA+ im Metamorph-Datenmodell</h4>
@@ -701,17 +701,18 @@ person-3{surname:Rölleke,forename:Heinz}<!-- Umbruch ignorieren
 </p>
 
 <section class="Footnote">
-	<p><a href="#picaSpecialCharsRef" id="picaSpecialChars"></a>Die genannten Sonderzeichen für die Kennzeichnung von Feldern und Unterfeldern werden für die Darstellung in PICA-Systemen verwendet. In den eigentlichen Daten werden stattdessen die Zeichen <dfn>Field Separator</dfn> und <dfn>Subfield Separator</dfn> mit den Zeichencodes <i>0x1f</i> und <i>0x1e</i>.
+	<p><a href="#picaSpecialCharsRef" id="picaSpecialChars"></a>Die genannten Sonderzeichen für die Kennzeichnung von Feldern und Unterfeldern werden für die Darstellung in PICA-Systemen verwendet. In den eigentlichen Daten werden stattdessen die Zeichen <dfn>Field Separator</dfn> und <dfn>Subfield Separator</dfn> mit den Zeichencodes <i>0x1f</i> und <i>0x1e</i> verwendet.
 	</p>
 </section>
 
 <pre class="Example">
-003@ $0123
-021A $0
-028A/01
-028A/02
-TODO: Beispiel kompletieren
-</pre>
+003@     $0942881826
+021A     $aKinder- und Hausmärchen
+028C     $9118542257$aGrimm$dJacob$BHrsg.
+028C/01  $9117744727$aRölleke$dHeinz$BBearb.
+033A     $pGöttingen$nVandenhoeck und Ruprecht
+<!-- Umbruch ignorieren
+--></pre>
 
 <p>Um diesen Datensatz mit Metamorph verarbeiten zu können, müssen wir die Feld-Unterfeld-Struktur des PICA+ Formats mit den Strukturelementen des Metamorph-Datenmodells nachbilden. Das PICA+ Format besitzt drei Strukturelemente: Datensatz, Feld und Unterfeld. Diese Elemente können wie folgt auf das Metamorph-Datenmodell abgebildet werden:
 </p>
@@ -729,27 +730,52 @@ TODO: Beispiel kompletieren
 
 <ul class="RecordSet">
 	<li class="Record">
-		<span class="RecordId">Datensatz mit Id &ldquo;123&rdquo;</span>
+		<span class="RecordId">Datensatz mit Id &ldquo;942881826&rdquo;</span>
 		<dl>
 			<dt class="Entity">003@</dt>
 			<dd>
 				<dl>
-					<dt>0</dt><dd>123</dd>
+					<dt>0</dt><dd>942881826</dd>
 				</dl>
 			</dd>
 			<dt class="Entity">021A</dt>
 			<dd>
 				<dl>
-					<dt>0</dt><dd>Titel</dd>
+					<dt>a</dt><dd>Kinder- und Hausmärchen</dd>
+				</dl>
+			</dd>
+			<dt class="Entity">028C</dt>
+			<dd>
+				<dl>
+					<dt>9</dt><dd>118542257</dd>
+					<dt>a</dt><dd>Grimm</dd>
+					<dt>d</dt><dd>Jacob</dd>
+					<dt>B</dt><dd>Hrsg.</dd>
+				</dl>
+			</dd>
+			<dt class="Entity">028C/01</dt>
+			<dd>
+				<dl>
+					<dt>9</dt><dd>117744727</dd>
+					<dt>a</dt><dd>Rölleke</dd>
+					<dt>d</dt><dd>Heinz</dd>
+					<dt>B</dt><dd>Bearb.</dd>
+				</dl>
+			</dd>
+			<dt class="Entity">033A</dt>
+			<dd>
+				<dl>
+					<dt>p</dt><dd>Göttingen</dd>
+					<dt>n</dt><dd>Vandenhoeck und Ruprecht</dd>
 				</dl>
 			</dd>
 		</dl>
 	</li>
 </ul>
 
-<p>Das Beispiel zeigt, dass sich außer den Strukturelementen zur Gliederung des Datensatzes durch die Umwandlung ins Metamorph-Datenmodell nichts an dem Datensatz geändert hat, was seine Bedeutung verändert. Die Strukturelemente des PICA+ Formats lassen sich eins zu eins auf die Strukturelemente des Metamorphdatenmodells abbilden.</p>
+<p>Das Beispiel zeigt, dass sich außer den Strukturelementen zur Gliederung des Datensatzes durch die Umwandlung ins Metamorph-Datenmodell nichts an dem Datensatz geändert hat, wodurch seine Bedeutung verändert. Die Strukturelemente des PICA+ Formats lassen sich eins zu eins auf die Strukturelemente des Metamorph-Datenmodells abbilden.</p>
 
-<p>Umgkehrt ist dies allerdings nicht der Fall: Im Metamorph-Datenmodell können Datenstrukturen aufgebaut werden, die sich nicht in PICA+ serialisieren lassen. So ist es bspw. nicht möglich, Strukturen mit verschachtelten Entitäten nach PICA+ zu serialisieren, da das Format nur eine Hierarchieebene (Felder und Unterfelder) kennt. Darüber hinaus sind die erlaubten Feld- und Unterfeldnamen stark beschränkt, sodass ein Entitätsname wie &ldquo;author&rdquo; nicht als Feldname verwendet werdem kann. Aus diesem Grund kann eine Abbildung vom Metamorph-Datenmodell auf PICA+ nur auf einer Teilmenge des Metamorph-Datenmodells definiert werden. Diese Teilmenge umfasst sinnvollerweise nur Datenstrukturen, die auf der Datensatzebene nur aus Entitäten bestehen, die dann wiederum nur Literale enthalten. Die Namen der Entitäten müssen den Regeln für PICA+ Feldnamen entsprechen und die Literalnamen dürfen nur aus einem alphanumerischen Zeichen bestehen. Daten, die im Metamorph-Datenmodell nicht dieser Struktur entsprechen, können nicht im PICA+ Format serialisiert werden.
+<p>Umgekehrt ist dies allerdings nicht der Fall: Im Metamorph-Datenmodell können Datenstrukturen aufgebaut werden, die sich nicht in PICA+ serialisieren lassen. So ist es bspw. nicht möglich, Strukturen mit verschachtelten Entitäten nach PICA+ zu serialisieren, da das Format nur eine Hierarchieebene (Felder und Unterfelder) kennt. Darüber hinaus sind die erlaubten Feld- und Unterfeldnamen stark beschränkt, sodass ein Entitätsname wie &ldquo;author&rdquo; nicht als Feldname verwendet werden kann. Aus diesem Grund kann eine Abbildung vom Metamorph-Datenmodell auf PICA+ nur auf einer Teilmenge des Metamorph-Datenmodells definiert werden. Diese Teilmenge umfasst nur Datenstrukturen, die auf der Datensatzebene nur aus Entitäten bestehen, die dann wiederum nur Literale enthalten. Die Namen der Entitäten müssen den Regeln für PICA+ Feldnamen entsprechen und die Literalnamen dürfen nur aus einem alphanumerischen Zeichen bestehen. Daten, die im Metamorph-Datenmodell nicht dieser Struktur entsprechen, können nicht im PICA+ Format serialisiert werden.
 </p>
 
 <p>Auf die gleich Art und Weise wie das PICA+ Format können auch andere Datenformate mit denen im bibliothekarischen Bereich üblichen Feld-Unterfeldstrukturen ins Metamorph-Datenmodel und wieder zurück übertragen werden. Unterschiedliche Details der Datenformate erfordern dabei natürlich spezifische Anpassungen.
